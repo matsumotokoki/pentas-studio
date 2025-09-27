@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Pentas Studio – Mock v27 (per-line color, no row gap, staggered + first-visit loader / About更新)</title>
 <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700&display=swap" rel="stylesheet">
 <style>
   /* =============================================================
      Pentas Studio | Mock v27 (+ First-Visit Loader / About更新)
@@ -124,7 +125,7 @@
 
   /* Panels */
   .ps-panel{position:absolute;inset:0;background:rgba(41,50,59,.96);display:flex;opacity:0;transform:translateY(10px);transition:opacity .28s ease, transform .28s ease}
-  .ps-panel .ps-panel-inner{margin:auto;padding:22px;line-height:1.8;max-width:720px;border:1px solid var(--line);border-radius:var(--radius);background:rgba(20,24,29,.7)}
+  .ps-panel .ps-panel-inner{margin:auto;padding:34px 40px;line-height:1.9;max-width:860px;width:min(84vw, 860px);border:1px solid var(--line);border-radius:var(--radius);background:rgba(20,24,29,.78);display:grid;gap:30px;justify-items:center;text-align:center;box-shadow:var(--shadow)}
   .ps-panel.is-visible{opacity:1;transform:translateY(0)}
   .is-hidden{pointer-events:none}
 
@@ -140,20 +141,35 @@
   .loader{ display:none; }
 
   /* ===== About（新規デザイン） ===== */
-  .about-wrap{display:grid;gap:18px}
-  .about-hero{display:grid;gap:10px}
-  .about-kicker{color:var(--ink-weak);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
-  .about-lead{font-family:'Rampart One',system-ui,sans-serif;font-size:28px;line-height:1.15;letter-spacing:.02em}
-  .about-lead em{background:linear-gradient(180deg, rgba(255,186,58,.35), rgba(255,186,58,0));border-bottom:2px solid var(--accent);font-style:normal;padding:0 2px}
-  .about-sub{color:#e4eaf1;opacity:.95}
-  .about-sub p{margin:0 0 10px}
-  .about-sep{height:1px;background:linear-gradient(90deg, transparent, var(--line), transparent);margin:8px 0}
-  .about-facts{display:grid;grid-template-columns:1fr;gap:10px}
-  .about-facts h3{font-size:14px;letter-spacing:.1em;color:var(--ink-weak)}
-  .facts-grid{display:grid;grid-template-columns:auto 1fr;gap:10px 14px;padding:10px;border:1px solid var(--line);border-radius:12px;background:rgba(255,186,58,.03)}
-  .facts-grid dt{color:var(--ink-weak)}
+  .about-wrap{display:grid;gap:32px;justify-items:center;text-align:center;width:100%}
+  .about-hero{display:grid;gap:18px;justify-items:center}
+  .about-kicker{color:var(--ink-weak);font-size:18px;letter-spacing:.08em;font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Noto Sans JP','BIZ UDGothic','Yu Gothic',Meiryo,sans-serif}
+  .about-lead{font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Noto Sans JP','BIZ UDGothic','Yu Gothic',Meiryo,sans-serif;font-size:clamp(36px,4.2vw,50px);line-height:1.18;letter-spacing:.04em;font-weight:700;position:relative;display:inline-block;padding:0 4px}
+  .about-lead::after{content:"";display:block;width:120px;height:3px;margin:20px auto 0;background:var(--accent);border-radius:999px;box-shadow:0 4px 14px rgba(255,186,58,.35)}
+  .about-sub{color:#e4eaf1;opacity:.95;max-width:680px;text-align:left;margin:8px auto 0}
+  .about-sub p{margin:0 0 14px}
+  .about-sub p:last-child{margin-bottom:0}
+  .about-sep{height:1px;background:linear-gradient(90deg, transparent, var(--line), transparent);margin:16px auto;width:72%}
+  .about-facts{display:grid;grid-template-columns:1fr;gap:18px;width:100%;justify-items:center}
+  .about-facts h3{font-size:16px;letter-spacing:.22em;color:var(--ink-weak);text-transform:uppercase;font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Noto Sans JP','BIZ UDGothic','Yu Gothic',Meiryo,sans-serif}
+  .facts-grid{display:grid;grid-template-columns:auto 1fr;gap:12px 22px;padding:18px 24px;border:1px solid var(--line);border-radius:18px;background:rgba(255,186,58,.04);width:100%;max-width:620px;text-align:left}
+  .facts-grid dt{color:var(--ink-weak);font-weight:600;font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Noto Sans JP','BIZ UDGothic','Yu Gothic',Meiryo,sans-serif}
   .facts-grid dd{margin:0}
-  .about-cta{display:flex;gap:10px;justify-content:flex-end}
+  .about-cta{display:flex;gap:12px;justify-content:center}
+
+  /* ===== Contact（新規デザイン） ===== */
+  .contact-wrap{display:grid;gap:28px;justify-items:center;text-align:center;width:100%}
+  .contact-head{display:grid;gap:12px;justify-items:center}
+  .contact-lead{font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Noto Sans JP','BIZ UDGothic','Yu Gothic',Meiryo,sans-serif;font-size:clamp(34px,4vw,46px);line-height:1.2;font-weight:700}
+  .contact-subtitle{color:var(--ink-weak);font-size:14px;letter-spacing:.14em;text-transform:uppercase;font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Noto Sans JP','BIZ UDGothic','Yu Gothic',Meiryo,sans-serif}
+  .contact-message{max-width:640px;color:#e4eaf1;opacity:.95;line-height:1.9;margin:0 auto}
+  .contact-message p{margin:0}
+  .contact-channels{display:flex;gap:32px;justify-content:center;flex-wrap:wrap}
+  .contact-channel{display:grid;gap:12px;justify-items:center;text-align:center;min-width:160px}
+  .contact-icon{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);background:rgba(255,186,58,.08);color:var(--ink);transition:transform .18s ease, box-shadow .18s ease, background-color .18s ease, color .18s ease}
+  .contact-icon:hover{transform:scale(1.05);box-shadow:var(--shadow);background:var(--accent);color:var(--bg)}
+  .contact-icon svg{width:32px;height:32px}
+  .contact-link{font-size:16px;font-weight:600;font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Noto Sans JP','BIZ UDGothic','Yu Gothic',Meiryo,sans-serif;word-break:break-all}
 
   /* Footer */
   .ps-footer{display:flex;justify-content:center;padding-bottom:24px}
@@ -261,14 +277,14 @@
           <div class="ps-panel-inner">
             <div class="about-wrap">
               <div class="about-hero">
-                <div class="about-kicker">About</div>
-                <h2 class="about-lead" style="margin-bottom:2px"><em>遊びで心の距離を縮める</em></h2>
+                <div class="about-kicker">ペンタススタジオとは</div>
+                <h2 class="about-lead">遊びで心の距離を縮める</h2>
                 <div class="about-sub">
-                  <p>ゲームをきっかけに、爆笑が巻き起こったり、その仲間だけのノリが生まれたり。新たな文化に出会えたり、仲良い人ともっと仲良くなれたり。</p>
-                  <p>ただ「楽しい」だけじゃない。遊んだ先に、その人たちの人生が少しでも豊かになる。そんな体験を届けることが私たちの目標です。</p>
+                  <p>ゲームをきっかけに爆笑が巻き起こったり、その仲間だけのノリが生まれたり。新しい文化に出会えたり、仲の良い人ともっと近づけたり。</p>
+                  <p>ただ「楽しい」だけじゃ終わらせない。遊んだ先に、その人たちの人生が少しでも豊かになる体験を届けることが私たちの目標です。</p>
                   <div class="about-sep" aria-hidden="true"></div>
-                  <p>ペンタススタジオは2018年にボードゲーム制作のために結成をされたチームです。私たち自身が「本当に面白いもの」を追い求め、その想いや楽しさをカタチにして、皆様のもとへお届けします。</p>
-                  <p>ゲームデザイン、開発、イラスト、マーケティングなど、それぞれの本業を持つメンバーが、ほとんど全て制作を自分たちで手がけています。これからも応援を、よろしくお願いします。</p>
+                  <p>ペンタススタジオは2018年にボードゲーム制作のために結成されたチームです。私たち自身が「本当に面白いもの」を追い求め、その想いや楽しさをカタチにして皆さまのもとへ届けています。</p>
+                  <p>ゲームデザイン、開発、イラスト、マーケティングなど、それぞれの本業を持つメンバーが制作のほとんどを自分たちで手がけています。これからも応援をよろしくお願いします。</p>
                 </div>
               </div>
 
@@ -288,11 +304,32 @@
             </div>
           </div>
         </section>
-        <!-- ===== Contact（既存） ===== -->
+        <!-- ===== Contact（改稿） ===== -->
         <section class="ps-view ps-panel is-hidden" id="panelContact">
           <div class="ps-panel-inner">
-            <h2 style="font-family:'Rampart One',system-ui,sans-serif;font-size:22px;margin-bottom:8px">Contact</h2>
-            <p>pentas@example.com</p>
+            <div class="contact-wrap">
+              <div class="contact-head">
+                <h2 class="contact-lead">CONTACT</h2>
+                <div class="contact-subtitle">お問い合わせ</div>
+                <div class="contact-message">
+                  <p>商品に関するお問い合わせやお仕事の相談、ゲーム制作・デザインについてのご相談など、お気軽にご連絡ください。</p>
+                </div>
+              </div>
+              <div class="contact-channels" aria-label="連絡手段">
+                <div class="contact-channel">
+                  <a class="contact-icon" href="mailto:pentasufide.studio@gmail.com" aria-label="メールで問い合わせ">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm8 6L4.5 7.5m15 0L12 11m0 0L4.5 16.5m15 0L12 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+                  <a class="contact-link" href="mailto:pentasufide.studio@gmail.com">pentasufide.studio@gmail.com</a>
+                </div>
+                <div class="contact-channel">
+                  <a class="contact-icon" href="https://x.com/bdg_de_asobo" target="_blank" rel="noopener" aria-label="X (Twitter) で見る">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.1 4h4.1l3.4 5.1L17.8 4h2.8l-5.5 6.2 5.8 9.8h-4.1l-3.9-6-4.3 6H6.1l6-7-6.9-8.8z" fill="currentColor"/></svg>
+                  </a>
+                  <a class="contact-link" href="https://x.com/bdg_de_asobo" target="_blank" rel="noopener">https://x.com/bdg_de_asobo</a>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </div>
