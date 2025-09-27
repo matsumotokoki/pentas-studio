@@ -124,7 +124,10 @@
   .marquee-card img{width:100%;height:100%;object-fit:contain;object-position:center}
 
   /* Panels */
-  .ps-panel{position:absolute;inset:0;background:rgba(41,50,59,.96);display:flex;opacity:0;transform:translateY(10px);transition:opacity .28s ease, transform .28s ease}
+  .ps-panel{position:absolute;inset:0;background:rgba(41,50,59,.96);display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(10px);transition:opacity .28s ease, transform .28s ease}
+  #panelAbout{padding:40px 0}
+  #panelAbout.is-scrollable{overflow:auto}
+  #panelAbout.is-scrollable .ps-panel-inner{margin:40px auto}
   .ps-panel .ps-panel-inner{margin:auto;padding:34px 40px;line-height:1.9;max-width:860px;width:min(84vw, 860px);border:1px solid var(--line);border-radius:var(--radius);background:rgba(20,24,29,.78);display:grid;gap:30px;justify-items:center;text-align:center;box-shadow:var(--shadow)}
   .ps-panel.is-visible{opacity:1;transform:translateY(0)}
   .is-hidden{pointer-events:none}
@@ -580,8 +583,61 @@ document.addEventListener('DOMContentLoaded', function(){
   // ===== Panels & links-nav =====
   (function(){
     const viewGrid=document.getElementById('viewGrid'); const panelAbout=document.getElementById('panelAbout'); const panelContact=document.getElementById('panelContact');
-    function showGrid(){ if(!viewGrid) return; [panelAbout,panelContact].forEach(p=>{ if(!p) return; p.classList.add('is-hidden'); p.classList.remove('is-visible');}); viewGrid.style.opacity=0; viewGrid.style.transition='opacity .24s ease'; requestAnimationFrame(()=> viewGrid.style.opacity=1 ); }
-    function showPanel(which){ if(!viewGrid) return; viewGrid.style.transition='opacity .22s ease'; viewGrid.style.opacity=.08; const t= which==='about'?panelAbout:panelContact; [panelAbout,panelContact].forEach(p=>{ if(!p) return; p.classList.add('is-hidden'); p.classList.remove('is-visible');}); if(t){ t.classList.remove('is-hidden'); requestAnimationFrame(()=> t.classList.add('is-visible')); } }
+    let aboutScrollWatch=false;
+    const updateAboutScroll=()=>{
+      if(!panelAbout) return;
+      panelAbout.classList.remove('is-scrollable');
+      const inner=panelAbout.querySelector('.ps-panel-inner');
+      if(!inner) return;
+      const styles=getComputedStyle(panelAbout);
+      const padTop=parseFloat(styles.paddingTop)||0;
+      const padBottom=parseFloat(styles.paddingBottom)||0;
+      const available=panelAbout.clientHeight - (padTop + padBottom);
+      const required=inner.offsetHeight;
+      if(required > available + 1) panelAbout.classList.add('is-scrollable');
+    };
+    function enableAboutScrollWatch(){
+      if(aboutScrollWatch) return;
+      aboutScrollWatch=true;
+      window.addEventListener('resize', updateAboutScroll);
+    }
+    function disableAboutScrollWatch(){
+      if(panelAbout) panelAbout.classList.remove('is-scrollable');
+      if(!aboutScrollWatch) return;
+      aboutScrollWatch=false;
+      window.removeEventListener('resize', updateAboutScroll);
+    }
+    function showGrid(){
+      if(!viewGrid) return;
+      [panelAbout,panelContact].forEach(p=>{ if(!p) return; p.classList.add('is-hidden'); p.classList.remove('is-visible');});
+      viewGrid.style.opacity=0;
+      viewGrid.style.transition='opacity .24s ease';
+      disableAboutScrollWatch();
+      requestAnimationFrame(()=> viewGrid.style.opacity=1 );
+    }
+    function showPanel(which){
+      if(!viewGrid) return;
+      viewGrid.style.transition='opacity .22s ease';
+      viewGrid.style.opacity=.08;
+      const t= which==='about'?panelAbout:panelContact;
+      [panelAbout,panelContact].forEach(p=>{ if(!p) return; p.classList.add('is-hidden'); p.classList.remove('is-visible');});
+      if(t){
+        t.classList.remove('is-hidden');
+        requestAnimationFrame(()=>{
+          t.classList.add('is-visible');
+          if(which==='about'){
+            requestAnimationFrame(()=>{
+              updateAboutScroll();
+              enableAboutScrollWatch();
+            });
+          }else{
+            disableAboutScrollWatch();
+          }
+        });
+      }else{
+        disableAboutScrollWatch();
+      }
+    }
     const leftEl=document.getElementById('left'); function scrollToAnchor(id){ const el=document.getElementById(id); if(!el || !leftEl) return; leftEl.scrollTo({top:el.offsetTop, behavior:'smooth'}); }
     document.querySelectorAll('.ps-side-nav [data-nav]').forEach(a=> a.addEventListener('click', (e)=>{ e.preventDefault(); showGrid(); scrollToAnchor(a.dataset.nav); }));
     document.querySelectorAll('.ps-side-nav [data-panel]').forEach(a=> a.addEventListener('click', (e)=>{ e.preventDefault(); showPanel(a.dataset.panel); }));
