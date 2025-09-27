@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pentas Studio – Mock v27 (per-line color, no row gap, staggered + first-visit loader / About更新)</title>
+<link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
+<style>
+  /* =============================================================
+     Pentas Studio | Mock v27 (+ First-Visit Loader / About更新)
+     ・ベース: v27
+     ・追加: About/Contactの中味用スタイル（既存トークンに調和）
+     ============================================================= */
+
+  /* ===== Tokens ===== */
+  :root{
+    --bg:#29323b;               /* 背景 */
+    --surface:#1f2730;          /* カード背景 */
+    --ink:#eff3f8;              /* テキスト */
+    --ink-weak:#aeb8c4;         /* 補助テキスト */
+    --line:#394656;             /* 線 */
+    --accent:#FFBA3A;           /* アクセント */
+    --radius:16px;              /* 角丸 */
+    --shadow:0 10px 24px rgba(0,0,0,.35);
+    --grid-gap:12px;            /* 左カラム用 */
+  }
+
+  /* ===== Reset ===== */
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP","BIZ UDGothic","Yu Gothic",Meiryo,sans-serif}
+  img{display:block;max-width:100%;height:auto;user-select:none;-webkit-user-drag:none}
+  h1,h2,h3,p,ul,ol{margin:0}
+  a{color:inherit;text-decoration:none}
+
+  /* ===== Layout ===== */
+  .ps-root{display:grid;grid-template-columns:4fr 6fr;gap:0;min-height:100vh}
+  .ps-left{height:100vh;overflow:auto;border-right:1px solid var(--line);scrollbar-width:none}
+  .ps-left::-webkit-scrollbar{display:none}
+  .ps-right{position:sticky;top:0;height:100vh;display:grid;grid-template-rows:auto 1fr}
+
+  /* ===== Buttons ===== */
+  .btn{display:inline-grid;place-items:center;padding:10px 14px;border:1px solid var(--accent);border-radius:999px;transition:transform .18s ease, background-color .18s ease, color .18s ease, box-shadow .18s ease;font-weight:600}
+  .btn:hover{background:var(--accent);color:var(--bg);transform:translateZ(0) scale(1.03);box-shadow:0 6px 18px rgba(255,186,58,.25)}
+
+  /* ===== Section rule ===== */
+  .ps-section{padding:24px 20px 20px;border-top:1px solid var(--line)}
+  .ps-section:first-child{border-top:none}
+
+  /* ===== Branding ===== */
+  .ps-branding{display:grid;justify-items:center;gap:8px;text-align:center;padding-top:12px;padding-bottom:16px}
+  .ps-logo{width:112px;height:112px;border-radius:50%;overflow:hidden;background:transparent}
+  .ps-title{font-family:'Rampart One',system-ui,sans-serif;font-size:30px;line-height:1.05;font-weight:800;margin-top:-6px}
+  .ps-title .wordmark{display:block;max-height:72px;width:auto;margin:0 auto;transform:translateY(-2px)}
+  .kicker{display:none}
+
+  /* ===== Works: Carousel (left) ===== */
+  .ps-works-rotator .frame{position:relative;height:clamp(500px,65vh,820px);min-height:500px;overflow:hidden;background:var(--surface);border-radius:var(--radius);border:1px solid var(--line)}
+  .ps-works-rotator .carousel-track{position:absolute;left:0;top:0;height:100%;display:flex;will-change:transform;transform:translate3d(0,0,0);transition:transform .6s cubic-bezier(.22,.61,.36,1)}
+  .ps-works-rotator .slide{position:relative;flex:0 0 auto;height:100%}
+  .ps-works-rotator .slide a.slide-link{position:absolute;inset:0;display:block;border-radius:inherit;overflow:hidden}
+  .ps-works-rotator .slide .cover{width:100%;height:100%;object-fit:contain;object-position:center}
+  .ps-works-rotator .ctrl{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border:none;background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.2);display:grid;place-items:center;cursor:pointer;z-index:3;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.6);font-size:28px;line-height:1;border-radius:50%;backdrop-filter:blur(6px)}
+  .ps-works-rotator .ctrl:hover{background:rgba(0,0,0,.4)}
+  .ps-works-rotator .prev{left:12px}
+  .ps-works-rotator .next{right:12px}
+  .ps-works-rotator .frame.grabbing{cursor:grabbing}
+  .ps-works-rotator .title{padding:12px 2px 0;font-size:12px;color:var(--ink-weak)}
+
+  /* ===== News ===== */
+  .ps-news h2{font-size:24px;letter-spacing:.06em;margin:0 0 14px}
+  .ps-news-list{display:grid}
+  .ps-news-item{display:grid;grid-template-columns:auto 1fr auto;align-items:center;padding:10px 8px;border-top:1px dashed var(--line);cursor:pointer;border-radius:12px;transition:background-color .15s ease}
+  .ps-news-item:first-child{border-top:none}
+  .ps-news-item:hover{background:rgba(255,186,58,.06)}
+  .ps-news-time{font-variant-numeric:tabular-nums;color:var(--ink-weak);padding-right:12px}
+  .ps-news-arrow{width:18px;height:18px;display:grid;place-items:center;opacity:.9;transition:transform .18s ease, color .18s ease}
+  .ps-news-item:hover .ps-news-arrow{color:var(--accent);transform:translateX(2px)}
+  .ps-news-actions{display:flex;justify-content:flex-end;margin-top:12px}
+
+  /* ===== Games grid (left) ===== */
+  .ps-games h2{font-size:24px;letter-spacing:.06em;margin:0 0 16px}
+  .ps-games-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .ps-game{position:relative;display:grid;grid-template-rows:1fr auto;min-height:200px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease}
+  .ps-game:hover{transform:scale(1.035);box-shadow:var(--shadow);border-color:rgba(255,186,58,.6);z-index:1}
+  .ps-game .mock{background:var(--surface);display:grid;place-items:center;overflow:hidden}
+  .ps-game .mock > img{width:100%;height:100%;object-fit:contain;object-position:center}
+  .ps-game .title{padding:10px 12px;font-size:12px;border-top:1px solid var(--line);color:#e6edf5;letter-spacing:.02em;background:linear-gradient(180deg, rgba(255,186,58,.06), transparent)}
+  .ps-games-actions{display:flex;justify-content:flex-end;margin-top:12px}
+
+  /* ===== Members (角丸オレンジ演出 + リンク) ===== */
+  .ps-members h2{font-size:24px;letter-spacing:.06em;margin:0 0 14px}
+  .ps-members-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;justify-items:center}
+  @media (max-width:520px){.ps-members-grid{grid-template-columns:1fr}}
+  .ps-member{display:grid;justify-items:center;gap:10px;text-align:center;padding:10px;border:2px solid transparent;border-radius:var(--radius);transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, background-color .18s ease}
+  .ps-member:hover{transform:scale(1.03);box-shadow:var(--shadow);border-color:var(--accent);background:rgba(255,186,58,.08)}
+  .avatar{width:140px;height:140px;border-radius:50%;object-fit:cover;background:#0f1720;border:1px solid var(--line)}
+  .member-name{font-weight:700}
+  .member-role{color:var(--ink-weak);font-size:12px}
+
+  /* ===== Right: NAV ===== */
+  .ps-side-nav{display:grid;grid-template-columns:repeat(5,1fr);align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);background:rgba(41,50,59,.86);backdrop-filter:saturate(1.2) blur(4px)}
+  .ps-side-nav a{justify-self:center;font-size:14px;opacity:.92;text-transform:uppercase;padding:6px 8px;border-radius:8px;transition:color .12s ease, opacity .12s ease, background-color .12s ease}
+  .ps-side-nav a:hover,.ps-side-nav a:focus-visible{opacity:1;color:var(--bg);background:var(--accent)}
+
+  /* ===== Right: marquee gallery ===== */
+  .ps-artstage{position:relative;overflow:hidden}
+  .ps-view{position:absolute;inset:0}
+  .ps-art-grid{height:100%;display:grid;gap:0;padding:0}
+  .ps-art-grid.cols-3{grid-template-columns:repeat(3,1fr)}
+  .ps-art-grid.cols-2{grid-template-columns:repeat(2,1fr)}
+  .ps-art-grid.cols-1{grid-template-columns:1fr}
+
+  .ps-art-col{position:relative;overflow:hidden;border:none;border-radius:0;background:transparent}
+  .marquee{position:absolute;inset:0;overflow:hidden}
+  .marquee-track{position:absolute;left:0;right:0;top:0;display:grid;grid-auto-rows:minmax(140px, 1fr);row-gap:0;animation:scrollY var(--speed,140s) linear infinite;animation-delay:var(--delay,0s)}
+  .ps-art-col.reverse .marquee-track{animation-direction:reverse}
+  @keyframes scrollY{to{transform:translateY(-50%)}}
+
+  .marquee-row{position:relative}
+  .marquee-row::before{content:"";position:absolute;inset:0;background:var(--row-bg, transparent);}
+  .marquee-card{position:relative;z-index:1;display:grid;place-items:center;min-height:140px}
+  .marquee-card img{width:100%;height:100%;object-fit:contain;object-position:center}
+
+  /* Panels */
+  .ps-panel{position:absolute;inset:0;background:rgba(41,50,59,.96);display:flex;opacity:0;transform:translateY(10px);transition:opacity .28s ease, transform .28s ease}
+  .ps-panel .ps-panel-inner{margin:auto;padding:22px;line-height:1.8;max-width:720px;border:1px solid var(--line);border-radius:var(--radius);background:rgba(20,24,29,.7)}
+  .ps-panel.is-visible{opacity:1;transform:translateY(0)}
+  .is-hidden{pointer-events:none}
+
+  /* ===== Loading (First-Visit Loader) ===== */
+  .ps-loading{ position:fixed; inset:0; display:grid; place-items:center; background:var(--bg); z-index:50; transition:opacity .5s ease; }
+  .ps-loading.is-hidden{ opacity:0; pointer-events:none; }
+  .ps-loadbox{ display:grid; gap:18px; justify-items:center; text-align:center; padding:28px 26px; border:1px solid var(--line); border-radius:var(--radius); background:rgba(20,24,29,.72); box-shadow:var(--shadow); min-width:min(90vw, 460px); }
+  .ps-load-logo{ width:120px; height:120px; object-fit:contain; object-position:center; filter:drop-shadow(0 6px 18px rgba(0,0,0,.35)); }
+  .ps-progress{ position:relative; width:100%; height:14px; border-radius:999px; background:#0f1720; border:1px solid var(--line); overflow:hidden; }
+  .ps-progress-bar{ height:100%; background:linear-gradient(90deg, #ffd36f, var(--accent)); width:0%; transition:width .12s ease-out; }
+  .ps-progress-num{ margin-top:8px; font-variant-numeric:tabular-nums; color:var(--ink-weak); }
+  .ps-load-msg{ color:var(--ink-weak); font-size:12px; letter-spacing:.04em; }
+  .loader{ display:none; }
+
+  /* ===== About（新規デザイン） ===== */
+  .about-wrap{display:grid;gap:18px}
+  .about-hero{display:grid;gap:10px}
+  .about-kicker{color:var(--ink-weak);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+  .about-lead{font-family:'Rampart One',system-ui,sans-serif;font-size:28px;line-height:1.15;letter-spacing:.02em}
+  .about-lead em{background:linear-gradient(180deg, rgba(255,186,58,.35), rgba(255,186,58,0));border-bottom:2px solid var(--accent);font-style:normal;padding:0 2px}
+  .about-sub{color:#e4eaf1;opacity:.95}
+  .about-sub p{margin:0 0 10px}
+  .about-sep{height:1px;background:linear-gradient(90deg, transparent, var(--line), transparent);margin:8px 0}
+  .about-facts{display:grid;grid-template-columns:1fr;gap:10px}
+  .about-facts h3{font-size:14px;letter-spacing:.1em;color:var(--ink-weak)}
+  .facts-grid{display:grid;grid-template-columns:auto 1fr;gap:10px 14px;padding:10px;border:1px solid var(--line);border-radius:12px;background:rgba(255,186,58,.03)}
+  .facts-grid dt{color:var(--ink-weak)}
+  .facts-grid dd{margin:0}
+  .about-cta{display:flex;gap:10px;justify-content:flex-end}
+
+  /* Footer */
+  .ps-footer{display:flex;justify-content:center;padding-bottom:24px}
+  .sns{display:flex;gap:12px;justify-content:center;align-items:center}
+  .sns a{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#ffffff12;border:1px solid var(--line);transition:transform .18s ease, background-color .18s ease, box-shadow .18s ease, color .18s ease}
+  .sns a:hover{transform:scale(1.06);background:var(--accent);color:var(--bg);box-shadow:var(--shadow);border-color:transparent}
+  .sns a svg{display:block;width:20px;height:20px}
+  .sns a svg *{fill:currentColor}
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion:reduce){
+    .marquee-track{animation:none}
+    .ps-game:hover,.ps-member:hover{transform:none;box-shadow:none}
+  }
+
+  /* Left column responsive */
+  @media (max-width:1023px){.ps-root{grid-template-columns:1fr}.ps-right{display:none}.ps-games-grid{grid-template-columns:1fr 1fr}}
+  @media (max-width:767px){.ps-games-grid{grid-template-columns:1fr}.ps-title{font-size:26px}}
+  /* Right column lifecycle */
+  @media (max-width:1279px){ .ps-art-grid{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:899px){ .ps-art-grid{grid-template-columns:1fr} }
+  @media (max-width:639px){ .ps-right{display:none} }
+</style>
+</head>
+<body>
+  <!-- 新：初回訪問時のみ表示するローディング（ロゴ + ゲージ） -->
+  <div id="loading" class="ps-loading" role="status" aria-live="polite" aria-label="初回ローディング中">
+    <div class="ps-loadbox">
+      <img src="image/logo.png" alt="Pentas Studio" class="ps-load-logo" decoding="async">
+      <div class="ps-progress" aria-label="読み込み進捗">
+        <div class="ps-progress-bar" style="width:0%"></div>
+      </div>
+      <div class="ps-progress-num" aria-live="polite">0%</div>
+      <div class="ps-load-msg" aria-hidden="true">Loading…</div>
+    </div>
+  </div>
+
+  <div class="ps-root" id="app">
+    <!-- LEFT (scrollable) -->
+    <main class="ps-left" id="left">
+      <section id="top" class="ps-section ps-branding" aria-label="ブランド">
+        <a id="brandLogo" class="ps-logo" href="#top" aria-label="ホーム"></a>
+        <div>
+          <div id="brandTitle" class="ps-title"><img class="wordmark" src="image/let_logo.png" alt="Pentas Studio"></div>
+          <div class="kicker">Board/Card & Digital Game Circle</div>
+        </div>
+      </section>
+
+      <section class="ps-section ps-works-rotator" aria-label="作品スライダー">
+        <div class="frame grab" id="worksFrame" aria-live="polite">
+          <button class="ctrl prev" aria-label="前へ" type="button">‹</button>
+          <button class="ctrl next" aria-label="次へ" type="button">›</button>
+        </div>
+        <div class="title" id="worksTitle" aria-atomic="true">&nbsp;</div>
+      </section>
+
+      <section id="news" class="ps-section ps-news" aria-label="ニュース">
+        <h2>NEWS</h2>
+        <div class="ps-news-list" id="newsList"></div>
+        <div class="ps-news-actions"><a class="btn ps-news-more" href="#">More</a></div>
+      </section>
+
+      <section id="games" class="ps-section ps-games" aria-label="ゲーム一覧">
+        <h2>GAMES</h2>
+        <div class="ps-games-grid" id="gamesGrid"></div>
+        <div class="ps-games-actions"><a class="btn ps-games-more" href="#">More</a></div>
+      </section>
+
+      <section class="ps-section ps-members" aria-label="メンバー">
+        <h2>MEMBERS</h2>
+        <div class="ps-members-grid" id="memberGrid"></div>
+      </section>
+
+      <footer class="ps-section ps-footer" aria-label="フッター">
+        <div class="sns" aria-label="SNSリンク">
+          <a href="#" aria-label="X (Twitter)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l7.5 8.5L4.5 20H7l6-6.8L18.5 20H20l-7-7.8L20 4h-2.5l-5.7 6.4L6.5 4H4z"/></svg>
+          </a>
+          <a href="#" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M22 12s0-3-.4-4.4c-.2-.9-.9-1.6-1.8-1.8C17.4 5 12 5 12 5s-5.4 0-7.8.8c-.9.2-1.6.9-1.8 1.8C2 9 2 12 2 12s0 3 .4 4.4c.2.9.9 1.6 1.8 1.8C6.6 19 12 19 12 19s5.4 0 7.8-.8c.9-.2 1.6-.9 1.8-1.8.4-1.4.4-4.4.4-4.4z"/>
+              <path d="M10 15l5-3-5-3v6z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="BOOTH">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="12" rx="2" stroke="currentColor" stroke-width="2" fill="none"/><path d="M3 10h18" stroke="currentColor" stroke-width="2"/></svg>
+          </a>
+        </div>
+      </footer>
+    </main>
+
+    <!-- RIGHT (sticky) -->
+    <aside class="ps-right">
+      <nav class="ps-side-nav" aria-label="サイト内ナビ">
+        <a href="#top" data-nav="top">top</a>
+        <a href="#games" data-nav="games">games</a>
+        <a href="#news" data-nav="news">news</a>
+        <a href="#" data-panel="about">about</a>
+        <a href="#" data-panel="contact">contact</a>
+      </nav>
+      <div class="ps-artstage" id="artstage">
+        <div class="ps-view" id="viewGrid"><div class="ps-art-grid cols-3" id="artGrid"></div></div>
+        <!-- ===== About（改稿） ===== -->
+        <section class="ps-view ps-panel is-hidden" id="panelAbout">
+          <div class="ps-panel-inner">
+            <div class="about-wrap">
+              <div class="about-hero">
+                <div class="about-kicker">About</div>
+                <h2 class="about-lead" style="margin-bottom:2px"><em>遊びで心の距離を縮める</em></h2>
+                <div class="about-sub">
+                  <p>ゲームをきっかけに、爆笑が巻き起こったり、その仲間だけのノリが生まれたり。新たな文化に出会えたり、仲良い人ともっと仲良くなれたり。</p>
+                  <p>ただ「楽しい」だけじゃない。遊んだ先に、その人たちの人生が少しでも豊かになる。そんな体験を届けることが私たちの目標です。</p>
+                  <div class="about-sep" aria-hidden="true"></div>
+                  <p>ペンタススタジオは2018年にボードゲーム制作のために結成をされたチームです。私たち自身が「本当に面白いもの」を追い求め、その想いや楽しさをカタチにして、皆様のもとへお届けします。</p>
+                  <p>ゲームデザイン、開発、イラスト、マーケティングなど、それぞれの本業を持つメンバーが、ほとんど全て制作を自分たちで手がけています。これからも応援を、よろしくお願いします。</p>
+                </div>
+              </div>
+
+              <div class="about-facts" aria-label="サークル概要">
+                <h3>サークル概要</h3>
+                <dl class="facts-grid">
+                  <dt>サークル名</dt><dd>ペンタススタジオ <span style="opacity:.8">/ Pentas Studio</span></dd>
+                  <dt>設立</dt><dd>2018年11月11日</dd>
+                  <dt>人数</dt><dd>4人</dd>
+                  <dt>連絡先</dt><dd><a href="mailto:pentasufide.studio@gmail.com">pentasufide.studio@gmail.com</a></dd>
+                  <dt>事業紹介</dt><dd>ボードゲーム制作、マーダーミステリー制作、イラスト・デザイン、シナリオ</dd>
+                </dl>
+                <div class="about-cta">
+                  <a class="btn" href="#games">作品一覧へ</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- ===== Contact（既存） ===== -->
+        <section class="ps-view ps-panel is-hidden" id="panelContact">
+          <div class="ps-panel-inner">
+            <h2 style="font-family:'Rampart One',system-ui,sans-serif;font-size:22px;margin-bottom:8px">Contact</h2>
+            <p>pentas@example.com</p>
+          </div>
+        </section>
+      </div>
+    </aside>
+  </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ===== Loading (always show ~3s animation) =====
+  (function(){
+    const loading = document.getElementById('loading');
+    if(!loading) return;
+
+    const bar  = loading.querySelector('.ps-progress-bar');
+    const num  = loading.querySelector('.ps-progress-num');
+    const logo = loading.querySelector('.ps-load-logo');
+
+    const DURATION_MS = 3000;   // 0%→100% 所要時間
+    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if(prefersReduced){
+      if(bar) bar.style.width = '100%';
+      if(num) num.textContent = '100%';
+      setTimeout(()=> loading.classList.add('is-hidden'), 50);
+      return;
+    }
+
+    let logoReady = false;
+    function onLogoDone(){ logoReady = true; }
+    if(logo){
+      if(logo.complete) onLogoDone();
+      else { logo.addEventListener('load', onLogoDone); logo.addEventListener('error', onLogoDone); }
+    } else { logoReady = true; }
+
+    function draw(p){
+      const v = Math.max(0, Math.min(100, p));
+      if(bar) bar.style.width = v.toFixed(1) + '%';
+      if(num) num.textContent = Math.round(v) + '%';
+    }
+
+    function easeOutCubic(x){ return 1 - Math.pow(1 - x, 3); }
+
+    let start = null;
+    function step(ts){
+      if(start == null) start = ts;
+      const elapsed = ts - start;
+      const t = Math.min(1, elapsed / DURATION_MS);
+      const eased = easeOutCubic(t);
+      const cap = logoReady ? 100 : 35;
+      const p = Math.min(cap, eased * 100);
+      draw(p);
+
+      if(t < 1){
+        requestAnimationFrame(step);
+      } else {
+        draw(100);
+        setTimeout(()=> loading.classList.add('is-hidden'), 50);
+      }
+    }
+
+    requestAnimationFrame(step);
+  })();
+
+  // ===== Data =====
+  const GAMES = [
+    {id:'yumeyume',    title:'ゆめゆめ',               img:'image/comming.png',   link:'#game-yumeyume'},
+    {id:'escapegoat',  title:'エスケープゴート',       img:'image/escape.png',    link:'#game-escapegoat'},
+    {id:'seisouin',    title:'静葬員',                 img:'image/seisoin.png',   link:'#game-seisouin'},
+    {id:'meishi',      title:'名刺の管理ができません', img:'image/meishi.png',    link:'#game-meishi'},
+    {id:'informer-rt', title:'インフォーマーR',        img:'image/informerR.png', link:'#game-informer-r'},
+    {id:'comical',     title:'コミカルミッション',     img:'image/comical.png',   link:'#game-comical'},
+    {id:'kachikan',    title:'カチカン会談',           img:'image/kachikan.png',  link:'#game-kachikan'},
+    {id:'abception',   title:'アブセプチャー',         img:'image/abcepture.png', link:'#game-abception'},
+    {id:'informer',    title:'インフォーマー',         img:'image/informer.png',  link:'#game-informer'}
+  ];
+
+  const MEMBERS = [
+    {name:'どい', role:'代表', img:'image/doi.jpg', link:'https://x.com/doi_pentas'},
+    {name:'うどんた', role:'イラストデザイン', img:'image/udonta.jpg', link:'https://x.com/UdontA_1954'},
+    {name:'マツキハジメ', role:'ゲームデザイン/エンジニア', img:'image/matsuki.jpg', link:'https://x.com/ma2ki_first'},
+    {name:'和平', role:'UI/ゲームデザイン', img:'image/wahei.jpg', link:'https://x.com/peace_pentas'}
+  ];
+
+  // ===== Branding =====
+  (function applyBrand(){
+    const logoA = document.getElementById('brandLogo');
+    const title = document.getElementById('brandTitle');
+    if(logoA){ const img=new Image(); img.alt='Pentas Studio ロゴ'; img.src='image/logo.png'; logoA.innerHTML=''; logoA.appendChild(img); }
+    if(title && !title.querySelector('img.wordmark')){ title.textContent='Pentas Studio'; }
+  })();
+
+  // ===== Helpers =====
+  function fallback(){ const d=document.createElement('div'); d.className='fallback'; d.style.cssText='width:100%;height:100%;background:linear-gradient(135deg,#223042,#0f1720)'; return d; }
+  function fitContain(img){ try{ img.style.objectFit='contain'; img.style.objectPosition='center'; img.style.width='100%'; img.style.height='100%'; }catch(e){} }
+  function shuffle(arr){ const a=arr.slice(); for(let i=a.length-1;i>0;i--){ const j=(Math.random()*(i+1))|0; [a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+  /* ==========================
+     Left: Carousel (swipe + auto)
+  ========================== */
+  (function(){
+    const frame = document.getElementById('worksFrame');
+    const titleEl = document.getElementById('worksTitle');
+    if(!frame || !titleEl) return;
+    const prevBtn = frame.querySelector('.prev');
+    const nextBtn = frame.querySelector('.next');
+
+    let width=0, pos=1, autoTimer=null, dragging=false, startX=0, dx=0, baseX=0, busy=false;
+    const AUTO_MS=4200, RESUME_MS=3000, EASE='cubic-bezier(.22,.61,.36,1)';
+
+    const track=document.createElement('div');
+    track.className='carousel-track';
+    frame.appendChild(track);
+
+    const slides=[];
+    function slideEl(game){
+      const s=document.createElement('div'); s.className='slide';
+      const a=document.createElement('a'); a.className='slide-link'; a.href=game.link||'#'; a.target='_self'; a.setAttribute('aria-label', game.title||'');
+      const img=new Image(); img.className='cover'; img.alt=game.title||''; img.decoding='async'; img.src=game.img||'';
+      img.onload=()=>fitContain(img); img.onerror=()=>{ a.appendChild(fallback()); img.remove(); };
+      a.appendChild(img); s.appendChild(a); return s;
+    }
+    function buildSlides(){
+      track.innerHTML=''; slides.length=0; if(!GAMES.length) return;
+      const first=GAMES[0], last=GAMES[GAMES.length-1];
+      slides.push(slideEl(last)); for(const g of GAMES) slides.push(slideEl(g)); slides.push(slideEl(first));
+      slides.forEach(el=> track.appendChild(el)); pos=1;
+    }
+    function measure(){ const rect = frame.getBoundingClientRect(); width = Math.max(1, Math.round(rect.width || frame.clientWidth || 0)); slides.forEach(el=>{ el.style.width=width+'px'; el.style.minWidth=width+'px'; }); track.style.width = (slides.length * width) + 'px'; }
+    function setTransform(p, withTr){ track.style.transition = withTr ? `transform .6s ${EASE}` : 'none'; track.style.transform = `translate3d(${-p*width}px,0,0)`; }
+    function instantTo(p){ setTransform(p, false); void track.offsetWidth; }
+    function animateTo(p){ busy=true; setTransform(p, true); if(transTimer){ clearTimeout(transTimer); } transTimer = setTimeout(onTransitionEnd, 900); }
+    function realIndex(){ return (pos-1+GAMES.length)%GAMES.length; }
+    function updateTitle(){ titleEl.textContent = GAMES[realIndex()]?.title || '\u00A0'; }
+    function step(dir){ if(busy) return; if(!width) measure(); stopAuto(); pos += dir; animateTo(pos); }
+    let transTimer=null;
+    function onTransitionEnd(){ if(transTimer){ clearTimeout(transTimer); transTimer=null; } busy=false; if(pos===0){ pos=GAMES.length; instantTo(pos); } if(pos===GAMES.length+1){ pos=1; instantTo(pos); } updateTitle(); startAuto(); }
+    track.addEventListener('transitionend', (e)=>{ if(e && e.propertyName && e.propertyName!=='transform') return; onTransitionEnd(); });
+    if(prevBtn) prevBtn.addEventListener('click', ()=> step(-1));
+    if(nextBtn) nextBtn.addEventListener('click', ()=> step(1));
+    ['pointerdown','mousedown','touchstart'].forEach(ev=>{ if(prevBtn) prevBtn.addEventListener(ev, e=>{ e.stopPropagation(); }, true); if(nextBtn) nextBtn.addEventListener(ev, e=>{ e.stopPropagation(); }, true); });
+    ['pointerdown','mousedown','touchstart'].forEach(ev=>{ frame.addEventListener(ev, (e)=>{ if(e.target && e.target.closest && e.target.closest('a')){ e.stopPropagation(); } }, true); });
+    function stopAuto(){ if(autoTimer){ clearInterval(autoTimer); autoTimer=null; } }
+    function startAuto(){ if(prefersReduced) return; stopAuto(); autoTimer=setInterval(()=> step(1), AUTO_MS); }
+    function resumeAuto(){ if(prefersReduced) return; stopAuto(); setTimeout(()=> startAuto(), RESUME_MS); }
+    function onDown(e){ if(busy) return; if(e.target && e.target.closest && (e.target.closest('.ctrl') || e.target.closest('a'))) return; dragging=true; stopAuto(); frame.classList.add('grabbing'); startX=(e.touches? e.touches[0].clientX : e.clientX); baseX = -pos*width; track.style.transition='none'; }
+    function onMove(e){ if(!dragging) return; const x=(e.touches? e.touches[0].clientX : e.clientX); dx=x-startX; track.style.transform=`translate3d(${baseX+dx}px,0,0)`; }
+    function onUp(){ if(!dragging) return; dragging=false; frame.classList.remove('grabbing'); const th=Math.max(80, width*0.2); track.style.transition=`transform .6s ${EASE}`; if(Math.abs(dx)>th){ pos += (dx<0? 1 : -1); } animateTo(pos); dx=0; resumeAuto(); }
+    frame.addEventListener('pointerdown', onDown, {passive:true});
+    window.addEventListener('pointermove', onMove, {passive:true});
+    window.addEventListener('pointerup', onUp, {passive:true});
+    frame.addEventListener('touchstart', onDown, {passive:true});
+    window.addEventListener('touchmove', onMove, {passive:true});
+    window.addEventListener('touchend', onUp, {passive:true});
+
+    function initCarousel(){ buildSlides(); const start = ()=>{ measure(); if(width<10){ requestAnimationFrame(start); return; } instantTo(pos); updateTitle(); startAuto(); }; start(); }
+    initCarousel();
+    try{ new ResizeObserver(()=>{ const pw=width; measure(); instantTo(pos); if(pw!==width) updateTitle(); }).observe(frame); }catch{ window.addEventListener('resize', ()=>{ const pw=width; measure(); instantTo(pos); if(pw!==width) updateTitle(); }); }
+    document.addEventListener('keydown',(e)=>{ if(['INPUT','TEXTAREA','SELECT','BUTTON'].includes((document.activeElement||{}).tagName)) return; if(e.key==='ArrowLeft') step(-1); if(e.key==='ArrowRight') step(1); });
+  })();
+
+  // ===== News =====
+  (function(){
+    const newsList=document.getElementById('newsList');
+    if(!newsList) return;
+    [['09/11','公式サイト更新'],['09/05','試遊レポ公開'],['08/30','出展のお知らせ']]
+      .forEach(([d,t])=>{ const a=document.createElement('a'); a.href='#'; a.className='ps-news-item'; a.innerHTML=`<div class='ps-news-time'>${d}</div><div>${t}</div><div class='ps-news-arrow'>→</div>`; newsList.appendChild(a); });
+  })();
+
+  // ===== Games grid (left) =====
+  (function(){
+    const gamesGrid=document.getElementById('gamesGrid');
+    if(!gamesGrid) return;
+    GAMES.forEach(g=>{ const c=document.createElement('div'); c.className='ps-game'; const f=document.createElement('a'); f.className='mock'; f.href=g.link||'#'; f.target='_self'; const im=new Image(); im.alt=g.title||''; im.src=g.img; im.onload=()=>fitContain(im); im.onerror=()=>{ f.appendChild(fallback()); }; f.appendChild(im); const t=document.createElement('div'); t.className='title'; t.textContent=g.title; c.appendChild(f); c.appendChild(t); gamesGrid.appendChild(c); });
+  })();
+
+  // ===== Members (リンク対応) =====
+  (function(){
+    const memberGrid=document.getElementById('memberGrid');
+    if(!memberGrid) return;
+    MEMBERS.forEach(m=>{ const el=document.createElement('a'); el.href=m.link||'#'; el.target='_blank'; el.rel='noopener'; el.className='ps-member'; const i=new Image(); i.className='avatar'; i.alt=m.name; i.src=m.img || ''; i.onerror=()=>{ i.src='data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\'><rect width=\'100%\' height=\'100%\' fill=\'#1b222a\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'96\' fill=\'#cbd5df\' font-family=\'system-ui, sans-serif\'>${(m.name||'P').slice(0,1)}</text></svg>`); };
+      el.appendChild(i); el.appendChild(Object.assign(document.createElement('div'),{className:'member-name',textContent:m.name})); el.appendChild(Object.assign(document.createElement('div'),{className:'member-role',textContent:m.role||''})); memberGrid.appendChild(el); });
+  })();
+
+  /* ==========================
+     Right: marquee columns (3→2→1→hidden)
+     ・行間ゼロ / 列ごとランダム / 列ごとに遅延
+  ========================== */
+  (function(){
+    const artStage=document.getElementById('artstage');
+    const artGrid=document.getElementById('artGrid');
+    if(!artStage || !artGrid) return;
+
+    function colCount(){ const w = artStage.clientWidth || window.innerWidth; if(w>=1280) return 3; if(w>=900) return 2; return 1; }
+
+    const ROW_COLORS = [
+      ['#202932','#1c2630','#202932','#1c2630'],
+      ['#1a232b','#202932','#1c2630','#202932'],
+      ['#182028','#212b35','#182028','#212b35']
+    ];
+
+    function makeCard(g){
+      const wrap=document.createElement('div'); wrap.className='marquee-card';
+      const img=new Image(); img.alt=g.title||''; img.src=g.img||''; img.onerror=()=>{ img.replaceWith(fallback()); };
+      wrap.appendChild(img); return wrap;
+    }
+
+    function buildColumn(index, reverse=false, speedSec=140){
+      const col=document.createElement('div'); col.className='ps-art-col'+(reverse?' reverse':'');
+      const mq=document.createElement('div'); mq.className='marquee';
+      const tr=document.createElement('div'); tr.className='marquee-track';
+      tr.style.setProperty('--speed', (prefersReduced? 0 : speedSec)+'s');
+      if(index===0) tr.style.setProperty('--delay','-18s');
+      if(index===2) tr.style.setProperty('--delay','-36s');
+
+      const order = shuffle(GAMES);
+      const doubled = order.concat(order);
+
+      doubled.forEach((g, i)=>{
+        const row=document.createElement('div'); row.className='marquee-row';
+        const palette = ROW_COLORS[index % ROW_COLORS.length] || ['transparent'];
+        const color = palette[i % palette.length] || 'transparent';
+        row.style.setProperty('--row-bg', color);
+        row.appendChild(makeCard(g));
+        tr.appendChild(row);
+      });
+
+      mq.appendChild(tr); col.appendChild(mq); return col;
+    }
+
+    function rebuild(){
+      if(!GAMES.length){ artGrid.innerHTML=''; return; }
+      artGrid.innerHTML='';
+      const n = colCount();
+      artGrid.className = 'ps-art-grid cols-' + n;
+      for(let i=0;i<n;i++){
+        const reverse = (i % 2)===1;
+        const speed   = 140 + (i*24); // 140s, 164s, 188s
+        artGrid.appendChild(buildColumn(i, reverse, speed));
+      }
+    }
+
+    rebuild();
+    try{ new ResizeObserver(rebuild).observe(artStage); }catch{ window.addEventListener('resize', rebuild); }
+  })();
+
+  // ===== Panels & links-nav =====
+  (function(){
+    const viewGrid=document.getElementById('viewGrid'); const panelAbout=document.getElementById('panelAbout'); const panelContact=document.getElementById('panelContact');
+    function showGrid(){ if(!viewGrid) return; [panelAbout,panelContact].forEach(p=>{ if(!p) return; p.classList.add('is-hidden'); p.classList.remove('is-visible');}); viewGrid.style.opacity=0; viewGrid.style.transition='opacity .24s ease'; requestAnimationFrame(()=> viewGrid.style.opacity=1 ); }
+    function showPanel(which){ if(!viewGrid) return; viewGrid.style.transition='opacity .22s ease'; viewGrid.style.opacity=.08; const t= which==='about'?panelAbout:panelContact; [panelAbout,panelContact].forEach(p=>{ if(!p) return; p.classList.add('is-hidden'); p.classList.remove('is-visible');}); if(t){ t.classList.remove('is-hidden'); requestAnimationFrame(()=> t.classList.add('is-visible')); } }
+    const leftEl=document.getElementById('left'); function scrollToAnchor(id){ const el=document.getElementById(id); if(!el || !leftEl) return; leftEl.scrollTo({top:el.offsetTop, behavior:'smooth'}); }
+    document.querySelectorAll('.ps-side-nav [data-nav]').forEach(a=> a.addEventListener('click', (e)=>{ e.preventDefault(); showGrid(); scrollToAnchor(a.dataset.nav); }));
+    document.querySelectorAll('.ps-side-nav [data-panel]').forEach(a=> a.addEventListener('click', (e)=>{ e.preventDefault(); showPanel(a.dataset.panel); }));
+  })();
+});
+</script>
+</body>
+</html>
