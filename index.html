@@ -192,8 +192,8 @@
   @media (max-width:1023px){.ps-root{grid-template-columns:1fr}.ps-right{display:none}.ps-games-grid{grid-template-columns:1fr 1fr}}
   @media (max-width:767px){.ps-games-grid{grid-template-columns:1fr}.ps-title{font-size:26px}}
   /* Right column lifecycle */
-  @media (max-width:1279px){ .ps-art-grid{grid-template-columns:repeat(2,1fr)} }
-  @media (max-width:899px){ .ps-art-grid{grid-template-columns:1fr} }
+  @media (max-width:1100px){ .ps-art-grid{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:760px){ .ps-art-grid{grid-template-columns:1fr} }
   @media (max-width:639px){ .ps-right{display:none} }
 </style>
 </head>
@@ -527,7 +527,12 @@ document.addEventListener('DOMContentLoaded', function(){
     const artGrid=document.getElementById('artGrid');
     if(!artStage || !artGrid) return;
 
-    function colCount(){ const w = artStage.clientWidth || window.innerWidth; if(w>=1280) return 3; if(w>=900) return 2; return 1; }
+    function colCount(){
+      const w = artStage.clientWidth || window.innerWidth;
+      if(w >= 640) return 3;
+      if(w >= 460) return 2;
+      return 1;
+    }
 
     const ROW_COLORS = [
       ['#202932','#1c2630','#202932','#1c2630'],
