@@ -363,6 +363,24 @@ document.addEventListener('DOMContentLoaded', function(){
     const loading = document.getElementById('loading');
     if(!loading) return;
 
+    const params = new URLSearchParams(window.location.search);
+    const skipLoading = params.has('skipLoading');
+
+    if(skipLoading){
+      loading.classList.add('is-hidden');
+      if(window.history && window.history.replaceState){
+        try{
+          const url = new URL(window.location.href);
+          url.searchParams.delete('skipLoading');
+          const newUrl = url.pathname + url.search + url.hash;
+          window.history.replaceState(null, '', newUrl);
+        }catch(err){
+          // noop
+        }
+      }
+      return;
+    }
+
     const bar  = loading.querySelector('.ps-progress-bar');
     const num  = loading.querySelector('.ps-progress-num');
     const logo = loading.querySelector('.ps-load-logo');
