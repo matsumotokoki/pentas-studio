@@ -24,6 +24,7 @@
     --radius:16px;              /* 角丸 */
     --shadow:0 10px 24px rgba(0,0,0,.35);
     --grid-gap:12px;            /* 左カラム用 */
+    --side-nav-height:0px;      /* 右カラムのナビゲーション高さ（JSで更新） */
   }
 
   /* ===== Reset ===== */
@@ -125,9 +126,16 @@
 
   /* Panels */
   .ps-panel{position:absolute;inset:0;background:rgba(41,50,59,.96);display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(10px);transition:opacity .28s ease, transform .28s ease}
-  #panelAbout{padding:240px 0 40px}
+  #panelAbout{
+    padding-top:max(240px, calc(var(--side-nav-height, 0px) + 32px));
+    padding-bottom:40px;
+  }
   #panelAbout.is-scrollable{overflow:auto}
   #panelAbout.is-scrollable .ps-panel-inner{margin:40px auto}
+  #panelContact{
+    padding-top:max(140px, calc(var(--side-nav-height, 0px) + 32px));
+    padding-bottom:40px;
+  }
   .ps-panel .ps-panel-inner{margin:auto;padding:34px 40px;line-height:1.9;max-width:860px;width:min(84vw, 860px);border:1px solid var(--line);border-radius:var(--radius);background:rgba(20,24,29,.78);display:grid;gap:30px;justify-items:center;text-align:center;box-shadow:var(--shadow)}
   .ps-panel.is-visible{opacity:1;transform:translateY(0)}
   .is-hidden{pointer-events:none}
@@ -583,6 +591,26 @@ document.addEventListener('DOMContentLoaded', function(){
 
     rebuild();
     try{ new ResizeObserver(rebuild).observe(artStage); }catch{ window.addEventListener('resize', rebuild); }
+  })();
+
+  // ===== Side nav metrics (update CSS variable for panel offset) =====
+  (function(){
+    const nav=document.querySelector('.ps-side-nav');
+    const root=document.documentElement;
+    if(!nav || !root) return;
+    const setHeight=()=> root.style.setProperty('--side-nav-height', (nav.offsetHeight||0) + 'px');
+    setHeight();
+    if('ResizeObserver' in window){
+      try{
+        const ro=new ResizeObserver(()=> setHeight());
+        ro.observe(nav);
+      }catch(e){
+        window.addEventListener('resize', setHeight);
+      }
+    }else{
+      window.addEventListener('resize', setHeight);
+    }
+    window.addEventListener('load', setHeight);
   })();
 
   // ===== Panels & links-nav =====
