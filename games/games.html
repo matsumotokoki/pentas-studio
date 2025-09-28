@@ -35,7 +35,7 @@
     .page{min-height:100vh;display:grid;grid-template-rows:auto 1fr auto}
 
     header{padding:32px var(--page-pad) 20px;display:grid;gap:18px;justify-items:center;text-align:center;border-bottom:1px solid var(--line)}
-    .brand-logo{width:120px;height:120px;border-radius:50%;overflow:hidden;display:grid;place-items:center;background:transparent;border:1px solid var(--line)}
+    .brand-logo{width:120px;height:120px;border-radius:50%;overflow:hidden;display:grid;place-items:center;background:transparent}
     .brand-logo img{width:100%;height:100%;object-fit:contain}
     .brand-name{font-family:'Rampart One',system-ui,sans-serif;font-size:32px;letter-spacing:.02em}
     .brand-name img{max-height:78px;object-fit:contain;margin:0 auto}
@@ -75,7 +75,7 @@
 <body>
   <div class="page">
     <header>
-      <a class="brand-logo" href="../index.html" aria-label="トップページへ戻る">
+      <a class="brand-logo" href="../index.html?skipLoading=1#top" aria-label="トップページへ戻る">
         <img src="../image/general/logo.png" alt="Pentas Studio" loading="lazy">
       </a>
       <div class="brand-name">
