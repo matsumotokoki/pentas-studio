@@ -186,10 +186,11 @@
   /* Footer */
   .ps-footer{display:flex;justify-content:center;padding-bottom:24px}
   .sns{display:flex;gap:12px;justify-content:center;align-items:center}
-  .sns a{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#ffffff12;border:1px solid var(--line);transition:transform .18s ease, background-color .18s ease, box-shadow .18s ease, color .18s ease}
-  .sns a:hover{transform:scale(1.06);background:var(--accent);color:var(--bg);box-shadow:var(--shadow);border-color:transparent}
+  .sns a{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#ffffff12;border:1px solid var(--line);transition:transform .18s ease, background-color .18s ease, box-shadow .18s ease, color .18s ease;color:var(--ink);--sns-play:var(--bg)}
+  .sns a:hover{transform:scale(1.06);background:var(--accent);color:var(--bg);box-shadow:var(--shadow);border-color:transparent;--sns-play:var(--ink)}
   .sns a svg{display:block;width:20px;height:20px}
-  .sns a svg *{fill:currentColor}
+  .sns a svg path{fill:currentColor}
+  .sns a svg path.play{fill:var(--sns-play);transition:fill .18s ease}
 
   /* Reduced motion */
   @media (prefers-reduced-motion:reduce){
@@ -257,17 +258,22 @@
 
       <footer class="ps-section ps-footer" aria-label="フッター">
         <div class="sns" aria-label="SNSリンク">
-          <a href="#" aria-label="X (Twitter)">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l7.5 8.5L4.5 20H7l6-6.8L18.5 20H20l-7-7.8L20 4h-2.5l-5.7 6.4L6.5 4H4z"/></svg>
-          </a>
-          <a href="#" aria-label="YouTube">
+          <a href="https://x.com/bdg_de_asobo" aria-label="X" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M22 12s0-3-.4-4.4c-.2-.9-.9-1.6-1.8-1.8C17.4 5 12 5 12 5s-5.4 0-7.8.8c-.9.2-1.6.9-1.8 1.8C2 9 2 12 2 12s0 3 .4 4.4c.2.9.9 1.6 1.8 1.8C6.6 19 12 19 12 19s5.4 0 7.8-.8c.9-.2 1.6-.9 1.8-1.8.4-1.4.4-4.4.4-4.4z"/>
-              <path d="M10 15l5-3-5-3v6z"/>
+              <path d="M18.244 3H21.5l-7.52 8.59L22 21h-6.31l-4.94-6.43L4.81 21H1.5l7.81-8.93L2 3h6.31l4.5 5.84L18.244 3Z"/>
             </svg>
           </a>
-          <a href="#" aria-label="BOOTH">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="12" rx="2" stroke="currentColor" stroke-width="2" fill="none"/><path d="M3 10h18" stroke="currentColor" stroke-width="2"/></svg>
+          <a href="https://www.youtube.com/@%E3%83%9A%E3%83%B3%E3%82%BF%E3%82%B9%E3%82%B9%E3%82%BF%E3%82%B8%E3%82%AA" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21.6 7.6a2 2 0 0 0-1.4-1.4C18.7 5.8 12 5.8 12 5.8s-6.7 0-8.2.4A2 2 0 0 0 2.4 7.6C2 9.1 2 12 2 12s0 2.9.4 4.4a2 2 0 0 0 1.4 1.4c1.5.4 8.2.4 8.2.4s6.7 0 8.2-.4a2 2 0 0 0 1.4-1.4c.4-1.5.4-4.4.4-4.4s0-2.9-.4-4.4Z"/>
+              <path class="play" d="M10.5 9.75v4.5L15 12l-4.5-2.25Z"/>
+            </svg>
+          </a>
+          <a href="https://pentasufide.booth.pm/" aria-label="BOOTH ショップ" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 6h16l-1.2 8.4a2 2 0 0 1-2 1.6H8.2l-.4 2h10.7v2H6a1 1 0 0 1-1-.8L3 6Z"/>
+              <path d="M9 18H7.2L5.5 8h13l-.9 6.2a2 2 0 0 1-2 1.6H9Z"/>
+            </svg>
           </a>
         </div>
       </footer>
