@@ -507,7 +507,7 @@ document.addEventListener('DOMContentLoaded', function(){
   (function(){
     const newsList=document.getElementById('newsList');
     if(!newsList) return;
-    [['09/11','公式サイト更新'],['09/05','試遊レポ公開'],['08/30','出展のお知らせ']]
+    [['10/1','公式サイトリニューアルについて'],['10/2','2025秋 ゲームマーケット出展のお知らせ'],['10/3', '新作 ゆめゆめ情報解禁']]
       .forEach(([d,t])=>{ const a=document.createElement('a'); a.href='#'; a.className='ps-news-item'; a.innerHTML=`<div class='ps-news-time'>${d}</div><div>${t}</div><div class='ps-news-arrow'>→</div>`; newsList.appendChild(a); });
   })();
 
