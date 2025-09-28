@@ -209,7 +209,7 @@
   <!-- 新：初回訪問時のみ表示するローディング（ロゴ + ゲージ） -->
   <div id="loading" class="ps-loading" role="status" aria-live="polite" aria-label="初回ローディング中">
     <div class="ps-loadbox">
-      <img src="image/logo.png" alt="Pentas Studio" class="ps-load-logo" decoding="async">
+      <img src="image/general/logo.png" alt="Pentas Studio" class="ps-load-logo" decoding="async">
       <div class="ps-progress" aria-label="読み込み進捗">
         <div class="ps-progress-bar" style="width:0%"></div>
       </div>
@@ -224,7 +224,7 @@
       <section id="top" class="ps-section ps-branding" aria-label="ブランド">
         <a id="brandLogo" class="ps-logo" href="#top" aria-label="ホーム"></a>
         <div>
-          <div id="brandTitle" class="ps-title"><img class="wordmark" src="image/let_logo.png" alt="Pentas Studio"></div>
+          <div id="brandTitle" class="ps-title"><img class="wordmark" src="image/general/let_logo.png" alt="Pentas Studio"></div>
           <div class="kicker">Board/Card & Digital Game Circle</div>
         </div>
       </section>
@@ -408,29 +408,29 @@ document.addEventListener('DOMContentLoaded', function(){
 
   // ===== Data =====
   const GAMES = [
-    {id:'yumeyume',    title:'ゆめゆめ',               img:'image/comming.png',   link:'#game-yumeyume'},
-    {id:'escapegoat',  title:'エスケープゴート',       img:'image/escape.png',    link:'#game-escapegoat'},
-    {id:'seisouin',    title:'静葬員',                 img:'image/seisoin.png',   link:'#game-seisouin'},
-    {id:'meishi',      title:'名刺の管理ができません', img:'image/meishi.png',    link:'#game-meishi'},
-    {id:'informer-rt', title:'インフォーマーR',        img:'image/informerR.png', link:'#game-informer-r'},
-    {id:'comical',     title:'コミカルミッション',     img:'image/comical.png',   link:'#game-comical'},
-    {id:'kachikan',    title:'カチカン会談',           img:'image/kachikan.png',  link:'#game-kachikan'},
-    {id:'abception',   title:'アブセプチャー',         img:'image/abcepture.png', link:'#game-abception'},
-    {id:'informer',    title:'インフォーマー',         img:'image/informer.png',  link:'#game-informer'}
+    {id:'yumeyume',    title:'ゆめゆめ',               img:'image/games/yumeyume/comming.png',   link:'#game-yumeyume'},
+    {id:'escapegoat',  title:'エスケープゴート',       img:'image/games/escape-goat/escape.png',    link:'#game-escapegoat'},
+    {id:'seisouin',    title:'静葬員',                 img:'image/games/seisoin/seisoin.png',   link:'#game-seisouin'},
+    {id:'meishi',      title:'名刺の管理ができません', img:'image/games/meishi/meishi.png',    link:'#game-meishi'},
+    {id:'informer-rt', title:'インフォーマーR',        img:'image/games/informer/informerR.png', link:'#game-informer-r'},
+    {id:'comical',     title:'コミカルミッション',     img:'image/games/comical/comical.png',   link:'#game-comical'},
+    {id:'kachikan',    title:'カチカン会談',           img:'image/games/kachikan/kachikan.png',  link:'#game-kachikan'},
+    {id:'abception',   title:'アブセプチャー',         img:'image/games/abcepture/abcepture.png', link:'#game-abception'},
+    {id:'informer',    title:'インフォーマー',         img:'image/games/informer/informer.png',  link:'#game-informer'}
   ];
 
   const MEMBERS = [
-    {name:'どい', role:'代表', img:'image/doi.jpg', link:'https://x.com/doi_pentas'},
-    {name:'うどんた', role:'イラストデザイン', img:'image/udonta.jpg', link:'https://x.com/UdontA_1954'},
-    {name:'マツキハジメ', role:'ゲームデザイン/エンジニア', img:'image/matsuki.jpg', link:'https://x.com/ma2ki_first'},
-    {name:'和平', role:'UI/ゲームデザイン', img:'image/wahei.jpg', link:'https://x.com/peace_pentas'}
+    {name:'どい', role:'代表', img:'image/menbers/doi.jpg', link:'https://x.com/doi_pentas'},
+    {name:'うどんた', role:'イラストデザイン', img:'image/menbers/udonta.jpg', link:'https://x.com/UdontA_1954'},
+    {name:'マツキハジメ', role:'ゲームデザイン/エンジニア', img:'image/menbers/matsuki.jpg', link:'https://x.com/ma2ki_first'},
+    {name:'和平', role:'UI/ゲームデザイン', img:'image/menbers/wahei.jpg', link:'https://x.com/peace_pentas'}
   ];
 
   // ===== Branding =====
   (function applyBrand(){
     const logoA = document.getElementById('brandLogo');
     const title = document.getElementById('brandTitle');
-    if(logoA){ const img=new Image(); img.alt='Pentas Studio ロゴ'; img.src='image/logo.png'; logoA.innerHTML=''; logoA.appendChild(img); }
+    if(logoA){ const img=new Image(); img.alt='Pentas Studio ロゴ'; img.src='image/general/logo.png'; logoA.innerHTML=''; logoA.appendChild(img); }
     if(title && !title.querySelector('img.wordmark')){ title.textContent='Pentas Studio'; }
   })();
 
