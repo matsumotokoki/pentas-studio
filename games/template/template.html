@@ -83,10 +83,16 @@
     .media-block h2{font-size:18px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-weak)}
     .media-video{position:relative;padding-top:56.25%;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#111722}
     .media-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-    .media-gallery{display:grid;gap:14px}
-    .media-gallery figure{margin:0;border-radius:14px;overflow:hidden}
-    .media-gallery img{width:100%;height:100%;object-fit:cover}
-    .media-gallery figcaption{padding:12px 14px;font-size:13px;color:var(--ink-weak);background:rgba(0,0,0,.28)}
+    .media-carousel{display:grid;gap:14px}
+    .media-carousel-viewport{position:relative;overflow:hidden;border-radius:14px}
+    .media-carousel-track{display:flex;transition:transform .4s ease}
+    .media-carousel-item{margin:0;flex:0 0 100%;min-width:100%;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#111722;display:block}
+    .media-carousel-item img{width:100%;height:auto;object-fit:cover}
+    .media-carousel-controls{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .carousel-button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.08);color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:background-color .18s ease,transform .18s ease,color .18s ease,border-color .18s ease}
+    .carousel-button:hover{background:var(--accent);color:var(--bg);border-color:transparent;transform:translateY(-1px)}
+    .carousel-button:disabled{opacity:.38;cursor:not-allowed;background:rgba(255,255,255,.04);color:var(--ink-weak);border-color:var(--line);transform:none}
+    .carousel-status{margin:0;font-size:13px;color:var(--ink-weak);letter-spacing:.08em}
 
     footer{padding:28px var(--page-pad) 38px;border-top:1px solid var(--line);display:grid;gap:12px;justify-items:center}
     .sns{display:flex;gap:12px;justify-content:center}
@@ -201,19 +207,29 @@
 
                 <section class="media-block" aria-labelledby="galleryHeading">
                   <h2 id="galleryHeading">ギャラリー</h2>
-                  <div class="media-gallery">
-                    <figure>
-                      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Crect width='800' height='600' fill='%23111722'/%3E%3Cpath d='M0 520h800v80H0z' fill='%23000' opacity='.24'/%3E%3Ctext x='50%' y='50%' fill='%23aeb8c4' font-family='sans-serif' font-size='36' text-anchor='middle'%3EPhoto Placeholder%3C/text%3E%3C/svg%3E" alt="ギャラリー画像1の説明" loading="lazy">
-                      <figcaption>ギャラリーの説明を入力してください。</figcaption>
-                    </figure>
-                    <figure>
-                      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Crect width='800' height='600' fill='%23111722'/%3E%3Cpath d='M0 520h800v80H0z' fill='%23000' opacity='.24'/%3E%3Ctext x='50%' y='50%' fill='%23aeb8c4' font-family='sans-serif' font-size='36' text-anchor='middle'%3EPhoto Placeholder%3C/text%3E%3C/svg%3E" alt="ギャラリー画像2の説明" loading="lazy">
-                      <figcaption>ギャラリーの説明を入力してください。</figcaption>
-                    </figure>
-                    <figure>
-                      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Crect width='800' height='600' fill='%23111722'/%3E%3Cpath d='M0 520h800v80H0z' fill='%23000' opacity='.24'/%3E%3Ctext x='50%' y='50%' fill='%23aeb8c4' font-family='sans-serif' font-size='36' text-anchor='middle'%3EPhoto Placeholder%3C/text%3E%3C/svg%3E" alt="ギャラリー画像3の説明" loading="lazy">
-                      <figcaption>ギャラリーの説明を入力してください。</figcaption>
-                    </figure>
+                  <div class="media-carousel" data-carousel>
+                    <div class="media-carousel-viewport">
+                      <div class="media-carousel-track" data-carousel-track>
+                        <figure class="media-carousel-item">
+                          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Crect width='800' height='600' fill='%23111722'/%3E%3Cpath d='M0 520h800v80H0z' fill='%23000' opacity='.24'/%3E%3Ctext x='50%' y='50%' fill='%23aeb8c4' font-family='sans-serif' font-size='36' text-anchor='middle'%3EPhoto Placeholder%3C/text%3E%3C/svg%3E" alt="ギャラリー画像1の説明" loading="lazy">
+                        </figure>
+                        <figure class="media-carousel-item">
+                          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Crect width='800' height='600' fill='%23111722'/%3E%3Cpath d='M0 520h800v80H0z' fill='%23000' opacity='.24'/%3E%3Ctext x='50%' y='50%' fill='%23aeb8c4' font-family='sans-serif' font-size='36' text-anchor='middle'%3EPhoto Placeholder%3C/text%3E%3C/svg%3E" alt="ギャラリー画像2の説明" loading="lazy">
+                        </figure>
+                        <figure class="media-carousel-item">
+                          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Crect width='800' height='600' fill='%23111722'/%3E%3Cpath d='M0 520h800v80H0z' fill='%23000' opacity='.24'/%3E%3Ctext x='50%' y='50%' fill='%23aeb8c4' font-family='sans-serif' font-size='36' text-anchor='middle'%3EPhoto Placeholder%3C/text%3E%3C/svg%3E" alt="ギャラリー画像3の説明" loading="lazy">
+                        </figure>
+                      </div>
+                    </div>
+                    <div class="media-carousel-controls">
+                      <button type="button" class="carousel-button" data-carousel-button="prev" aria-label="前の画像" disabled>
+                        <span aria-hidden="true">‹</span>
+                      </button>
+                      <p class="carousel-status" data-carousel-status aria-live="polite">1 / 3</p>
+                      <button type="button" class="carousel-button" data-carousel-button="next" aria-label="次の画像">
+                        <span aria-hidden="true">›</span>
+                      </button>
+                    </div>
                   </div>
                 </section>
               </div>
@@ -246,5 +262,42 @@
       <p class="footer-copy">© pantas studio All Right Reserved.</p>
     </footer>
   </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('[data-carousel]').forEach((carousel) => {
+        const track = carousel.querySelector('[data-carousel-track]');
+        if (!track) return;
+        const slides = Array.from(track.children);
+        if (!slides.length) return;
+        const prevButton = carousel.querySelector('[data-carousel-button="prev"]');
+        const nextButton = carousel.querySelector('[data-carousel-button="next"]');
+        const status = carousel.querySelector('[data-carousel-status]');
+        let index = 0;
+
+        const update = () => {
+          track.style.transform = `translateX(-${index * 100}%)`;
+          if (prevButton) prevButton.disabled = index === 0;
+          if (nextButton) nextButton.disabled = index === slides.length - 1;
+          if (status) status.textContent = `${index + 1} / ${slides.length}`;
+        };
+
+        prevButton?.addEventListener('click', () => {
+          if (index > 0) {
+            index -= 1;
+            update();
+          }
+        });
+
+        nextButton?.addEventListener('click', () => {
+          if (index < slides.length - 1) {
+            index += 1;
+            update();
+          }
+        });
+
+        update();
+      });
+    });
+  </script>
 </body>
 </html>
