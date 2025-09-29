@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Game Title – Pentas Studio</title>
+  <title>エスケープゴート – Pentas Studio</title>
   <link rel="icon" type="image/png" href="../../image/general/logo.png" />
   <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700&display=swap" rel="stylesheet">
@@ -77,6 +77,7 @@
     .cta-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 22px;border-radius:999px;background:var(--accent);color:var(--bg);font-weight:700;font-size:15px;letter-spacing:.06em;border:none;box-shadow:0 6px 16px rgba(0,0,0,.28);transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease}
     .cta-button:hover{transform:translateY(-1px);box-shadow:0 10px 20px rgba(0,0,0,.3);background:#ffc55d;color:var(--bg)}
     .cta-note{font-size:13px;color:var(--ink-weak)}
+    .cta-button.is-disabled{background:#707680;color:var(--ink);opacity:.6;box-shadow:none;pointer-events:none}
 
     .overview-media{display:grid;gap:24px}
     .media-block{display:grid;gap:16px;background:rgba(31,39,48,.72);border-radius:var(--radius);padding:24px;border:1px solid var(--line)}
@@ -90,7 +91,7 @@
 
     footer{padding:28px var(--page-pad) 38px;border-top:1px solid var(--line);display:grid;gap:12px;justify-items:center}
     .sns{display:flex;gap:12px;justify-content:center}
-    .sns a{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#ffffff12;border:1px solid var(--line);color:var(--ink);transition:transform .18s ease, background-color .18s ease, box-shadow .18s ease, color .18s ease;--sns-play:var(--bg)}
+    .sns a{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#ffffff12;border:1px solid var(--line);color:var(--ink);transition:transform .18s ease, background-color .18s ease, box-shadow .18s ease,color .18s ease;--sns-play:var(--bg)}
     .sns a:hover{transform:scale(1.06);background:var(--accent);color:var(--bg);box-shadow:var(--shadow);border-color:transparent;--sns-play:var(--ink)}
     .sns svg{width:20px;height:20px}
     .sns path{fill:currentColor}
@@ -135,26 +136,26 @@
           <div class="band-inner">
             <div class="game-hero">
               <div class="hero-media" aria-label="ゲーム紹介画像">
-                <div class="media-fallback">ゲームのキービジュアルを配置してください<br>（例：4000×3000px 推奨）</div>
+                <img src="../../image/games/escape-goat/escape.png" alt="エスケープゴートのキービジュアル" loading="lazy">
               </div>
               <div class="hero-info">
-                <p class="game-category">Game Category</p>
-                <h1 id="gameTitle" class="game-title">ゲームタイトル</h1>
+                <p class="game-category">マーダーミステリー</p>
+                <h1 id="gameTitle" class="game-title">エスケープゴート</h1>
                 <dl class="game-meta">
                   <div>
                     <dt>プレイ人数</dt>
-                    <dd>2-5人</dd>
+                    <dd>4人</dd>
                   </div>
                   <div>
                     <dt>プレイ時間</dt>
-                    <dd>約60分</dd>
+                    <dd>80分</dd>
                   </div>
                   <div>
                     <dt>対象年齢</dt>
-                    <dd>12歳以上</dd>
+                    <dd>15歳以上</dd>
                   </div>
                 </dl>
-                <p class="hero-lead">ここにゲームのリードテキストを記載します。作品の世界観や魅力が一目で伝わるキャッチコピーや概要を記入してください。</p>
+                <p class="hero-lead">処理した遺体が別人だった…。<br>「静葬員」の世界で遊ぶ4人用トーク型ミステリー</p>
               </div>
             </div>
           </div>
@@ -166,26 +167,25 @@
               <div class="overview-text">
                 <section class="overview-block" aria-labelledby="overviewHeading">
                   <h2 id="overviewHeading">ゲーム概要</h2>
-                  <p>ゲームのコンセプトや制作背景、特徴などを記載してください。プレイヤーがどのような体験を得られるのか、シンプルにまとめると効果的です。</p>
+                  <p>裏社会の掃除屋『静葬員（せいそういん）』。君たちは犯行現場の清掃を行い、遺体を処理しなくてはならない。ただし最も危険な仕事「遺体の運搬」を行うのは1人だけ。遺体を積んで逃亡するか、運搬を成功させ大きな評価を得るか。</p>
                 </section>
-                <section class="overview-block" aria-labelledby="ruleHeading">
-                  <h2 id="ruleHeading">ルール説明</h2>
-                  <p>ゲームの進行方法や勝利条件など、基本的なルールを説明します。段落や箇条書きを使いながら、分かりやすくまとめてください。</p>
+                <section class="overview-block" aria-labelledby="storyHeading">
+                  <h2 id="storyHeading">あらすじ</h2>
+                  <p>遺体処理を専門に請け負う裏社会の掃除屋＜静葬員＞。どんな凄惨な現場も、証拠もろとも闇に葬り去る。チームを指揮する冷静沈着なリーダー、天才気質のハッカー、ぶっきらぼうだけど心優しい現場清掃、力自慢で声がデカすぎる運搬屋。今日も4人は完璧に仕事をこなした──はずだった。</p>
+                  <p>「処理した遺体が別人だった」</p>
+                  <p>アジトに戻るや否や発覚した、あってはならない重大なミス。ボスが4人へ静かに告げる。</p>
+                  <p>「元凶を1人決めろ。そいつに”責任”を取らせる。」</p>
+                  <p>なぜ遺体が違ったのか？誰のミスによるものか。あるいは誰かの策略か。疑い・裏切り・押し付け合い──命を賭けた泥沼の議論が今、始まる。そして、たどり着くたった一つの真実とは。GM不要！4人プレイのトーク型ミステリーゲーム！</p>
                 </section>
                 <section class="overview-block" aria-labelledby="componentHeading">
                   <h2 id="componentHeading">コンポーネント</h2>
-                  <ul class="component-list">
-                    <li>内容物の名称 × 数量</li>
-                    <li>説明書 × 1冊</li>
-                    <li>その他付属品などを箇条書きで記載してください。</li>
-                  </ul>
-                  <p class="component-note">※ 実際の内容物に合わせて編集してください。</p>
+                  <p>現在準備中です。公開まで今しばらくお待ちください。</p>
                 </section>
                 <section class="purchase-block" aria-labelledby="purchaseHeading">
                   <h2 id="purchaseHeading">購入はこちら</h2>
                   <div class="purchase-cta">
-                    <a class="cta-button" href="https://example.com" target="_blank" rel="noopener noreferrer">購入ページへ</a>
-                    <p class="cta-note">※ リンク先URLとボタン文言を適宜差し替えてください。</p>
+                    <span class="cta-button is-disabled" aria-disabled="true">準備中</span>
+                    <p class="cta-note">※ 販売ページの公開までしばらくお待ちください。</p>
                   </div>
                 </section>
               </div>
@@ -193,26 +193,15 @@
               <div class="overview-media">
                 <section class="media-block" aria-labelledby="videoHeading">
                   <h2 id="videoHeading">動画</h2>
-                  <div class="media-video">
-                    <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="ゲーム紹介動画" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                  </div>
-                  <p style="font-size:13px;color:var(--ink-weak);">※ YouTube動画のIDを差し替えてご利用ください。</p>
+                  <p class="cta-note">紹介動画は現在準備中です。</p>
                 </section>
 
                 <section class="media-block" aria-labelledby="galleryHeading">
                   <h2 id="galleryHeading">ギャラリー</h2>
                   <div class="media-gallery">
                     <figure>
-                      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Crect width='800' height='600' fill='%23111722'/%3E%3Cpath d='M0 520h800v80H0z' fill='%23000' opacity='.24'/%3E%3Ctext x='50%' y='50%' fill='%23aeb8c4' font-family='sans-serif' font-size='36' text-anchor='middle'%3EPhoto Placeholder%3C/text%3E%3C/svg%3E" alt="ギャラリー画像1の説明" loading="lazy">
-                      <figcaption>ギャラリーの説明を入力してください。</figcaption>
-                    </figure>
-                    <figure>
-                      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Crect width='800' height='600' fill='%23111722'/%3E%3Cpath d='M0 520h800v80H0z' fill='%23000' opacity='.24'/%3E%3Ctext x='50%' y='50%' fill='%23aeb8c4' font-family='sans-serif' font-size='36' text-anchor='middle'%3EPhoto Placeholder%3C/text%3E%3C/svg%3E" alt="ギャラリー画像2の説明" loading="lazy">
-                      <figcaption>ギャラリーの説明を入力してください。</figcaption>
-                    </figure>
-                    <figure>
-                      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Crect width='800' height='600' fill='%23111722'/%3E%3Cpath d='M0 520h800v80H0z' fill='%23000' opacity='.24'/%3E%3Ctext x='50%' y='50%' fill='%23aeb8c4' font-family='sans-serif' font-size='36' text-anchor='middle'%3EPhoto Placeholder%3C/text%3E%3C/svg%3E" alt="ギャラリー画像3の説明" loading="lazy">
-                      <figcaption>ギャラリーの説明を入力してください。</figcaption>
+                      <img src="../../image/games/escape-goat/escape.png" alt="エスケープゴートのキービジュアル" loading="lazy">
+                      <figcaption>闇に潜む静葬員たちを描いたビジュアル。</figcaption>
                     </figure>
                   </div>
                 </section>
