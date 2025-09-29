@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Game Title – Pentas Studio</title>
+  <link rel="icon" type="image/png" href="../../image/general/logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#29323b;
+      --surface:#1f2730;
+      --ink:#eff3f8;
+      --ink-weak:#aeb8c4;
+      --line:#394656;
+      --accent:#FFBA3A;
+      --hero-bg:#252d32;
+      --content-bg:#1d252f;
+      --radius:18px;
+      --shadow:0 14px 28px rgba(0,0,0,.36);
+      --page-pad:24px;
+    }
+
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP","BIZ UDGothic","Yu Gothic",Meiryo,sans-serif;
+    }
+    img{display:block;max-width:100%;height:auto;user-select:none;-webkit-user-drag:none}
+    a{color:inherit;text-decoration:none}
+    h1,h2,h3,p{margin:0}
+
+    .page{min-height:100vh;display:grid;grid-template-rows:auto 1fr auto}
+
+    header{padding:32px var(--page-pad) 24px;display:grid;gap:18px;justify-items:center;text-align:center;border-bottom:1px solid var(--line)}
+    .brand-logo{width:120px;height:120px;border-radius:50%;overflow:hidden;display:grid;place-items:center;background:transparent}
+    .brand-logo img{width:100%;height:100%;object-fit:contain}
+    .brand-name{font-family:'Rampart One',system-ui,sans-serif;font-size:32px;letter-spacing:.02em}
+    .brand-name img{max-height:78px;object-fit:contain;margin:0 auto}
+
+    main{padding:0;display:grid;gap:0}
+    article{display:grid;gap:0}
+
+    .section-band{padding:64px var(--page-pad);display:flex;justify-content:center;background:var(--section-bg,#0000)}
+    .band-inner{width:min(1100px,100%);display:grid;gap:0}
+
+    .game-hero-band{--section-bg:var(--hero-bg);border-bottom:1px solid var(--line)}
+    .game-overview-band{--section-bg:var(--content-bg)}
+
+    .game-hero{display:grid;grid-template-columns:1.1fr 1fr;gap:36px;align-items:center}
+    .hero-media{background:transparent;border-radius:var(--radius);overflow:hidden;position:relative;min-height:320px;display:grid;place-items:center;padding:0}
+    .media-fallback{width:100%;height:100%;display:grid;place-items:center;border:2px dashed rgba(255,255,255,.18);border-radius:calc(var(--radius) - 6px);color:var(--ink-weak);font-size:14px;text-align:center;line-height:1.6;padding:20px}
+    .hero-info{display:grid;gap:22px}
+    .game-category{font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:var(--ink-weak)}
+    .game-title{font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Noto Sans JP','BIZ UDGothic','Yu Gothic',Meiryo,sans-serif;font-size:40px;letter-spacing:.04em}
+    .game-meta{display:flex;flex-wrap:wrap;gap:14px;padding:16px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid var(--line)}
+    .game-meta dt{font-size:12px;letter-spacing:.12em;color:var(--ink-weak)}
+    .game-meta dd{margin:4px 0 0;font-size:18px;font-weight:700;letter-spacing:.06em}
+    .hero-lead{font-size:16px;line-height:1.8;color:#dde3ec}
+
+    .game-overview{display:grid;grid-template-columns:1fr 0.92fr;gap:36px;align-items:start}
+    .overview-text{display:grid;gap:28px}
+    .overview-block{display:grid;gap:14px;background:rgba(31,39,48,.72);border-radius:var(--radius);padding:24px;border:1px solid var(--line)}
+    .overview-block h2{font-size:22px;letter-spacing:.08em}
+    .overview-block p{font-size:15px;line-height:1.9;color:#d7dee8}
+    .component-list{margin:0;padding-left:20px;display:grid;gap:6px;font-size:15px;line-height:1.8;color:#d7dee8}
+    .component-note{font-size:13px;line-height:1.8;color:var(--ink-weak)}
+
+    .purchase-block{display:grid;gap:14px;padding:0}
+    .purchase-block h2{font-size:20px;letter-spacing:.08em;color:var(--accent)}
+    .purchase-block p{font-size:15px;line-height:1.9;color:#f0f4fa}
+    .purchase-cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+    .cta-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 22px;border-radius:999px;background:var(--accent);color:var(--bg);font-weight:700;font-size:15px;letter-spacing:.06em;border:none;box-shadow:0 6px 16px rgba(0,0,0,.28);transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease}
+    .cta-button:hover{transform:translateY(-1px);box-shadow:0 10px 20px rgba(0,0,0,.3);background:#ffc55d;color:var(--bg)}
+    .cta-note{font-size:13px;color:var(--ink-weak)}
+
+    .overview-media{display:grid;gap:24px}
+    .media-block{display:grid;gap:16px;background:rgba(31,39,48,.72);border-radius:var(--radius);padding:24px;border:1px solid var(--line)}
+    .media-block h2{font-size:18px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-weak)}
+    .media-video{position:relative;padding-top:56.25%;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#111722}
+    .media-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    .media-gallery{display:grid;gap:14px}
+    .media-gallery figure{margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#111722}
+    .media-gallery img{width:100%;height:100%;object-fit:cover}
+    .media-gallery figcaption{padding:12px 14px;font-size:13px;color:var(--ink-weak);background:rgba(0,0,0,.28)}
+
+    footer{padding:28px var(--page-pad) 38px;border-top:1px solid var(--line);display:flex;justify-content:center}
+    .sns{display:flex;gap:12px}
+    .sns a{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#ffffff12;border:1px solid var(--line);color:var(--ink);transition:transform .18s ease, background-color .18s ease, box-shadow .18s ease, color .18s ease;--sns-play:var(--bg)}
+    .sns a:hover{transform:scale(1.06);background:var(--accent);color:var(--bg);box-shadow:var(--shadow);border-color:transparent;--sns-play:var(--ink)}
+    .sns svg{width:20px;height:20px}
+    .sns path{fill:currentColor}
+    .sns path.play{fill:var(--sns-play);transition:fill .18s ease}
+
+    @media (max-width:1023px){
+      :root{--page-pad:20px}
+      .section-band{padding:48px var(--page-pad)}
+      .game-hero{grid-template-columns:1fr;gap:28px}
+      .hero-media{order:-1;min-height:280px}
+      .game-title{font-size:34px}
+    }
+    @media (max-width:799px){
+      .game-overview{grid-template-columns:1fr;gap:28px}
+    }
+    @media (max-width:639px){
+      :root{--page-pad:16px}
+      header{padding-top:28px}
+      .section-band{padding:40px var(--page-pad)}
+      .brand-name{font-size:28px}
+      main{padding-bottom:60px}
+      .game-meta{flex-direction:column;align-items:flex-start;padding:18px}
+      .purchase-block{gap:14px}
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <a class="brand-logo" href="../../index.html?skipLoading=1#top" aria-label="トップページへ戻る">
+        <img src="../../image/general/logo.png" alt="Pentas Studio" loading="lazy">
+      </a>
+      <div class="brand-name">
+        <img src="../../image/general/let_logo.png" alt="Pentas Studio" loading="lazy">
+      </div>
+    </header>
+
+    <main>
+      <article aria-labelledby="gameTitle">
+        <section class="section-band game-hero-band">
+          <div class="band-inner">
+            <div class="game-hero">
+              <div class="hero-media" aria-label="ゲーム紹介画像">
+                <div class="media-fallback">ゲームのキービジュアルを配置してください<br>（例：4000×3000px 推奨）</div>
+              </div>
+              <div class="hero-info">
+                <p class="game-category">Game Category</p>
+                <h1 id="gameTitle" class="game-title">ゲームタイトル</h1>
+                <dl class="game-meta">
+                  <div>
+                    <dt>プレイ人数</dt>
+                    <dd>2-5人</dd>
+                  </div>
+                  <div>
+                    <dt>プレイ時間</dt>
+                    <dd>約60分</dd>
+                  </div>
+                  <div>
+                    <dt>対象年齢</dt>
+                    <dd>12歳以上</dd>
+                  </div>
+                </dl>
+                <p class="hero-lead">ここにゲームのリードテキストを記載します。作品の世界観や魅力が一目で伝わるキャッチコピーや概要を記入してください。</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-band game-overview-band">
+          <div class="band-inner">
+            <div class="game-overview">
+              <div class="overview-text">
+                <section class="overview-block" aria-labelledby="overviewHeading">
+                  <h2 id="overviewHeading">ゲーム概要</h2>
+                  <p>ゲームのコンセプトや制作背景、特徴などを記載してください。プレイヤーがどのような体験を得られるのか、シンプルにまとめると効果的です。</p>
+                </section>
+                <section class="overview-block" aria-labelledby="ruleHeading">
+                  <h2 id="ruleHeading">ルール説明</h2>
+                  <p>ゲームの進行方法や勝利条件など、基本的なルールを説明します。段落や箇条書きを使いながら、分かりやすくまとめてください。</p>
+                </section>
+                <section class="overview-block" aria-labelledby="componentHeading">
+                  <h2 id="componentHeading">コンポーネント</h2>
+                  <ul class="component-list">
+                    <li>内容物の名称 × 数量</li>
+                    <li>説明書 × 1冊</li>
+                    <li>その他付属品などを箇条書きで記載してください。</li>
+                  </ul>
+                  <p class="component-note">※ 実際の内容物に合わせて編集してください。</p>
+                </section>
+                <section class="purchase-block" aria-labelledby="purchaseHeading">
+                  <h2 id="purchaseHeading">購入はこちら</h2>
+                  <div class="purchase-cta">
+                    <a class="cta-button" href="https://example.com" target="_blank" rel="noopener noreferrer">購入ページへ</a>
+                    <p class="cta-note">※ リンク先URLとボタン文言を適宜差し替えてください。</p>
+                  </div>
+                </section>
+              </div>
+
+              <div class="overview-media">
+                <section class="media-block" aria-labelledby="videoHeading">
+                  <h2 id="videoHeading">動画</h2>
+                  <div class="media-video">
+                    <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="ゲーム紹介動画" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                  </div>
+                  <p style="font-size:13px;color:var(--ink-weak);">※ YouTube動画のIDを差し替えてご利用ください。</p>
+                </section>
+
+                <section class="media-block" aria-labelledby="photoHeading">
+                  <h2 id="photoHeading">写真</h2>
+                  <div class="media-gallery">
+                    <figure>
+                      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Crect width='800' height='600' fill='%23111722'/%3E%3Cpath d='M0 520h800v80H0z' fill='%23000' opacity='.24'/%3E%3Ctext x='50%' y='50%' fill='%23aeb8c4' font-family='sans-serif' font-size='36' text-anchor='middle'%3EPhoto Placeholder%3C/text%3E%3C/svg%3E" alt="写真1の説明" loading="lazy">
+                      <figcaption>写真の説明を入力してください。</figcaption>
+                    </figure>
+                    <figure>
+                      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Crect width='800' height='600' fill='%23111722'/%3E%3Cpath d='M0 520h800v80H0z' fill='%23000' opacity='.24'/%3E%3Ctext x='50%' y='50%' fill='%23aeb8c4' font-family='sans-serif' font-size='36' text-anchor='middle'%3EPhoto Placeholder%3C/text%3E%3C/svg%3E" alt="写真2の説明" loading="lazy">
+                      <figcaption>写真の説明を入力してください。</figcaption>
+                    </figure>
+                    <figure>
+                      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Crect width='800' height='600' fill='%23111722'/%3E%3Cpath d='M0 520h800v80H0z' fill='%23000' opacity='.24'/%3E%3Ctext x='50%' y='50%' fill='%23aeb8c4' font-family='sans-serif' font-size='36' text-anchor='middle'%3EPhoto Placeholder%3C/text%3E%3C/svg%3E" alt="写真3の説明" loading="lazy">
+                      <figcaption>写真の説明を入力してください。</figcaption>
+                    </figure>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </section>
+      </article>
+    </main>
+
+    <footer aria-label="フッター">
+      <div class="sns" aria-label="SNSリンク">
+        <a href="https://x.com/bdg_de_asobo" aria-label="X" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M18.244 3H21.5l-7.52 8.59L22 21h-6.31l-4.94-6.43L4.81 21H1.5l7.81-8.93L2 3h6.31l4.5 5.84L18.244 3Z"/>
+          </svg>
+        </a>
+        <a href="https://www.youtube.com/@%E3%83%9A%E3%83%B3%E3%82%BF%E3%82%B9%E3%82%B9%E3%82%BF%E3%82%B8%E3%82%AA" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21.6 7.6a2 2 0 0 0-1.4-1.4C18.7 5.8 12 5.8 12 5.8s-6.7 0-8.2.4A2 2 0 0 0 2.4 7.6C2 9.1 2 12 2 12s0 2.9.4 4.4a2 2 0 0 0 1.4 1.4c1.5.4 8.2.4 8.2.4s6.7 0 8.2-.4a2 2 0 0 0 1.4-1.4c.4-1.5.4-4.4.4-4.4s0-2.9-.4-4.4Z"/>
+            <path class="play" d="M10.5 9.75v4.5L15 12l-4.5-2.25Z"/>
+          </svg>
+        </a>
+        <a href="https://pentasufide.booth.pm/" aria-label="BOOTH ショップ" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 6h16l-1.2 8.4a2 2 0 0 1-2 1.6H8.2l-.4 2h10.7v2H6a1 1 0 0 1-1-.8L3 6Z"/>
+            <path d="M9 18H7.2L5.5 8h13l-.9 6.2a2 2 0 0 1-2 1.6H9Z"/>
+          </svg>
+        </a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
