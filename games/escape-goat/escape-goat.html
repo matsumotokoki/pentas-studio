@@ -84,10 +84,16 @@
     .media-block h2{font-size:18px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-weak)}
     .media-video{position:relative;padding-top:56.25%;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#111722}
     .media-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-    .media-gallery{display:grid;gap:14px}
-    .media-gallery figure{margin:0;border-radius:14px;overflow:hidden}
-    .media-gallery img{width:100%;height:100%;object-fit:cover}
-    .media-gallery figcaption{padding:12px 14px;font-size:13px;color:var(--ink-weak);background:rgba(0,0,0,.28)}
+    .media-carousel{display:grid;gap:14px}
+    .media-carousel-viewport{position:relative;overflow:hidden;border-radius:14px}
+    .media-carousel-track{display:flex;transition:transform .4s ease}
+    .media-carousel-item{margin:0;flex:0 0 100%;min-width:100%;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#111722;display:block}
+    .media-carousel-item img{width:100%;height:auto;object-fit:cover}
+    .media-carousel-controls{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .carousel-button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.08);color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:background-color .18s ease,transform .18s ease,color .18s ease,border-color .18s ease}
+    .carousel-button:hover{background:var(--accent);color:var(--bg);border-color:transparent;transform:translateY(-1px)}
+    .carousel-button:disabled{opacity:.38;cursor:not-allowed;background:rgba(255,255,255,.04);color:var(--ink-weak);border-color:var(--line);transform:none}
+    .carousel-status{margin:0;font-size:13px;color:var(--ink-weak);letter-spacing:.08em}
 
     footer{padding:28px var(--page-pad) 38px;border-top:1px solid var(--line);display:grid;gap:12px;justify-items:center}
     .sns{display:flex;gap:12px;justify-content:center}
@@ -177,10 +183,6 @@
                   <p>「元凶を1人決めろ。そいつに”責任”を取らせる。」</p>
                   <p>なぜ遺体が違ったのか？誰のミスによるものか。あるいは誰かの策略か。疑い・裏切り・押し付け合い──命を賭けた泥沼の議論が今、始まる。そして、たどり着くたった一つの真実とは。GM不要！4人プレイのトーク型ミステリーゲーム！</p>
                 </section>
-                <section class="overview-block" aria-labelledby="componentHeading">
-                  <h2 id="componentHeading">コンポーネント</h2>
-                  <p>現在準備中です。公開まで今しばらくお待ちください。</p>
-                </section>
                 <section class="purchase-block" aria-labelledby="purchaseHeading">
                   <h2 id="purchaseHeading">購入はこちら</h2>
                   <div class="purchase-cta">
@@ -191,18 +193,25 @@
               </div>
 
               <div class="overview-media">
-                <section class="media-block" aria-labelledby="videoHeading">
-                  <h2 id="videoHeading">動画</h2>
-                  <p class="cta-note">紹介動画は現在準備中です。</p>
-                </section>
-
                 <section class="media-block" aria-labelledby="galleryHeading">
                   <h2 id="galleryHeading">ギャラリー</h2>
-                  <div class="media-gallery">
-                    <figure>
-                      <img src="../../image/games/escape-goat/escape.png" alt="エスケープゴートのキービジュアル" loading="lazy">
-                      <figcaption>闇に潜む静葬員たちを描いたビジュアル。</figcaption>
-                    </figure>
+                  <div class="media-carousel" data-carousel>
+                    <div class="media-carousel-viewport">
+                      <div class="media-carousel-track" data-carousel-track>
+                        <figure class="media-carousel-item">
+                          <img src="../../image/games/escape-goat/escape.png" alt="エスケープゴートのキービジュアル" loading="lazy">
+                        </figure>
+                      </div>
+                    </div>
+                    <div class="media-carousel-controls">
+                      <button type="button" class="carousel-button" data-carousel-button="prev" aria-label="前の画像" disabled>
+                        <span aria-hidden="true">‹</span>
+                      </button>
+                      <p class="carousel-status" data-carousel-status aria-live="polite">1 / 1</p>
+                      <button type="button" class="carousel-button" data-carousel-button="next" aria-label="次の画像" disabled>
+                        <span aria-hidden="true">›</span>
+                      </button>
+                    </div>
                   </div>
                 </section>
               </div>
@@ -235,5 +244,42 @@
       <p class="footer-copy">© pantas studio All Right Reserved.</p>
     </footer>
   </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('[data-carousel]').forEach((carousel) => {
+        const track = carousel.querySelector('[data-carousel-track]');
+        if (!track) return;
+        const slides = Array.from(track.children);
+        if (!slides.length) return;
+        const prevButton = carousel.querySelector('[data-carousel-button="prev"]');
+        const nextButton = carousel.querySelector('[data-carousel-button="next"]');
+        const status = carousel.querySelector('[data-carousel-status]');
+        let index = 0;
+
+        const update = () => {
+          track.style.transform = `translateX(-${index * 100}%)`;
+          if (prevButton) prevButton.disabled = index === 0;
+          if (nextButton) nextButton.disabled = index === slides.length - 1;
+          if (status) status.textContent = `${index + 1} / ${slides.length}`;
+        };
+
+        prevButton?.addEventListener('click', () => {
+          if (index > 0) {
+            index -= 1;
+            update();
+          }
+        });
+
+        nextButton?.addEventListener('click', () => {
+          if (index < slides.length - 1) {
+            index += 1;
+            update();
+          }
+        });
+
+        update();
+      });
+    });
+  </script>
 </body>
 </html>
