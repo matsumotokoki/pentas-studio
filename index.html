@@ -184,13 +184,14 @@
   .contact-link{font-size:16px;font-weight:600;font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Noto Sans JP','BIZ UDGothic','Yu Gothic',Meiryo,sans-serif;word-break:break-all}
 
   /* Footer */
-  .ps-footer{display:flex;justify-content:center;padding-bottom:24px}
+  .ps-footer{display:grid;gap:12px;justify-items:center;padding-bottom:24px}
   .sns{display:flex;gap:12px;justify-content:center;align-items:center}
   .sns a{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#ffffff12;border:1px solid var(--line);transition:transform .18s ease, background-color .18s ease, box-shadow .18s ease, color .18s ease;color:var(--ink);--sns-play:var(--bg)}
   .sns a:hover{transform:scale(1.06);background:var(--accent);color:var(--bg);box-shadow:var(--shadow);border-color:transparent;--sns-play:var(--ink)}
   .sns a svg{display:block;width:20px;height:20px}
   .sns a svg path{fill:currentColor}
   .sns a svg path.play{fill:var(--sns-play);transition:fill .18s ease}
+  .footer-copy{margin:0;color:var(--ink-weak);font-size:12px;letter-spacing:.04em;text-align:center}
 
   /* Reduced motion */
   @media (prefers-reduced-motion:reduce){
@@ -276,6 +277,7 @@
             </svg>
           </a>
         </div>
+        <p class="footer-copy">© pantas studio All Right Reserved.</p>
       </footer>
     </main>
 

@@ -88,13 +88,14 @@
     .media-gallery img{width:100%;height:100%;object-fit:cover}
     .media-gallery figcaption{padding:12px 14px;font-size:13px;color:var(--ink-weak);background:rgba(0,0,0,.28)}
 
-    footer{padding:28px var(--page-pad) 38px;border-top:1px solid var(--line);display:flex;justify-content:center}
-    .sns{display:flex;gap:12px}
+    footer{padding:28px var(--page-pad) 38px;border-top:1px solid var(--line);display:grid;gap:12px;justify-items:center}
+    .sns{display:flex;gap:12px;justify-content:center}
     .sns a{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#ffffff12;border:1px solid var(--line);color:var(--ink);transition:transform .18s ease, background-color .18s ease, box-shadow .18s ease, color .18s ease;--sns-play:var(--bg)}
     .sns a:hover{transform:scale(1.06);background:var(--accent);color:var(--bg);box-shadow:var(--shadow);border-color:transparent;--sns-play:var(--ink)}
     .sns svg{width:20px;height:20px}
     .sns path{fill:currentColor}
     .sns path.play{fill:var(--sns-play);transition:fill .18s ease}
+    .footer-copy{margin:0;color:var(--ink-weak);font-size:12px;letter-spacing:.04em;text-align:center}
 
     @media (max-width:1023px){
       :root{--page-pad:20px}
@@ -242,6 +243,7 @@
           </svg>
         </a>
       </div>
+      <p class="footer-copy">© pantas studio All Right Reserved.</p>
     </footer>
   </div>
 </body>
