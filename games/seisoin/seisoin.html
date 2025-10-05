@@ -52,12 +52,12 @@
     .game-hero-band{--section-bg:var(--hero-bg);border-bottom:1px solid var(--line)}
     .game-overview-band{--section-bg:var(--content-bg)}
 
-    .game-hero{display:grid;grid-template-columns:1.32fr 1fr;gap:36px;align-items:center}
+    .game-hero{display:grid;grid-template-columns:1.32fr 1fr;gap:36px;align-items:start}
     .hero-media{background:transparent;border-radius:var(--radius);overflow:hidden;position:relative;min-height:384px;display:grid;place-items:center;padding:0}
     .hero-media img{width:120%;max-width:none;height:auto}
     .media-fallback{width:100%;height:100%;display:grid;place-items:center;border:2px dashed rgba(255,255,255,.18);border-radius:calc(var(--radius) - 6px);color:var(--ink-weak);font-size:14px;text-align:center;line-height:1.6;padding:20px}
     .hero-info{display:grid;gap:12px}
-    .hero-heading{display:grid;gap:2px}
+    .hero-heading{display:grid;gap:2px;margin-bottom:4px}
     .game-category{font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:var(--ink-weak)}
 
     .game-title{font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Noto Sans JP','BIZ UDGothic','Yu Gothic',Meiryo,sans-serif;font-size:40px;letter-spacing:.04em;display:grid;place-items:center;text-align:center;line-height:1.1}
@@ -157,10 +157,10 @@
               </div>
               <div class="hero-info">
                 <div class="hero-heading">
-                  <p class="game-category">ボードゲーム / アクション</p>
                   <h1 id="gameTitle" class="game-title">
                     <img src="../../image/games/seisoin/game-logo.png" alt="静葬員" loading="lazy">
                   </h1>
+                  <p class="game-category">ボードゲーム / アクション</p>
                 </div>
                 <p class="hero-lead">―静かに、葬れ―<br>車ボックスと遺体コマを使って遊ぶミープル運搬バランスアクションゲーム</p>
                 <dl class="game-meta">
