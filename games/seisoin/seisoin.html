@@ -54,11 +54,13 @@
 
     .game-hero{display:grid;grid-template-columns:1.32fr 1fr;gap:36px;align-items:center}
     .hero-media{background:transparent;border-radius:var(--radius);overflow:hidden;position:relative;min-height:384px;display:grid;place-items:center;padding:0}
+    .hero-media img{width:120%;max-width:none;height:auto}
     .media-fallback{width:100%;height:100%;display:grid;place-items:center;border:2px dashed rgba(255,255,255,.18);border-radius:calc(var(--radius) - 6px);color:var(--ink-weak);font-size:14px;text-align:center;line-height:1.6;padding:20px}
-    .hero-info{display:grid;gap:18px}
-    .hero-heading{display:grid;gap:4px}
+    .hero-info{display:grid;gap:12px}
+    .hero-heading{display:grid;gap:2px}
     .game-category{font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:var(--ink-weak)}
-    .game-title{font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Noto Sans JP','BIZ UDGothic','Yu Gothic',Meiryo,sans-serif;font-size:40px;letter-spacing:.04em}
+    .game-title{font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Noto Sans JP','BIZ UDGothic','Yu Gothic',Meiryo,sans-serif;font-size:40px;letter-spacing:.04em;display:grid;place-items:center;text-align:center;line-height:1.1}
+    .game-title img{width:100%;height:auto;margin:0 auto;display:block}
     .game-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;padding:0;border-radius:var(--panel-radius);background:rgba(255,255,255,.04);border:1px solid var(--line);overflow:hidden}
     .game-meta>div{position:relative;padding:18px 16px;display:grid;gap:6px;justify-items:center}
     .game-meta>div:not(:last-child)::after{content:"";position:absolute;top:18px;bottom:18px;right:0;width:1px;background:var(--line)}
@@ -155,8 +157,11 @@
               <div class="hero-info">
                 <div class="hero-heading">
                   <p class="game-category">ボードゲーム / アクション</p>
-                  <h1 id="gameTitle" class="game-title">静葬員</h1>
+                  <h1 id="gameTitle" class="game-title">
+                    <img src="../../image/games/seisoin/game-logo.png" alt="静葬員" loading="lazy">
+                  </h1>
                 </div>
+                <p class="hero-lead">―静かに、葬れ―<br>車ボックスと遺体コマを使って遊ぶミープル運搬バランスアクションゲーム</p>
                 <dl class="game-meta">
                   <div>
                     <dt>プレイ人数</dt>
@@ -171,7 +176,6 @@
                     <dd>12歳以上</dd>
                   </div>
                 </dl>
-                <p class="hero-lead">―静かに、葬れ―<br>車ボックスと遺体コマを使って遊ぶミープル運搬バランスアクションゲーム</p>
                 <section class="purchase-block" aria-label="購入情報">
                   <div class="purchase-cta">
                     <span class="purchase-price">￥3,500（税込）</span>
