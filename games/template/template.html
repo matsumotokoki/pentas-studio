@@ -18,6 +18,7 @@
       --hero-bg:#252d32;
       --content-bg:#1d252f;
       --radius:18px;
+      --panel-radius:14px;
       --shadow:0 14px 28px rgba(0,0,0,.36);
       --page-pad:24px;
     }
@@ -58,7 +59,7 @@
     .hero-heading{display:grid;gap:4px}
     .game-category{font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:var(--ink-weak)}
     .game-title{font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Noto Sans JP','BIZ UDGothic','Yu Gothic',Meiryo,sans-serif;font-size:40px;letter-spacing:.04em}
-    .game-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;padding:0;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid var(--line);overflow:hidden}
+    .game-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;padding:0;border-radius:var(--panel-radius);background:rgba(255,255,255,.04);border:1px solid var(--line);overflow:hidden}
     .game-meta>div{position:relative;padding:18px 16px;display:grid;gap:6px;justify-items:center}
     .game-meta>div:not(:last-child)::after{content:"";position:absolute;top:18px;bottom:18px;right:0;width:1px;background:var(--line)}
     .game-meta dt{font-size:12px;letter-spacing:.12em;color:var(--ink-weak);text-align:center}
@@ -78,7 +79,7 @@
     .purchase-block::after{content:"";display:block;height:1px;background:rgba(255,255,255,.32)}
     .purchase-cta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:center;justify-items:center;width:100%}
     .purchase-cta>*{width:100%;text-align:center}
-    .cta-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 22px;border-radius:999px;background:var(--accent);color:var(--bg);font-weight:700;font-size:15px;letter-spacing:.06em;border:none;box-shadow:0 6px 16px rgba(0,0,0,.28);transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease;width:100%}
+    .cta-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 22px;border-radius:var(--panel-radius);background:var(--accent);color:var(--bg);font-weight:700;font-size:15px;letter-spacing:.06em;border:none;box-shadow:0 6px 16px rgba(0,0,0,.28);transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease;width:100%}
     .cta-button:hover{transform:translateY(-1px);box-shadow:0 10px 20px rgba(0,0,0,.3);background:#ffc55d;color:var(--bg)}
     .purchase-price{font-size:24px;font-weight:700;letter-spacing:.06em;display:flex;align-items:center;justify-content:center;line-height:1.4;width:100%}
     .purchase-note{font-size:13px;color:var(--ink-weak)}
