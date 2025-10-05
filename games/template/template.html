@@ -95,8 +95,8 @@
     .media-carousel{display:grid;gap:14px}
     .media-carousel-viewport{position:relative;overflow:hidden;border-radius:14px}
     .media-carousel-track{display:flex;transition:transform .4s ease}
-    .media-carousel-item{margin:0;flex:0 0 100%;min-width:100%;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#111722;display:block}
-    .media-carousel-item img{width:100%;height:auto;object-fit:cover}
+    .media-carousel-item{margin:0;flex:0 0 100%;min-width:100%;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#111722;display:grid;place-items:center}
+    .media-carousel-item img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
     .media-carousel-controls{display:flex;align-items:center;justify-content:space-between;gap:12px}
     .carousel-button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.08);color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:background-color .18s ease,transform .18s ease,color .18s ease,border-color .18s ease}
     .carousel-button:hover{background:var(--accent);color:var(--bg);border-color:transparent;transform:translateY(-1px)}
@@ -291,27 +291,27 @@
         const nextButton = carousel.querySelector('[data-carousel-button="next"]');
         const status = carousel.querySelector('[data-carousel-status]');
         let index = 0;
+        const total = slides.length;
+        const hasMultiple = total > 1;
 
         const update = () => {
           track.style.transform = `translateX(-${index * 100}%)`;
-          if (prevButton) prevButton.disabled = index === 0;
-          if (nextButton) nextButton.disabled = index === slides.length - 1;
-          if (status) status.textContent = `${index + 1} / ${slides.length}`;
+          if (prevButton) prevButton.disabled = !hasMultiple;
+          if (nextButton) nextButton.disabled = !hasMultiple;
+          if (status) status.textContent = `${index + 1} / ${total}`;
         };
 
-        prevButton?.addEventListener('click', () => {
-          if (index > 0) {
-            index -= 1;
+        if (hasMultiple) {
+          prevButton?.addEventListener('click', () => {
+            index = (index - 1 + total) % total;
             update();
-          }
-        });
+          });
 
-        nextButton?.addEventListener('click', () => {
-          if (index < slides.length - 1) {
-            index += 1;
+          nextButton?.addEventListener('click', () => {
+            index = (index + 1) % total;
             update();
-          }
-        });
+          });
+        }
 
         update();
       });
