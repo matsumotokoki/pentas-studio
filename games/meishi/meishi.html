@@ -97,12 +97,20 @@
     .media-carousel-viewport{position:relative;overflow:hidden;border-radius:14px;aspect-ratio:32/27;background:#111722;border:1px solid var(--line)}
     .media-carousel-track{display:flex;height:100%;transition:transform .4s ease;align-items:center}
     .media-carousel-item{margin:0;flex:0 0 100%;min-width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:18px}
-    .media-carousel-item img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+    .media-carousel-item img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;cursor:zoom-in}
     .media-carousel-controls{display:flex;align-items:center;justify-content:space-between;gap:12px}
     .carousel-button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.08);color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:background-color .18s ease,transform .18s ease,color .18s ease,border-color .18s ease}
     .carousel-button:hover{background:var(--accent);color:var(--bg);border-color:transparent;transform:translateY(-1px)}
     .carousel-button:disabled{opacity:.38;cursor:not-allowed;background:rgba(255,255,255,.04);color:var(--ink-weak);border-color:var(--line);transform:none}
     .carousel-status{margin:0;font-size:13px;color:var(--ink-weak);letter-spacing:.08em}
+
+    body.is-lightbox-open{overflow:hidden}
+    .lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:32px;background:rgba(12,16,24,.86);backdrop-filter:blur(4px);z-index:999}
+    .lightbox.is-active{display:flex}
+    .lightbox-image{max-width:min(92vw,1080px);max-height:92vh;width:auto;height:auto;border-radius:16px;box-shadow:0 24px 48px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.18);object-fit:contain}
+    .lightbox-close{position:absolute;top:24px;right:24px;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:rgba(31,39,48,.82);color:var(--ink);display:grid;place-items:center;font-size:24px;cursor:pointer;transition:background-color .18s ease,color .18s ease,border-color .18s ease,transform .18s ease}
+    .lightbox-close span{line-height:1}
+    .lightbox-close:hover{background:var(--accent);color:var(--bg);border-color:transparent;transform:translateY(-1px)}
 
     footer{padding:28px var(--page-pad) 38px;border-top:1px solid var(--line);display:grid;gap:12px;justify-items:center}
     .sns{display:flex;gap:12px;justify-content:center}
@@ -282,9 +290,56 @@
       </div>
       <p class="footer-copy">© pantas studio All Right Reserved.</p>
     </footer>
+    <div class="lightbox" data-lightbox aria-hidden="true" role="dialog" aria-label="ギャラリー拡大画像ビュー">
+      <button type="button" class="lightbox-close" data-lightbox-close aria-label="閉じる">
+        <span aria-hidden="true">×</span>
+      </button>
+      <img src="" alt="" class="lightbox-image" data-lightbox-image>
+    </div>
   </div>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      const body = document.body;
+      const lightbox = document.querySelector('[data-lightbox]');
+      const lightboxImage = lightbox?.querySelector('[data-lightbox-image]');
+      const closeButton = lightbox?.querySelector('[data-lightbox-close]');
+
+      const closeLightbox = () => {
+        if (!lightbox || !lightboxImage || !lightbox.classList.contains('is-active')) return;
+        lightbox.classList.remove('is-active');
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightboxImage.removeAttribute('src');
+        lightboxImage.removeAttribute('alt');
+        body.classList.remove('is-lightbox-open');
+      };
+
+      const openLightbox = (img) => {
+        if (!lightbox || !lightboxImage) return;
+        lightboxImage.src = img.src;
+        lightboxImage.alt = img.alt || '';
+        lightbox.classList.add('is-active');
+        lightbox.setAttribute('aria-hidden', 'false');
+        body.classList.add('is-lightbox-open');
+      };
+
+      if (lightbox) {
+        lightbox.addEventListener('click', (event) => {
+          if (event.target === lightbox) {
+            closeLightbox();
+          }
+        });
+      }
+
+      closeButton?.addEventListener('click', () => {
+        closeLightbox();
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeLightbox();
+        }
+      });
+
       document.querySelectorAll('[data-carousel]').forEach((carousel) => {
         const track = carousel.querySelector('[data-carousel-track]');
         if (!track) return;
@@ -317,6 +372,13 @@
         }
 
         update();
+
+        slides.forEach((slide) => {
+          const image = slide.querySelector('img');
+          if (image) {
+            image.addEventListener('click', () => openLightbox(image));
+          }
+        });
       });
     });
   </script>
