@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>アブセプチャー – Pentas Studio</title>
+  <link rel="icon" type="image/png" href="../../image/general/logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#29323b;
+      --surface:#1f2730;
+      --ink:#eff3f8;
+      --ink-weak:#aeb8c4;
+      --line:#394656;
+      --accent:#FFBA3A;
+      --hero-bg:#252d32;
+      --content-bg:#1d252f;
+      --radius:18px;
+      --panel-radius:14px;
+      --shadow:0 14px 28px rgba(0,0,0,.36);
+      --page-pad:24px;
+    }
+
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP","BIZ UDGothic","Yu Gothic",Meiryo,sans-serif;
+    }
+    img{display:block;max-width:100%;height:auto;user-select:none;-webkit-user-drag:none}
+    a{color:inherit;text-decoration:none}
+    h1,h2,h3,p{margin:0}
+
+    .page{min-height:100vh;display:grid;grid-template-rows:auto 1fr auto}
+
+    header{padding:26px var(--page-pad) 18px;display:grid;gap:18px;justify-items:center;text-align:center;border-bottom:1px solid var(--line)}
+    .brand-logo{width:120px;height:120px;border-radius:50%;overflow:hidden;display:grid;place-items:center;background:transparent}
+    .brand-logo img{width:100%;height:100%;object-fit:contain}
+    .brand-name{font-family:'Rampart One',system-ui,sans-serif;font-size:32px;letter-spacing:.02em}
+    .brand-name img{max-height:78px;object-fit:contain;margin:0 auto}
+
+    main{padding:0;display:grid;gap:0}
+    article{display:grid;gap:0}
+
+    .section-band{padding:56px var(--page-pad);display:flex;justify-content:center;background:var(--section-bg,#0000)}
+    .band-inner{width:min(1100px,100%);display:grid;gap:0}
+
+    .game-hero-band{--section-bg:var(--hero-bg);border-bottom:1px solid var(--line)}
+    .game-overview-band{--section-bg:var(--content-bg)}
+
+    .game-hero{display:grid;grid-template-columns:1.32fr 1fr;gap:36px;align-items:center}
+    .hero-media{background:transparent;border-radius:var(--radius);overflow:hidden;position:relative;min-height:384px;display:flex;align-items:center;justify-content:center;padding:0}
+    .hero-media img{width:100%;height:auto;object-fit:contain}
+    .media-fallback{width:100%;height:100%;display:grid;place-items:center;border:2px dashed rgba(255,255,255,.18);border-radius:calc(var(--radius) - 6px);color:var(--ink-weak);font-size:14px;text-align:center;line-height:1.6;padding:20px}
+    .hero-info{display:grid;gap:12px}
+    .hero-heading{display:grid;gap:2px;margin-bottom:4px}
+    .game-category{font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:var(--ink-weak)}
+
+    .game-title{font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Noto Sans JP','BIZ UDGothic','Yu Gothic',Meiryo,sans-serif;font-size:40px;letter-spacing:.04em;display:grid;place-items:center;text-align:center;line-height:1.1}
+    .game-title img{width:100%;height:auto;margin:0 auto;display:block}
+    .game-title-text{display:block}
+    .game-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;padding:0;border-radius:var(--panel-radius);background:rgba(255,255,255,.04);border:1px solid var(--line);overflow:hidden}
+    .game-meta>div{position:relative;padding:18px 16px;display:grid;gap:6px;justify-items:center}
+    .game-meta>div:not(:last-child)::after{content:"";position:absolute;top:18px;bottom:18px;right:0;width:1px;background:var(--line)}
+    .game-meta dt{font-size:12px;letter-spacing:.12em;color:var(--ink-weak);text-align:center}
+    .game-meta dd{margin:0;font-size:18px;font-weight:700;letter-spacing:.06em;text-align:center}
+    .hero-lead{font-size:16px;line-height:1.8;color:#dde3ec}
+
+    .game-overview{display:grid;grid-template-columns:1fr 0.92fr;gap:36px;align-items:start}
+    .overview-text{display:grid;gap:28px}
+    .overview-block{display:grid;gap:14px;background:rgba(31,39,48,.72);border-radius:var(--radius);padding:24px;border:1px solid var(--line)}
+    .overview-block h2{font-size:22px;letter-spacing:.08em}
+    .overview-block p{font-size:15px;line-height:1.9;color:#d7dee8}
+    .component-list{margin:0;padding-left:20px;display:grid;gap:6px;font-size:15px;line-height:1.8;color:#d7dee8}
+    .component-note{font-size:13px;line-height:1.8;color:var(--ink-weak)}
+
+    .purchase-block{display:grid;gap:16px;padding:0}
+    .purchase-block::before,
+    .purchase-block::after{content:"";display:block;height:1px;background:rgba(255,255,255,.32)}
+    .purchase-cta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:center;justify-items:center;width:100%}
+    .purchase-cta>*{width:100%;text-align:center}
+    .cta-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 22px;border-radius:var(--panel-radius);background:var(--accent);color:var(--bg);font-weight:700;font-size:15px;letter-spacing:.06em;border:none;box-shadow:0 6px 16px rgba(0,0,0,.28);transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease;width:100%}
+    .cta-button:hover{transform:translateY(-1px);box-shadow:0 10px 20px rgba(0,0,0,.3);background:#ffc55d;color:var(--bg)}
+    .purchase-price{font-size:24px;font-weight:700;letter-spacing:.06em;display:flex;align-items:center;justify-content:center;line-height:1.4;width:100%}
+    .purchase-note{font-size:13px;color:var(--ink-weak)}
+
+    .overview-media{display:grid;gap:24px}
+    .media-block{display:grid;gap:16px;background:rgba(31,39,48,.72);border-radius:var(--radius);padding:24px;border:1px solid var(--line)}
+    .media-block h2{font-size:18px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-weak)}
+    .media-video{position:relative;padding-top:56.25%;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#111722}
+    .media-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    .media-carousel{display:grid;gap:14px}
+    .media-carousel-viewport{position:relative;overflow:hidden;border-radius:14px}
+    .media-carousel-track{display:flex;transition:transform .4s ease}
+    .media-carousel-item{margin:0;flex:0 0 100%;min-width:100%;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#111722;display:grid;place-items:center}
+    .media-carousel-item img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;cursor:zoom-in}
+    .media-carousel-controls{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .carousel-button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.08);color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:background-color .18s ease,transform .18s ease,color .18s ease,border-color .18s ease}
+    .carousel-button:hover{background:var(--accent);color:var(--bg);border-color:transparent;transform:translateY(-1px)}
+    .carousel-button:disabled{opacity:.38;cursor:not-allowed;background:rgba(255,255,255,.04);color:var(--ink-weak);border-color:var(--line);transform:none}
+    .carousel-status{margin:0;font-size:13px;color:var(--ink-weak);letter-spacing:.08em}
+
+    footer{padding:28px var(--page-pad) 32px;border-top:1px solid var(--line);display:grid;gap:12px;justify-items:center;background:rgba(17,22,29,.72)}
+    .sns{display:flex;gap:14px;justify-content:center}
+    .sns a{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#ffffff12;border:1px solid var(--line);color:var(--ink);transition:transform .18s ease,background-color .18s ease,box-shadow .18s ease,color .18s ease;--sns-play:var(--bg)}
+    .sns a:hover{transform:scale(1.06);background:var(--accent);color:var(--bg);box-shadow:var(--shadow);border-color:transparent;--sns-play:var(--ink)}
+    .sns svg{width:20px;height:20px}
+    .sns path{fill:currentColor}
+    .sns path.play{fill:var(--sns-play);transition:fill .18s ease}
+    .footer-copy{margin:0;color:var(--ink-weak);font-size:12px;letter-spacing:.04em;text-align:center}
+
+    @media (max-width:1024px){
+      .game-hero{grid-template-columns:1fr;gap:28px;align-items:start}
+      .hero-media{min-height:auto}
+      .hero-media img{width:100%}
+      .purchase-cta{grid-template-columns:1fr}
+    }
+
+    @media (max-width:720px){
+      :root{--page-pad:18px}
+      header{padding-top:24px}
+      .game-hero{gap:24px}
+      .hero-media{border-radius:var(--panel-radius)}
+      .overview-block{padding:20px}
+      .overview-media{gap:20px}
+    }
+
+    @media (max-width:540px){
+      .section-band{padding:44px var(--page-pad)}
+      .game-title{font-size:32px}
+      .game-meta{grid-template-columns:1fr}
+      .game-meta>div:not(:last-child)::after{display:none}
+      .game-meta>div{border-bottom:1px solid rgba(255,255,255,.12)}
+      .game-meta>div:last-child{border-bottom:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <a class="brand-logo" href="../../index.html?skipLoading=1#top" aria-label="トップページへ戻る">
+        <img src="../../image/general/logo.png" alt="Pentas Studio" loading="lazy">
+      </a>
+      <div class="brand-name">
+        <img src="../../image/general/let_logo.png" alt="Pentas Studio" loading="lazy">
+      </div>
+    </header>
+
+    <main>
+      <article aria-labelledby="gameTitle">
+        <section class="section-band game-hero-band">
+          <div class="band-inner">
+            <div class="game-hero">
+              <div class="hero-media" aria-label="ゲーム紹介画像">
+                <img src="../../image/games/abcepture/abcepture.png" alt="アブセプチャーのキービジュアル" loading="lazy">
+              </div>
+              <div class="hero-info">
+                <div class="hero-heading">
+                  <h1 id="gameTitle" class="game-title">
+                    <span class="game-title-text">アブセプチャー</span>
+                  </h1>
+                  <p class="game-category">ボードゲーム / アクション</p>
+                </div>
+                <p class="hero-lead">ジェスチャーゲームの最終形！！<br>もしもジェスチャーゲームのお題が「抽象的」だったら…？</p>
+                <dl class="game-meta">
+                  <div>
+                    <dt>プレイ人数</dt>
+                    <dd>3〜5人</dd>
+                  </div>
+                  <div>
+                    <dt>プレイ時間</dt>
+                    <dd>10〜15分</dd>
+                  </div>
+                  <div>
+                    <dt>対象年齢</dt>
+                    <dd>12歳〜</dd>
+                  </div>
+                </dl>
+                <section class="purchase-block" aria-label="購入情報">
+                  <div class="purchase-cta">
+                    <span class="purchase-price">￥1,500</span>
+                    <a class="cta-button" href="https://booth.pm/ja/items/1934044" target="_blank" rel="noopener noreferrer">BOOTHで購入</a>
+                  </div>
+                  <p class="purchase-note">※ 外部サイト「BOOTH」の商品ページに移動します。</p>
+                </section>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-band game-overview-band">
+          <div class="band-inner">
+            <div class="game-overview">
+              <div class="overview-text">
+                <section class="overview-block" aria-labelledby="overviewHeading">
+                  <h2 id="overviewHeading">ゲーム概要</h2>
+                  <p>ーSTORYー</p>
+                  <p>時は20XX年。宇宙へと進出した人類は、宇宙人との接触に成功した。君たちには、人類の文化たる「言語」の伝達という任務が与えられた。宇宙人との接触可能な時間は30秒。限られた時間の中で、君はいくつの言葉を伝えられるか！</p>
+                </section>
+
+                <section class="overview-block" aria-labelledby="featureHeading">
+                  <h2 id="featureHeading">ゲームの特徴</h2>
+                  <p>制限時間は30秒！あなたのお題は「時差」「大変」「神話」。さあ、あなたならどうやって伝える・・・？</p>
+                  <ul class="component-list">
+                    <li>ジェスチャーする人が複数おり、それぞれの人に別々のお題が与えられること</li>
+                    <li>当たったら次のお題……ではなく、制限時間内に選んだお題の全てを一気にジェスチャーすること</li>
+                    <li>お題が抽象的なこと</li>
+                  </ul>
+                </section>
+
+                <section class="overview-block" aria-labelledby="componentHeading">
+                  <h2 id="componentHeading">コンポーネント</h2>
+                  <ul class="component-list">
+                    <li>お題カード 40枚</li>
+                    <li>アイテムカード 5枚</li>
+                    <li>サイコロ 1個</li>
+                    <li>説明書 1枚</li>
+                  </ul>
+                </section>
+              </div>
+
+              <div class="overview-media">
+                <section class="media-block" aria-labelledby="galleryHeading">
+                  <h2 id="galleryHeading">ギャラリー</h2>
+                  <div class="media-carousel" data-carousel>
+                    <div class="media-carousel-viewport">
+                      <div class="media-carousel-track" data-carousel-track>
+                        <figure class="media-carousel-item">
+                          <img src="../../image/games/abcepture/absepture_main.png" alt="アブセプチャーのプレイ風景イメージ" loading="lazy">
+                        </figure>
+                        <figure class="media-carousel-item">
+                          <img src="../../image/games/abcepture/intro.jpg" alt="アブセプチャーのゲーム紹介イメージ" loading="lazy">
+                        </figure>
+                        <figure class="media-carousel-item">
+                          <img src="../../image/games/abcepture/abcepture_mock.png" alt="アブセプチャーのコンポーネントイメージ" loading="lazy">
+                        </figure>
+                      </div>
+                    </div>
+                    <div class="media-carousel-controls">
+                      <button type="button" class="carousel-button" data-carousel-button="prev" aria-label="前の画像" disabled>
+                        <span aria-hidden="true">‹</span>
+                      </button>
+                      <p class="carousel-status" data-carousel-status aria-live="polite">1 / 3</p>
+                      <button type="button" class="carousel-button" data-carousel-button="next" aria-label="次の画像">
+                        <span aria-hidden="true">›</span>
+                      </button>
+                    </div>
+                  </div>
+                </section>
+
+                <section class="media-block" aria-labelledby="videoHeading">
+                  <h2 id="videoHeading">動画</h2>
+                  <div class="media-video">
+                    <iframe src="https://www.youtube.com/embed/P-iGD4RyPMs" title="アブセプチャー紹介動画" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </section>
+      </article>
+    </main>
+
+    <footer aria-label="フッター">
+      <div class="sns" aria-label="SNSリンク">
+        <a href="https://x.com/bdg_de_asobo" aria-label="X" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M18.244 3H21.5l-7.52 8.59L22 21h-6.31l-4.94-6.43L4.81 21H1.5l7.81-8.93L2 3h6.31l4.5 5.84L18.244 3Z"/>
+          </svg>
+        </a>
+        <a href="https://www.youtube.com/@%E3%83%9A%E3%83%B3%E3%82%BF%E3%82%B9%E3%82%B9%E3%82%BF%E3%82%B8%E3%82%AA" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21.6 7.6a2 2 0 0 0-1.4-1.4C18.7 5.8 12 5.8 12 5.8s-6.7 0-8.2.4A2 2 0 0 0 2.4 7.6C2 9.1 2 12 2 12s0 2.9.4 4.4a2 2 0 0 0 1.4 1.4c1.5.4 8.2.4 8.2.4s6.7 0 8.2-.4a2 2 0 0 0 1.4-1.4c.4-1.5.4-4.4.4-4.4s0-2.9-.4-4.4Z"/>
+            <path class="play" d="M10.5 9.75v4.5L15 12l-4.5-2.25Z"/>
+          </svg>
+        </a>
+        <a href="https://pentasufide.booth.pm/" aria-label="BOOTH ショップ" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 6h16l-1.2 8.4a2 2 0 0 1-2 1.6H8.2l-.4 2h10.7v2H6a1 1 0 0 1-1-.8L3 6Z"/>
+            <path d="M9 18H7.2L5.5 8h13l-.9 6.2a2 2 0 0 1-2 1.6H9Z"/>
+          </svg>
+        </a>
+      </div>
+      <p class="footer-copy">© pantas studio All Right Reserved.</p>
+    </footer>
+    <div class="lightbox" data-lightbox aria-hidden="true" role="dialog" aria-label="ギャラリー拡大画像ビュー">
+      <button type="button" class="lightbox-close" data-lightbox-close aria-label="閉じる">
+        <span aria-hidden="true">×</span>
+      </button>
+      <img src="" alt="" class="lightbox-image" data-lightbox-image>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const body = document.body;
+      const lightbox = document.querySelector('[data-lightbox]');
+      const lightboxImage = lightbox?.querySelector('[data-lightbox-image]');
+      const closeButton = lightbox?.querySelector('[data-lightbox-close]');
+
+      const closeLightbox = () => {
+        if (!lightbox || !lightboxImage || !lightbox.classList.contains('is-active')) return;
+        lightbox.classList.remove('is-active');
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightboxImage.removeAttribute('src');
+        lightboxImage.removeAttribute('alt');
+        body.classList.remove('is-lightbox-open');
+      };
+
+      const openLightbox = (img) => {
+        if (!lightbox || !lightboxImage) return;
+        lightboxImage.src = img.src;
+        lightboxImage.alt = img.alt || '';
+        lightbox.classList.add('is-active');
+        lightbox.setAttribute('aria-hidden', 'false');
+        body.classList.add('is-lightbox-open');
+      };
+
+      if (lightbox) {
+        lightbox.addEventListener('click', (event) => {
+          if (event.target === lightbox) {
+            closeLightbox();
+          }
+        });
+      }
+
+      closeButton?.addEventListener('click', () => {
+        closeLightbox();
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeLightbox();
+        }
+      });
+
+      document.querySelectorAll('[data-carousel]').forEach((carousel) => {
+        const track = carousel.querySelector('[data-carousel-track]');
+        if (!track) return;
+        const slides = Array.from(track.children);
+        if (!slides.length) return;
+        const prevButton = carousel.querySelector('[data-carousel-button="prev"]');
+        const nextButton = carousel.querySelector('[data-carousel-button="next"]');
+        const status = carousel.querySelector('[data-carousel-status]');
+        let index = 0;
+        const total = slides.length;
+        const hasMultiple = total > 1;
+
+        const update = () => {
+          track.style.transform = `translateX(-${index * 100}%)`;
+          if (prevButton) prevButton.disabled = !hasMultiple;
+          if (nextButton) nextButton.disabled = !hasMultiple;
+          if (status) status.textContent = `${index + 1} / ${total}`;
+        };
+
+        if (hasMultiple) {
+          prevButton?.addEventListener('click', () => {
+            index = (index - 1 + total) % total;
+            update();
+          });
+
+          nextButton?.addEventListener('click', () => {
+            index = (index + 1) % total;
+            update();
+          });
+        }
+
+        update();
+
+        slides.forEach((slide) => {
+          const image = slide.querySelector('img');
+          if (image) {
+            image.addEventListener('click', () => openLightbox(image));
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
