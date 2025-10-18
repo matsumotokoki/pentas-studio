@@ -238,7 +238,7 @@
       <section id="news" class="ps-section ps-news" aria-label="ニュース">
         <h2>NEWS</h2>
         <div class="ps-news-list" id="newsList"></div>
-        <div class="ps-news-actions"><a class="btn ps-news-more" href="#">More</a></div>
+        <div class="ps-news-actions"><a class="btn ps-news-more" href="news/2025-11-01/2025-11-01.html">More</a></div>
       </section>
 
       <section id="games" class="ps-section ps-games" aria-label="ゲーム一覧">
@@ -529,8 +529,17 @@ document.addEventListener('DOMContentLoaded', function(){
   (function(){
     const newsList=document.getElementById('newsList');
     if(!newsList) return;
-    [['10/1','公式サイトリニューアルについて'],['10/2','2025秋 ゲームマーケット出展のお知らせ'],['10/3', '新作 ゆめゆめ情報解禁']]
-      .forEach(([d,t])=>{ const a=document.createElement('a'); a.href='#'; a.className='ps-news-item'; a.innerHTML=`<div class='ps-news-time'>${d}</div><div>${t}</div><div class='ps-news-arrow'>→</div>`; newsList.appendChild(a); });
+    const NEWS = [
+      {date:'11/1', title:'公式サイトリニューアルについて', href:'news/2025-11-01/2025-11-01.html'}
+    ];
+
+    NEWS.forEach(({date, title, href})=>{
+      const a=document.createElement('a');
+      a.href=href || '#';
+      a.className='ps-news-item';
+      a.innerHTML=`<div class='ps-news-time'>${date}</div><div>${title}</div><div class='ps-news-arrow'>→</div>`;
+      newsList.appendChild(a);
+    });
   })();
 
   // ===== Games grid (left) =====
