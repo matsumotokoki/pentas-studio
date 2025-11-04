@@ -63,7 +63,7 @@
   .ps-works-rotator .prev{left:12px}
   .ps-works-rotator .next{right:12px}
   .ps-works-rotator .frame.grabbing{cursor:grabbing}
-  .ps-works-rotator .title{padding:12px 2px 0;font-size:12px;color:var(--ink-weak)}
+  .ps-works-rotator .title{padding:12px 2px 0;font-size:20px;color:var(--ink-weak)}
 
   /* ===== News ===== */
   .ps-news h2{font-size:24px;letter-spacing:.06em;margin:0 0 14px}
@@ -83,7 +83,7 @@
   .ps-game:hover{transform:scale(1.035);box-shadow:var(--shadow);border-color:rgba(255,186,58,.6);z-index:1}
   .ps-game .mock{background:var(--surface);display:grid;place-items:center;overflow:hidden}
   .ps-game .mock > img{width:100%;height:100%;object-fit:contain;object-position:center}
-  .ps-game .title{padding:10px 12px;font-size:12px;border-top:1px solid var(--line);color:#e6edf5;letter-spacing:.02em;background:linear-gradient(180deg, rgba(255,186,58,.06), transparent)}
+  .ps-game .title{padding:10px 12px;font-size:16px;border-top:1px solid var(--line);color:#e6edf5;letter-spacing:.02em;background:linear-gradient(180deg, rgba(255,186,58,.06), transparent)}
   .ps-games-actions{display:flex;justify-content:flex-end;margin-top:12px}
 
   /* ===== Members (角丸オレンジ演出 + リンク) ===== */
@@ -93,12 +93,12 @@
   .ps-member{display:grid;justify-items:center;gap:10px;text-align:center;padding:10px;border:2px solid transparent;border-radius:var(--radius);transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, background-color .18s ease}
   .ps-member:hover{transform:scale(1.03);box-shadow:var(--shadow);border-color:var(--accent);background:rgba(255,186,58,.08)}
   .avatar{width:140px;height:140px;border-radius:50%;object-fit:cover;background:#0f1720;border:1px solid var(--line)}
-  .member-name{font-weight:700}
+  .member-name{font-weight:700;font-size:16px;}
   .member-role{color:var(--ink-weak);font-size:12px}
 
   /* ===== Right: NAV ===== */
   .ps-side-nav{display:grid;grid-template-columns:repeat(5,1fr);align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);background:rgba(41,50,59,.86);backdrop-filter:saturate(1.2) blur(4px)}
-  .ps-side-nav a{justify-self:center;font-size:14px;opacity:.92;text-transform:uppercase;padding:6px 8px;border-radius:8px;transition:color .12s ease, opacity .12s ease, background-color .12s ease}
+  .ps-side-nav a{justify-self:center;font-size:20px;opacity:.92;text-transform:uppercase;padding:6px 8px;border-radius:8px;transition:color .12s ease, opacity .12s ease, background-color .12s ease}
   .ps-side-nav a:hover,.ps-side-nav a:focus-visible{opacity:1;color:var(--bg);background:var(--accent)}
 
   /* ===== Right: marquee gallery ===== */
@@ -280,7 +280,7 @@
     <aside class="ps-right">
       <nav class="ps-side-nav" aria-label="サイト内ナビ">
         <a href="#top" data-nav="top">top</a>
-        <a href="#games" data-nav="games">games</a>
+        <a href="games/games.html">games</a>
         <a href="#news" data-nav="news">news</a>
         <a href="#" data-panel="about">about</a>
         <a href="#" data-panel="contact">contact</a>
