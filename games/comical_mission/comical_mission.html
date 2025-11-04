@@ -75,6 +75,10 @@
     .overview-block{display:grid;gap:14px;background:rgba(31,39,48,.72);border-radius:var(--radius);padding:24px;border:1px solid var(--line)}
     .overview-block h2{font-size:22px;letter-spacing:.08em}
     .overview-block p{font-size:15px;line-height:1.9;color:#d7dee8}
+    .overview-block strong{color:var(--accent)}
+    /* data-variant="ink" または .is-ink で白い強調に切り替え */
+    .overview-block strong.is-ink,
+    .overview-block strong[data-variant="ink"]{color:var(--ink)}
     .component-list{margin:0;padding-left:20px;display:grid;gap:6px;font-size:15px;line-height:1.8;color:#d7dee8}
     .component-note{font-size:13px;line-height:1.8;color:var(--ink-weak)}
 
