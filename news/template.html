@@ -83,6 +83,9 @@
     .entry-body p{margin:0;font-size:16px;line-height:2;color:#e4eaf1;letter-spacing:.01em}
     .entry-body p + p{margin-top:-4px}
     .entry-body strong{color:var(--accent)}
+    /* data-variant="ink" または .is-ink で白い強調に切り替え */
+    .entry-body strong.is-ink,
+    .entry-body strong[data-variant="ink"]{color:var(--ink)}
     .entry-body figure{margin:0;border-radius:var(--radius);overflow:hidden;background:rgba(20,27,35,.72);border:1px solid rgba(255,255,255,.08)}
     .entry-body figure img{width:100%;height:auto;display:block}
     .entry-body blockquote{margin:0;padding:24px 28px;border-left:4px solid var(--accent);background:rgba(16,22,30,.78);border-radius:0 var(--radius) var(--radius) 0;color:#eaf1f7;font-size:16px;line-height:1.9}
