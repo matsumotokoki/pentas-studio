@@ -104,6 +104,17 @@
     .carousel-button:disabled{opacity:.38;cursor:not-allowed;background:rgba(255,255,255,.04);color:var(--ink-weak);border-color:var(--line);transform:none}
     .carousel-status{margin:0;font-size:13px;color:var(--ink-weak);letter-spacing:.08em}
 
+    .errata-block{display:grid;gap:16px;background:rgba(31,39,48,.72);border-radius:var(--radius);padding:24px;border:1px solid var(--line)}
+    .errata-title{font-size:18px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-weak)}
+    .errata-list{display:grid;gap:12px}
+    .errata-item{border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.04);overflow:hidden}
+    .errata-item summary{display:flex;align-items:center;gap:10px;padding:12px 14px;font-weight:700;letter-spacing:.04em;cursor:pointer;list-style:none}
+    .errata-item summary::-webkit-details-marker{display:none}
+    .errata-item summary::after{content:"＋";margin-left:auto;font-weight:700;color:var(--accent)}
+    .errata-item[open] summary::after{content:"－"}
+    .errata-content{padding:0 14px 14px;color:#d7dee8;line-height:1.8;font-size:14px;display:grid;gap:6px}
+    .errata-content strong{color:var(--accent)}
+
     body.is-lightbox-open{overflow:hidden}
     .lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:32px;background:rgba(12,16,24,.86);backdrop-filter:blur(4px);z-index:999}
     .lightbox.is-active{display:flex}
@@ -259,6 +270,29 @@
                         <span aria-hidden="true">›</span>
                       </button>
                     </div>
+                  </div>
+                </section>
+
+                <section class="errata-block" aria-labelledby="errataHeading">
+                  <h2 id="errataHeading" class="errata-title">エラッタ</h2>
+                  <div class="errata-list">
+                    <details class="errata-item">
+                      <summary>雨宮詩織のキャラクター設定書</summary>
+                      <div class="errata-content">
+                        <p><strong>p.8 3行目</strong></p>
+                        <p>誤）あなたはここ最近、記憶がありません。その中でなぜか予知夢が見えるようになっています。</p>
+                        <p>正）あなたはここ最近、毎日のように予知夢が見えるようになっています。</p>
+                        <p><strong>p.11 14行目</strong></p>
+                        <p>誤）加賀美「加賀美「</p>
+                        <p>正）加賀美「</p>
+                      </div>
+                    </details>
+                    <details class="errata-item">
+                      <summary>加賀美隆一のキャラクター設定書</summary>
+                      <div class="errata-content">
+                        <p>現時点でエラッタはありません。</p>
+                      </div>
+                    </details>
                   </div>
                 </section>
               </div>
