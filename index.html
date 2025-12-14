@@ -160,15 +160,14 @@
   .loader{ display:none; }
 
   /* ===== About（新規デザイン） ===== */
-  .about-wrap{display:grid;gap:32px;justify-items:center;text-align:center;width:100%}
-  .about-hero{display:grid;gap:18px;justify-items:center}
-  .about-kicker{color:var(--ink-weak);font-size:18px;letter-spacing:.08em;font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Noto Sans JP','BIZ UDGothic','Yu Gothic',Meiryo,sans-serif}
-  .about-lead{font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Noto Sans JP','BIZ UDGothic','Yu Gothic',Meiryo,sans-serif;font-size:clamp(36px,4.2vw,50px);line-height:1.18;letter-spacing:.04em;font-weight:700;position:relative;display:inline-block;padding:0 4px}
-  .about-lead::after{content:"";display:block;width:120px;height:3px;margin:20px auto 0;background:var(--accent);border-radius:999px;box-shadow:0 4px 14px rgba(255,186,58,.35)}
-  .about-sub{color:#e4eaf1;opacity:.95;max-width:680px;text-align:left;margin:8px auto 0}
-  .about-sub p{margin:0 0 14px}
-  .about-sub p:last-child{margin-bottom:0}
-  .about-sep{height:1px;background:linear-gradient(90deg, transparent, var(--line), transparent);margin:16px auto;width:72%}
+  .about-wrap{display:grid;gap:28px;justify-items:center;text-align:center;width:100%}
+  .about-head{display:grid;gap:6px;justify-items:center}
+  .about-lead{font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Noto Sans JP','BIZ UDGothic','Yu Gothic',Meiryo,sans-serif;font-size:clamp(34px,4vw,46px);line-height:1.12;font-weight:700;letter-spacing:.08em}
+  .about-subtitle{color:var(--ink-weak);font-size:14px;letter-spacing:.14em;text-transform:uppercase;font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Noto Sans JP','BIZ UDGothic','Yu Gothic',Meiryo,sans-serif;line-height:1.2}
+  .about-tagline{margin-top:10px;font-size:clamp(22px,3vw,30px);font-weight:800;color:var(--ink);letter-spacing:.08em;position:relative;display:inline-block;padding:0 6px 10px}
+  .about-tagline::after{content:"";position:absolute;left:50%;transform:translateX(-50%);bottom:0;width:70%;height:3px;background:var(--accent);border-radius:999px;box-shadow:0 4px 12px rgba(255,186,58,.4)}
+  .about-message{max-width:720px;color:#e4eaf1;opacity:.95;line-height:1.85;margin:10px auto 0;text-align:left;display:grid;gap:12px}
+  .about-message p{margin:0}
   .about-facts{display:grid;grid-template-columns:1fr;gap:18px;width:100%;justify-items:center}
   .about-facts h3{font-size:16px;letter-spacing:.22em;color:var(--ink-weak);text-transform:uppercase;font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Noto Sans JP','BIZ UDGothic','Yu Gothic',Meiryo,sans-serif}
   .facts-grid{display:grid;grid-template-columns:auto 1fr;gap:12px 22px;padding:18px 24px;border:1px solid var(--line);border-radius:18px;background:rgba(255,186,58,.04);width:100%;max-width:620px;text-align:left}
@@ -303,16 +302,16 @@
         <section class="ps-view ps-panel is-hidden" id="panelAbout">
           <div class="ps-panel-inner">
             <div class="about-wrap">
-              <div class="about-hero">
-                <div class="about-kicker">-ABOUT- ペンタススタジオとは</div>
-                <h2 class="about-lead">遊びで心の距離を縮める</h2>
-                <div class="about-sub">
-                  <p>ゲームをきっかけに爆笑が巻き起こったり、その仲間だけのノリが生まれたり。新しい文化に出会えたり、仲の良い人ともっと近づけたり。</p>
-                  <p>ただ「楽しい」だけじゃ終わらせない。遊んだ先に、その人たちの人生が少しでも豊かになる体験を届けることが私たちの目標です。</p>
-                  <div class="about-sep" aria-hidden="true"></div>
-                  <p>ペンタススタジオは2018年にボードゲーム制作のために結成されたチームです。私たち自身が「本当に面白いもの」を追い求め、その想いや楽しさをカタチにして皆さまのもとへ届けています。</p>
-                  <p>ゲームデザイン、イラスト、開発、シナリオ、マーケティングなど、それぞれの分野に本業を持つ4人のメンバーで大部分を自主制作しております。</p>
-                </div>
+              <div class="about-head">
+                <h2 class="about-lead">ABOUT</h2>
+                <div class="about-subtitle">ペンタススタジオとは</div>
+                <div class="about-tagline">遊びで心の距離を縮める</div>
+              </div>
+              <div class="about-message">
+                <p>ゲームをきっかけに爆笑が巻き起こったり、その仲間だけのノリが生まれたり。新しい文化に出会えたり、仲の良い人ともっと近づけたり。</p>
+                <p>ただ「楽しい」だけじゃ終わらせない。遊んだ先に、その人たちの人生が少しでも豊かになる体験を届けることが私たちの目標です。</p>
+                <p>ペンタススタジオは2018年にボードゲーム制作のために結成されたチームです。私たち自身が「本当に面白いもの」を追い求め、その想いや楽しさをカタチにして皆さまのもとへ届けています。</p>
+                <p>ゲームデザイン、イラスト、開発、シナリオ、マーケティングなど、それぞれの分野に本業を持つ4人のメンバーで大部分を自主制作しております。</p>
               </div>
 
               <div class="about-facts" aria-label="チーム概要">
