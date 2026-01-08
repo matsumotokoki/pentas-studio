@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="ペンタススタジオのニュース一覧ページ。最新情報やイベント出展、メディア掲載などの更新日とジャンルをまとめて確認できます。" />
+  <meta property="og:title" content="News | ペンタススタジオ" />
+  <meta property="og:description" content="ペンタススタジオのニュース一覧ページ。最新情報やイベント出展、メディア掲載などの更新日とジャンルをまとめて確認できます。" />
+  <meta property="og:image" content="https://www.pentas-studio.com/image/general/logo.png" />
+  <meta property="og:url" content="https://www.pentas-studio.com/news/gallery.html" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="News | ペンタススタジオ" />
+  <meta name="twitter:description" content="ペンタススタジオのニュース一覧ページ。最新情報やイベント出展、メディア掲載などの更新日とジャンルをまとめて確認できます。" />
+  <meta name="twitter:image" content="https://www.pentas-studio.com/image/general/logo.png" />
+  <meta name="twitter:url" content="https://www.pentas-studio.com/news/gallery.html" />
+  <title>News | ペンタススタジオ</title>
+  <link rel="canonical" href="https://www.pentas-studio.com/news/gallery.html" />
+  <link rel="icon" type="image/png" href="../image/general/logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#29323b;
+      --surface:#1f2730;
+      --surface-soft:#212a33;
+      --ink:#eff3f8;
+      --ink-weak:#aeb8c4;
+      --line:#394656;
+      --accent:#FFBA3A;
+      --radius:16px;
+      --shadow:0 10px 24px rgba(0,0,0,.35);
+      --page-pad:20px;
+    }
+
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP","BIZ UDGothic","Yu Gothic",Meiryo,sans-serif;
+      line-height:1.7;
+    }
+    img{display:block;max-width:100%;height:auto;user-select:none;-webkit-user-drag:none}
+    a{color:inherit;text-decoration:none}
+    h1,h2,h3,p{margin:0}
+
+    .page{min-height:100vh;display:grid;grid-template-rows:auto 1fr auto}
+
+    header{padding:32px var(--page-pad) 20px;display:grid;gap:18px;justify-items:center;text-align:center;border-bottom:1px solid var(--line);background:rgba(31,39,48,.92)}
+    .brand-logo{width:120px;height:120px;border-radius:50%;overflow:hidden;display:grid;place-items:center;background:transparent}
+    .brand-logo img{width:100%;height:100%;object-fit:contain}
+    .brand-name{font-family:'Rampart One',system-ui,sans-serif;font-size:32px;letter-spacing:.02em}
+    .brand-name img{max-height:78px;object-fit:contain;margin:0 auto}
+
+    main{padding:44px var(--page-pad) 70px}
+    .news-gallery{display:grid;gap:28px}
+    .gallery-head{display:grid;gap:2px;justify-items:center;text-align:center}
+    .gallery-sub{color:var(--ink-weak);font-size:16px;letter-spacing:.16em;text-transform:uppercase}
+    .gallery-title{font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Noto Sans JP','BIZ UDGothic','Yu Gothic',Meiryo,sans-serif;font-size:32px;letter-spacing:.12em}
+    .news-list{display:grid;gap:18px;grid-template-columns:repeat(3,minmax(0,1fr));max-width:1200px;margin:0 auto}
+    .news-card{
+      display:grid;
+      grid-template-rows:auto 1fr;
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    .news-card:hover{
+      transform:translateY(-4px);
+      box-shadow:var(--shadow);
+      border-color:rgba(255,186,58,.5);
+    }
+
+    .news-thumb{position:relative;overflow:hidden;background:var(--surface-soft);aspect-ratio:16 / 9;display:flex;align-items:center;justify-content:center;padding:12px}
+    .news-thumb img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+
+    .news-content{display:grid;gap:12px;padding:16px 16px 18px;grid-template-rows:auto auto 1fr auto}
+    .news-meta{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+    .news-tag{padding:6px 12px;border-radius:999px;border:1px solid rgba(255,186,58,.5);color:var(--accent);font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+    .news-date{display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.12em;color:var(--ink-weak)}
+    .news-date time{font-variant-numeric:tabular-nums;color:var(--ink)}
+    .news-title{font-size:18px;line-height:1.5;letter-spacing:.02em;min-height:3em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .news-arrow{justify-self:end;display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+    .news-arrow span{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;border:1px solid rgba(255,186,58,.6)}
+
+    footer{padding:24px var(--page-pad) 34px;border-top:1px solid var(--line);display:grid;gap:12px;justify-items:center;background:rgba(23,30,39,.94)}
+    .sns{display:flex;gap:12px;justify-content:center}
+    .sns a{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#ffffff12;border:1px solid var(--line);color:var(--ink);transition:transform .18s ease, background-color .18s ease, box-shadow .18s ease, color .18s ease;--sns-play:var(--bg)}
+    .sns a:hover{transform:scale(1.06);background:var(--accent);color:var(--bg);box-shadow:var(--shadow);border-color:transparent;--sns-play:var(--ink)}
+    .sns svg{width:20px;height:20px}
+    .sns path{fill:currentColor}
+    .sns path.play{fill:var(--sns-play);transition:fill .18s ease}
+    .footer-copy{margin:0;color:var(--ink-weak);font-size:12px;letter-spacing:.04em;text-align:center}
+
+    @media (max-width:1049px){.news-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media (max-width:699px){.news-list{grid-template-columns:1fr}}
+    @media (max-width:639px){.news-list{grid-template-columns:1fr}}
+    @media (max-width:639px){
+      :root{--page-pad:16px}
+      header{padding-top:28px}
+      .brand-name{font-size:28px}
+      .gallery-title{font-size:26px}
+      .news-content{padding:18px 18px 22px}
+      .news-title{font-size:20px}
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header aria-label="サイトヘッダー">
+      <a class="brand-logo" href="../index.html?skipLoading=1#top" aria-label="トップページへ戻る">
+        <img src="../image/general/logo.png" alt="Pentas Studio" loading="lazy">
+      </a>
+      <div class="brand-name">
+        <img src="../image/general/let_logo.png" alt="Pentas Studio" loading="lazy">
+      </div>
+    </header>
+
+    <main>
+      <section class="news-gallery" aria-label="ニュース一覧">
+        <div class="gallery-head">
+          <div class="gallery-sub">News</div>
+          <h1 class="gallery-title">ニュース</h1>
+        </div>
+
+        <div class="news-list">
+          <a class="news-card" href="2025-11-18/2025-11-18.html" aria-label="コミカルミッションがTBS「ラヴィット！」で紹介されました">
+            <figure class="news-thumb">
+              <img src="2025-11-18/thumbnail.png" alt="コミカルミッションのニュースサムネイル" loading="lazy">
+            </figure>
+            <div class="news-content">
+              <div class="news-meta">
+                <span class="news-tag">INFO</span>
+                <div class="news-date"><span>更新日</span><time datetime="2025-11-18">2025.11.18</time></div>
+              </div>
+              <h2 class="news-title">『コミカルミッション』が TBS「ラヴィット！」で紹介されました！</h2>
+              <div class="news-arrow">Read More <span>→</span></div>
+            </div>
+          </a>
+
+          <a class="news-card" href="2025-11-01/2025-11-01.html" aria-label="公式サイトリニューアルについて">
+            <figure class="news-thumb">
+              <img src="2025-11-01/thumbnail.png" alt="公式サイトリニューアルのお知らせサムネイル" loading="lazy">
+            </figure>
+            <div class="news-content">
+              <div class="news-meta">
+                <span class="news-tag">INFO</span>
+                <div class="news-date"><span>更新日</span><time datetime="2025-11-01">2025.11.01</time></div>
+              </div>
+              <h2 class="news-title">公式サイトリニューアルについて</h2>
+              <div class="news-arrow">Read More <span>→</span></div>
+            </div>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer aria-label="フッター">
+      <div class="sns" aria-label="SNSリンク">
+        <a href="https://x.com/bdg_de_asobo" aria-label="X" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M18.244 3H21.5l-7.52 8.59L22 21h-6.31l-4.94-6.43L4.81 21H1.5l7.81-8.93L2 3h6.31l4.5 5.84L18.244 3Z"/>
+          </svg>
+        </a>
+        <a href="https://www.youtube.com/@%E3%83%9A%E3%83%B3%E3%82%BF%E3%82%B9%E3%82%BF%E3%82%B8%E3%82%AA" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21.6 7.6a2 2 0 0 0-1.4-1.4C18.7 5.8 12 5.8 12 5.8s-6.7 0-8.2.4A2 2 0 0 0 2.4 7.6C2 9.1 2 12 2 12s0 2.9.4 4.4a2 2 0 0 0 1.4 1.4c1.5.4 8.2.4 8.2.4s6.7 0 8.2-.4a2 2 0 0 0 1.4-1.4c.4-1.5.4-4.4.4-4.4s0-2.9-.4-4.4Z"/>
+            <path class="play" d="M10.5 9.75v4.5L15 12l-4.5-2.25Z"/>
+          </svg>
+        </a>
+        <a href="https://pentasufide.booth.pm/" aria-label="BOOTH ショップ" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 6h16l-1.2 8.4a2 2 0 0 1-2 1.6H8.2l-.4 2h10.7v2H6a1 1 0 0 1-1-.8L3 6Z"/>
+            <path d="M9 18H7.2L5.5 8h13l-.9 6.2a2 2 0 0 1-2 1.6H9Z"/>
+          </svg>
+        </a>
+      </div>
+      <p class="footer-copy">© pantas studio All Rights Reserved.</p>
+    </footer>
+  </div>
+</body>
+</html>
