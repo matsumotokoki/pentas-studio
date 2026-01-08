@@ -277,6 +277,11 @@
   @media (max-width:1100px){ .ps-art-grid{grid-template-columns:repeat(2,1fr)} }
   @media (max-width:760px){ .ps-art-grid{grid-template-columns:1fr} }
   @media (max-width:639px){ .ps-right{display:none} }
+
+      @media (max-width:639px){
+    .ps-footer{gap:24px;padding-top:clamp(28px, 8vw, 52px);padding-bottom:clamp(28px, 8vw, 64px)}
+    .ps-footer-brand{margin:0}
+  }
 </style>
 </head>
 <body>
@@ -316,7 +321,7 @@
       <div class="ps-mobile-links">
         <a href="#top" data-nav="top">Top</a>
         <a href="games/games.html">Games</a>
-        <a href="#news" data-nav="news">News</a>
+        <a href="news/gallery.html">News</a>
       </div>
       <div class="ps-mobile-contact">
         <div class="ps-mobile-contact-title">Contact</div>
@@ -408,7 +413,7 @@
             <span class="ps-footer-sep" aria-hidden="true">|</span>
             <a href="games/games.html">Games</a>
             <span class="ps-footer-sep" aria-hidden="true">|</span>
-            <a href="#news" data-nav="news">News</a>
+            <a href="news/gallery.html">News</a>
           </nav>
         </div>
         <p class="footer-copy">© Pantas Studio All Rights Reserved.</p>
