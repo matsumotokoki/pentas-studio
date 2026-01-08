@@ -19,6 +19,20 @@
 <link rel="icon" type="image/png" href="./image/general/logo.png" />
 <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700&display=swap" rel="stylesheet">
+<script>
+  (function(){
+    try{
+      var params = new URLSearchParams(window.location.search);
+      var skipLoading = params.has('skipLoading');
+      var hasSeen = window.sessionStorage && window.sessionStorage.getItem('ps_loading_seen') === '1';
+      if(skipLoading || hasSeen){
+        document.documentElement.classList.add('ps-loading-skipped');
+      }
+    }catch(err){
+      // noop
+    }
+  })();
+</script>
 <style>
 
   /* ===== Tokens ===== */
@@ -149,6 +163,7 @@
   .is-hidden{pointer-events:none}
 
   /* ===== Loading (First-Visit Loader) ===== */
+  html.ps-loading-skipped .ps-loading{ opacity:0; pointer-events:none; visibility:hidden; }
   .ps-loading{ position:fixed; inset:0; display:grid; place-items:center; background:var(--bg); z-index:50; transition:opacity .5s ease; }
   .ps-loading.is-hidden{ opacity:0; pointer-events:none; }
   .ps-loadbox{ display:grid; gap:18px; justify-items:center; text-align:center; padding:28px 26px; border:1px solid var(--line); border-radius:var(--radius); background:rgba(20,24,29,.72); box-shadow:var(--shadow); min-width:min(90vw, 460px); }
@@ -371,10 +386,22 @@ document.addEventListener('DOMContentLoaded', function(){
     const loading = document.getElementById('loading');
     if(!loading) return;
 
+    const storageKey = 'ps_loading_seen';
     const params = new URLSearchParams(window.location.search);
     const skipLoading = params.has('skipLoading');
+    let hasSeenLoading = false;
+    try{
+      hasSeenLoading = window.sessionStorage && window.sessionStorage.getItem(storageKey) === '1';
+    }catch(err){
+      // noop
+    }
 
-    if(skipLoading){
+    if(skipLoading || hasSeenLoading){
+      try{
+        if(window.sessionStorage) window.sessionStorage.setItem(storageKey, '1');
+      }catch(err){
+        // noop
+      }
       loading.classList.add('is-hidden');
       if(window.history && window.history.replaceState){
         try{
@@ -399,6 +426,11 @@ document.addEventListener('DOMContentLoaded', function(){
     if(prefersReduced){
       if(bar) bar.style.width = '100%';
       if(num) num.textContent = '100%';
+      try{
+        if(window.sessionStorage) window.sessionStorage.setItem(storageKey, '1');
+      }catch(err){
+        // noop
+      }
       setTimeout(()=> loading.classList.add('is-hidden'), 50);
       return;
     }
@@ -432,6 +464,11 @@ document.addEventListener('DOMContentLoaded', function(){
         requestAnimationFrame(step);
       } else {
         draw(100);
+        try{
+          if(window.sessionStorage) window.sessionStorage.setItem(storageKey, '1');
+        }catch(err){
+          // noop
+        }
         setTimeout(()=> loading.classList.add('is-hidden'), 50);
       }
     }
