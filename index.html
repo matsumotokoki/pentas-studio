@@ -115,6 +115,8 @@
   /* ===== Members (角丸オレンジ演出 + リンク) ===== */
   .ps-members h2{font-size:24px;letter-spacing:.06em;margin:0 0 14px}
   .ps-members-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;justify-items:center}
+  .ps-members-divider{width:min(220px,70%);height:1px;background:rgba(255,255,255,.15);margin:28px auto 0;border-radius:999px}
+  .ps-members .about-facts{margin-top:26px}
   @media (max-width:520px){.ps-members-grid{grid-template-columns:1fr}}
   .ps-member{display:grid;justify-items:center;gap:10px;text-align:center;padding:10px;border:2px solid transparent;border-radius:var(--radius);transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, background-color .18s ease}
   .ps-member:hover{transform:scale(1.03);box-shadow:var(--shadow);border-color:var(--accent);background:rgba(255,186,58,.08)}
@@ -380,6 +382,17 @@
       <section class="ps-section ps-members" aria-label="メンバー">
         <h2>MEMBERS</h2>
         <div class="ps-members-grid" id="memberGrid"></div>
+        <div class="ps-members-divider" aria-hidden="true"></div>
+        <div class="about-facts" aria-label="チーム概要">
+          <h3>チーム概要</h3>
+          <dl class="facts-grid">
+            <dt>チーム名</dt><dd>ペンタススタジオ <span style="opacity:.8">/ Pentas Studio</span></dd>
+            <dt>設立</dt><dd>2018年11月11日</dd>
+            <dt>人数</dt><dd>4人</dd>
+            <dt>連絡先</dt><dd><a href="mailto:pentasufide.studio@gmail.com">pentasufide.studio@gmail.com</a></dd>
+            <dt>事業紹介</dt><dd>オリジナルボードゲーム・マーダーミステリー制作、オリジナルゲーム開発受託、ボードゲームイラスト・デザイン受託、シナリオ制作受託、ボードゲーム制作支援</dd>
+          </dl>
+        </div>
       </section>
 
       <footer class="ps-section ps-footer" aria-label="フッター">
