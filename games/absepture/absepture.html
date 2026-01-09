@@ -115,7 +115,18 @@
     .sns svg{width:20px;height:20px}
     .sns path{fill:currentColor}
     .sns path.play{fill:var(--sns-play);transition:fill .18s ease}
+    .sns svg.mail-icon path{fill:none;stroke:currentColor}
     .footer-copy{margin:0;color:var(--ink-weak);font-size:12px;letter-spacing:.04em;text-align:center}
+
+  .ps-footer-brand{display:flex;align-items:center;justify-content:center;gap:12px}
+  .ps-footer-logo{width:42px;height:42px;border-radius:50%;object-fit:contain;opacity:.9}
+  .ps-footer-wordmark{height:42px;width:auto;object-fit:contain;opacity:.95}
+  .ps-footer-row{display:flex;align-items:center;gap:22px;flex-wrap:wrap;justify-content:center}
+  .ps-footer-divider{width:1px;height:18px;background:var(--line);opacity:.8}
+  .ps-footer-links{display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:.22em;text-transform:uppercase}
+  .ps-footer-links a{color:var(--ink-weak);transition:color .18s ease}
+  .ps-footer-links a:hover,.ps-footer-links a:focus-visible{color:var(--accent)}
+  .ps-footer-sep{margin:0 16px;color:var(--line)}
 
     @media (max-width:1024px){
       .game-hero{grid-template-columns:1fr;gap:28px;align-items:start}
@@ -145,7 +156,16 @@
       .game-meta>div{border-bottom:1px solid rgba(255,255,255,.12)}
       .game-meta>div:last-child{border-bottom:none}
     }
-  </style>
+  
+  @media (max-width:520px){
+    .ps-footer-divider{width:60%;height:1px}
+  }
+
+      @media (max-width:639px){
+    .ps-footer{gap:24px;padding-top:clamp(28px, 8vw, 52px);padding-bottom:clamp(28px, 8vw, 64px)}
+    .ps-footer-brand{margin:0}
+  }
+</style>
 </head>
 <body>
   <div class="page">
@@ -273,27 +293,38 @@
       </article>
     </main>
 
-    <footer aria-label="フッター">
-      <div class="sns" aria-label="SNSリンク">
-        <a href="https://x.com/bdg_de_asobo" aria-label="X" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M18.244 3H21.5l-7.52 8.59L22 21h-6.31l-4.94-6.43L4.81 21H1.5l7.81-8.93L2 3h6.31l4.5 5.84L18.244 3Z"/>
-          </svg>
-        </a>
-        <a href="https://www.youtube.com/@%E3%83%9A%E3%83%B3%E3%82%BF%E3%82%B9%E3%82%B9%E3%82%BF%E3%82%B8%E3%82%AA" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M21.6 7.6a2 2 0 0 0-1.4-1.4C18.7 5.8 12 5.8 12 5.8s-6.7 0-8.2.4A2 2 0 0 0 2.4 7.6C2 9.1 2 12 2 12s0 2.9.4 4.4a2 2 0 0 0 1.4 1.4c1.5.4 8.2.4 8.2.4s6.7 0 8.2-.4a2 2 0 0 0 1.4-1.4c.4-1.5.4-4.4.4-4.4s0-2.9-.4-4.4Z"/>
-            <path class="play" d="M10.5 9.75v4.5L15 12l-4.5-2.25Z"/>
-          </svg>
-        </a>
-        <a href="https://pentasufide.booth.pm/" aria-label="BOOTH ショップ" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M4 6h16l-1.2 8.4a2 2 0 0 1-2 1.6H8.2l-.4 2h10.7v2H6a1 1 0 0 1-1-.8L3 6Z"/>
-            <path d="M9 18H7.2L5.5 8h13l-.9 6.2a2 2 0 0 1-2 1.6H9Z"/>
-          </svg>
-        </a>
+        <footer class="ps-footer" aria-label="フッター">
+      <div class="ps-footer-brand" aria-label="Pentas Studio">
+        <img class="ps-footer-logo" src="../../image/general/logo.png" alt="Pentas Studio">
+        <img class="ps-footer-wordmark" src="../../image/general/let_logo.png" alt="Pentas Studio">
       </div>
-      <p class="footer-copy">© pantas studio All Rights Reserved.</p>
+      <div class="ps-footer-row">
+          <div class="sns" aria-label="SNSリンク">
+            <a href="https://x.com/bdg_de_asobo" aria-label="X" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18.244 3H21.5l-7.52 8.59L22 21h-6.31l-4.94-6.43L4.81 21H1.5l7.81-8.93L2 3h6.31l4.5 5.84L18.244 3Z"/>
+              </svg>
+            </a>
+            <a href="mailto:pentasufide.studio@gmail.com" aria-label="メールで問い合わせ">
+              <svg class="mail-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm8 6L4.5 7.5m15 0L12 11m0 0L4.5 16.5m15 0L12 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="https://pentasufide.booth.pm/" aria-label="BOOTH ショップ" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 6h16l-1.2 8.4a2 2 0 0 1-2 1.6H8.2l-.4 2h10.7v2H6a1 1 0 0 1-1-.8L3 6Z"/>
+                <path d="M9 18H7.2L5.5 8h13l-.9 6.2a2 2 0 0 1-2 1.6H9Z"/>
+              </svg>
+            </a>
+          </div>
+        <span class="ps-footer-divider" aria-hidden="true"></span>
+        <nav class="ps-footer-links" aria-label="フッターナビゲーション">
+          <a href="../../index.html?skipLoading=1#top">Top</a>
+          <span class="ps-footer-sep" aria-hidden="true">|</span>
+          <a href="../games.html">Games</a>
+          <span class="ps-footer-sep" aria-hidden="true">|</span>
+          <a href="../../news/gallery.html">News</a>
+        </nav>
+      </div>
+      <p class="footer-copy">© Pantas Studio All Rights Reserved.</p>
     </footer>
     <div class="lightbox" data-lightbox aria-hidden="true" role="dialog" aria-label="ギャラリー拡大画像ビュー">
       <button type="button" class="lightbox-close" data-lightbox-close aria-label="閉じる">

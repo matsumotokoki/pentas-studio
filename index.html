@@ -115,6 +115,8 @@
   /* ===== Members (角丸オレンジ演出 + リンク) ===== */
   .ps-members h2{font-size:24px;letter-spacing:.06em;margin:0 0 14px}
   .ps-members-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;justify-items:center}
+  .ps-members-divider{width:min(220px,70%);height:1px;background:rgba(255,255,255,.15);margin:28px auto 0;border-radius:999px}
+  .ps-members .about-facts{margin-top:26px}
   @media (max-width:520px){.ps-members-grid{grid-template-columns:1fr}}
   .ps-member{display:grid;justify-items:center;gap:10px;text-align:center;padding:10px;border:2px solid transparent;border-radius:var(--radius);transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, background-color .18s ease}
   .ps-member:hover{transform:scale(1.03);box-shadow:var(--shadow);border-color:var(--accent);background:rgba(255,186,58,.08)}
@@ -126,6 +128,39 @@
   .ps-side-nav{display:grid;grid-template-columns:repeat(5,1fr);align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);background:rgba(41,50,59,.86);backdrop-filter:saturate(1.2) blur(4px)}
   .ps-side-nav a{justify-self:center;font-size:20px;opacity:.92;text-transform:uppercase;padding:6px 8px;border-radius:8px;transition:color .12s ease, opacity .12s ease, background-color .12s ease}
   .ps-side-nav a:hover,.ps-side-nav a:focus-visible{opacity:1;color:var(--bg);background:var(--accent)}
+
+  /* ===== Mobile header/menu ===== */
+  .ps-mobile-header{display:none;position:fixed;top:0;left:0;right:0;height:64px;align-items:center;gap:12px;padding:0 18px;background:rgba(31,39,48,.95);border-bottom:1px solid var(--line);backdrop-filter:blur(8px);z-index:40}
+  .ps-burger{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.06);display:grid;place-items:center;color:var(--ink);cursor:pointer;transition:transform .18s ease, background-color .18s ease, color .18s ease, border-color .18s ease}
+  .ps-burger:hover{transform:scale(1.04);background:var(--accent);color:var(--bg);border-color:transparent}
+  .ps-burger-lines{width:18px;height:12px;display:grid;gap:4px}
+  .ps-burger-lines span{display:block;height:2px;border-radius:999px;background:currentColor;transition:transform .2s ease, opacity .2s ease}
+  .ps-mobile-brand{display:flex;align-items:center;gap:10px;color:var(--ink)}
+  .ps-mobile-logo{width:42px;height:42px;border-radius:50%;object-fit:contain}
+  .ps-mobile-wordmark{height:26px;width:auto;object-fit:contain}
+  .ps-mobile-menu{position:fixed;inset:0;opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:50}
+  .ps-mobile-menu-backdrop{position:absolute;inset:0;border:none;padding:0;margin:0;background:rgba(9,14,20,.58)}
+  .ps-mobile-menu-surface{position:absolute;top:0;left:0;width:min(82vw,320px);height:100%;padding:86px 20px 24px;background:var(--surface);border-right:1px solid var(--line);box-shadow:0 24px 48px rgba(0,0,0,.4);display:flex;flex-direction:column;gap:20px;overflow:auto;transform:translateX(-100%);transition:transform .28s ease}
+  .ps-mobile-menu-brand{display:flex;align-items:center;justify-content:center;gap:12px}
+  .ps-mobile-links{display:grid;gap:10px}
+  .ps-mobile-links a{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.04);text-transform:uppercase;letter-spacing:.18em;font-size:14px;font-weight:700}
+  .ps-mobile-links a::after{content:"→";opacity:.6}
+  .ps-mobile-contact{display:grid;gap:8px;border-top:1px solid var(--line);padding-top:16px}
+  .ps-mobile-contact-title{font-size:12px;letter-spacing:.2em;color:var(--ink-weak);text-transform:uppercase}
+  .ps-mobile-contact a{font-size:14px;color:var(--ink);word-break:break-all}
+  .ps-mobile-contact-item{display:flex;align-items:center;gap:10px}
+  .ps-mobile-contact-icon{width:18px;height:18px;display:inline-grid;place-items:center;color:var(--accent);flex:0 0 auto}
+  .ps-mobile-contact-icon svg{width:18px;height:18px}
+  .ps-mobile-contact-icon path{fill:currentColor}
+  .ps-mobile-contact-icon svg.mail-icon path{fill:none;stroke:currentColor}
+  .ps-mobile-copy{margin-top:auto;font-size:12px;color:var(--ink-weak);letter-spacing:.04em}
+  body.is-menu-open .ps-mobile-menu{opacity:1;pointer-events:auto}
+  body.is-menu-open .ps-mobile-menu-surface{transform:translateX(0)}
+  body.is-menu-open{overflow:hidden}
+  body.is-menu-open .ps-left{overflow:hidden}
+  body.is-menu-open .ps-burger-lines span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+  body.is-menu-open .ps-burger-lines span:nth-child(2){opacity:0}
+  body.is-menu-open .ps-burger-lines span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 
   /* ===== Right: marquee gallery ===== */
   .ps-artstage{position:relative;overflow:hidden}
@@ -205,13 +240,23 @@
   .contact-link{font-size:16px;font-weight:600;font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Noto Sans JP','BIZ UDGothic','Yu Gothic',Meiryo,sans-serif;word-break:break-all}
 
   /* Footer */
-  .ps-footer{display:grid;gap:12px;justify-items:center;padding-bottom:24px}
+  .ps-footer{display:grid;gap:14px;justify-items:center;padding-bottom:24px}
+  .ps-footer-brand{display:flex;align-items:center;justify-content:center;gap:12px}
+  .ps-footer-logo{width:42px;height:42px;border-radius:50%;object-fit:contain;opacity:.9}
+  .ps-footer-wordmark{height:42px;width:auto;object-fit:contain;opacity:.95}
+  .ps-footer-row{display:flex;align-items:center;gap:22px;flex-wrap:wrap;justify-content:center}
+  .ps-footer-divider{width:1px;height:18px;background:var(--line);opacity:.8}
   .sns{display:flex;gap:12px;justify-content:center;align-items:center}
   .sns a{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#ffffff12;border:1px solid var(--line);transition:transform .18s ease, background-color .18s ease, box-shadow .18s ease, color .18s ease;color:var(--ink);--sns-play:var(--bg)}
   .sns a:hover{transform:scale(1.06);background:var(--accent);color:var(--bg);box-shadow:var(--shadow);border-color:transparent;--sns-play:var(--ink)}
   .sns a svg{display:block;width:20px;height:20px}
   .sns a svg path{fill:currentColor}
   .sns a svg path.play{fill:var(--sns-play);transition:fill .18s ease}
+  .sns a svg.mail-icon path{fill:none;stroke:currentColor}
+  .ps-footer-links{display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:.22em;text-transform:uppercase}
+  .ps-footer-links a{color:var(--ink-weak);transition:color .18s ease}
+  .ps-footer-links a:hover,.ps-footer-links a:focus-visible{color:var(--accent)}
+  .ps-footer-sep{margin:0 16px;color:var(--line)}
   .footer-copy{margin:0;color:var(--ink-weak);font-size:12px;letter-spacing:.04em;text-align:center}
 
   /* Reduced motion */
@@ -221,12 +266,26 @@
   }
 
   /* Left column responsive */
-  @media (max-width:1023px){.ps-root{grid-template-columns:1fr}.ps-right{display:none}.ps-games-grid{grid-template-columns:1fr 1fr}}
+  @media (max-width:1023px){
+    .ps-root{grid-template-columns:1fr}
+    .ps-right{display:none}
+    .ps-games-grid{grid-template-columns:1fr 1fr}
+    .ps-mobile-header{display:flex}
+    .ps-left{padding-top:72px}
+  }
   @media (max-width:767px){.ps-games-grid{grid-template-columns:1fr}.ps-title{font-size:26px}}
+  @media (max-width:520px){
+    .ps-footer-divider{width:60%;height:1px}
+  }
   /* Right column lifecycle */
   @media (max-width:1100px){ .ps-art-grid{grid-template-columns:repeat(2,1fr)} }
   @media (max-width:760px){ .ps-art-grid{grid-template-columns:1fr} }
   @media (max-width:639px){ .ps-right{display:none} }
+
+      @media (max-width:639px){
+    .ps-footer{gap:24px;padding-top:clamp(28px, 8vw, 52px);padding-bottom:clamp(28px, 8vw, 64px)}
+    .ps-footer-brand{margin:0}
+  }
 </style>
 </head>
 <body>
@@ -241,6 +300,55 @@
       <div class="ps-load-msg" aria-hidden="true">Loading…</div>
     </div>
   </div>
+
+  <header class="ps-mobile-header" aria-label="モバイルヘッダー">
+    <button class="ps-burger" type="button" aria-controls="mobileMenu" aria-expanded="false" aria-label="メニューを開く">
+      <span class="ps-burger-lines" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+    <a class="ps-mobile-brand" href="#top" data-nav="top" aria-label="トップへ移動">
+      <img class="ps-mobile-logo" src="image/general/logo.png" alt="Pentas Studio">
+      <img class="ps-mobile-wordmark" src="image/general/let_logo.png" alt="Pentas Studio">
+    </a>
+  </header>
+
+  <nav class="ps-mobile-menu" id="mobileMenu" aria-label="モバイルメニュー" aria-hidden="true">
+    <button class="ps-mobile-menu-backdrop" type="button" aria-label="メニューを閉じる"></button>
+    <div class="ps-mobile-menu-surface">
+      <div class="ps-mobile-menu-brand" aria-hidden="true">
+        <img class="ps-mobile-logo" src="image/general/logo.png" alt="">
+        <img class="ps-mobile-wordmark" src="image/general/let_logo.png" alt="">
+      </div>
+      <div class="ps-mobile-links">
+        <a href="#top" data-nav="top">Top</a>
+        <a href="games/games.html">Games</a>
+        <a href="news/gallery.html">News</a>
+      </div>
+      <div class="ps-mobile-contact">
+        <div class="ps-mobile-contact-title">Contact</div>
+        <a class="ps-mobile-contact-item" href="https://x.com/bdg_de_asobo" target="_blank" rel="noopener noreferrer">
+          <span class="ps-mobile-contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M18.244 3H21.5l-7.52 8.59L22 21h-6.31l-4.94-6.43L4.81 21H1.5l7.81-8.93L2 3h6.31l4.5 5.84L18.244 3Z"/>
+            </svg>
+          </span>
+          https://x.com/bdg_de_asobo
+        </a>
+        <a class="ps-mobile-contact-item" href="mailto:pentasufide.studio@gmail.com">
+          <span class="ps-mobile-contact-icon" aria-hidden="true">
+            <svg class="mail-icon" viewBox="0 0 24 24">
+              <path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm8 6L4.5 7.5m15 0L12 11m0 0L4.5 16.5m15 0L12 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          pentasufide.studio@gmail.com
+        </a>
+      </div>
+      <p class="ps-mobile-copy">© Pantas Studio All Rights Reserved.</p>
+    </div>
+  </nav>
 
   <div class="ps-root" id="app">
     <!-- LEFT (scrollable) -->
@@ -276,27 +384,49 @@
       <section class="ps-section ps-members" aria-label="メンバー">
         <h2>MEMBERS</h2>
         <div class="ps-members-grid" id="memberGrid"></div>
+        <div class="ps-members-divider" aria-hidden="true"></div>
+        <div class="about-facts" aria-label="チーム概要">
+          <h3>チーム概要</h3>
+          <dl class="facts-grid">
+            <dt>チーム名</dt><dd>ペンタススタジオ <span style="opacity:.8">/ Pentas Studio</span></dd>
+            <dt>設立</dt><dd>2018年11月11日</dd>
+            <dt>人数</dt><dd>4人</dd>
+            <dt>連絡先</dt><dd><a href="mailto:pentasufide.studio@gmail.com">pentasufide.studio@gmail.com</a></dd>
+            <dt>事業紹介</dt><dd>オリジナルボードゲーム・マーダーミステリー制作、オリジナルゲーム開発受託、ボードゲームイラスト・デザイン受託、シナリオ制作受託、ボードゲーム制作支援</dd>
+          </dl>
+        </div>
       </section>
 
       <footer class="ps-section ps-footer" aria-label="フッター">
-        <div class="sns" aria-label="SNSリンク">
-          <a href="https://x.com/bdg_de_asobo" aria-label="X" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M18.244 3H21.5l-7.52 8.59L22 21h-6.31l-4.94-6.43L4.81 21H1.5l7.81-8.93L2 3h6.31l4.5 5.84L18.244 3Z"/>
-            </svg>
-          </a>
-          <a href="https://www.youtube.com/@%E3%83%9A%E3%83%B3%E3%82%BF%E3%82%B9%E3%82%B9%E3%82%BF%E3%82%B8%E3%82%AA" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M21.6 7.6a2 2 0 0 0-1.4-1.4C18.7 5.8 12 5.8 12 5.8s-6.7 0-8.2.4A2 2 0 0 0 2.4 7.6C2 9.1 2 12 2 12s0 2.9.4 4.4a2 2 0 0 0 1.4 1.4c1.5.4 8.2.4 8.2.4s6.7 0 8.2-.4a2 2 0 0 0 1.4-1.4c.4-1.5.4-4.4.4-4.4s0-2.9-.4-4.4Z"/>
-              <path class="play" d="M10.5 9.75v4.5L15 12l-4.5-2.25Z"/>
-            </svg>
-          </a>
-          <a href="https://pentasufide.booth.pm/" aria-label="BOOTH ショップ" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 6h16l-1.2 8.4a2 2 0 0 1-2 1.6H8.2l-.4 2h10.7v2H6a1 1 0 0 1-1-.8L3 6Z"/>
-              <path d="M9 18H7.2L5.5 8h13l-.9 6.2a2 2 0 0 1-2 1.6H9Z"/>
-            </svg>
-          </a>
+        <div class="ps-footer-brand" aria-label="Pentas Studio">
+          <img class="ps-footer-logo" src="image/general/logo.png" alt="Pentas Studio">
+          <img class="ps-footer-wordmark" src="image/general/let_logo.png" alt="Pentas Studio">
+        </div>
+        <div class="ps-footer-row">
+          <div class="sns" aria-label="SNSリンク">
+            <a href="https://x.com/bdg_de_asobo" aria-label="X" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18.244 3H21.5l-7.52 8.59L22 21h-6.31l-4.94-6.43L4.81 21H1.5l7.81-8.93L2 3h6.31l4.5 5.84L18.244 3Z"/>
+              </svg>
+            </a>
+            <a href="mailto:pentasufide.studio@gmail.com" aria-label="メールで問い合わせ">
+              <svg class="mail-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm8 6L4.5 7.5m15 0L12 11m0 0L4.5 16.5m15 0L12 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="https://pentasufide.booth.pm/" aria-label="BOOTH ショップ" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 6h16l-1.2 8.4a2 2 0 0 1-2 1.6H8.2l-.4 2h10.7v2H6a1 1 0 0 1-1-.8L3 6Z"/>
+                <path d="M9 18H7.2L5.5 8h13l-.9 6.2a2 2 0 0 1-2 1.6H9Z"/>
+              </svg>
+            </a>
+          </div>
+          <span class="ps-footer-divider" aria-hidden="true"></span>
+          <nav class="ps-footer-links" aria-label="フッターナビゲーション">
+            <a href="#top" data-nav="top">Top</a>
+            <span class="ps-footer-sep" aria-hidden="true">|</span>
+            <a href="games/games.html">Games</a>
+            <span class="ps-footer-sep" aria-hidden="true">|</span>
+            <a href="news/gallery.html">News</a>
+          </nav>
         </div>
         <p class="footer-copy">© Pantas Studio All Rights Reserved.</p>
       </footer>
@@ -693,6 +823,29 @@ document.addEventListener('DOMContentLoaded', function(){
     window.addEventListener('load', setHeight);
   })();
 
+  // ===== Mobile menu =====
+  (function(){
+    const body=document.body;
+    const toggle=document.querySelector('.ps-burger');
+    const menu=document.getElementById('mobileMenu');
+    if(!body || !toggle || !menu) return;
+    const backdrop=menu.querySelector('.ps-mobile-menu-backdrop');
+    const close=()=>{
+      body.classList.remove('is-menu-open');
+      toggle.setAttribute('aria-expanded','false');
+      menu.setAttribute('aria-hidden','true');
+    };
+    const open=()=>{
+      body.classList.add('is-menu-open');
+      toggle.setAttribute('aria-expanded','true');
+      menu.setAttribute('aria-hidden','false');
+    };
+    toggle.addEventListener('click', ()=> (body.classList.contains('is-menu-open') ? close() : open()));
+    if(backdrop) backdrop.addEventListener('click', close);
+    menu.querySelectorAll('a').forEach(a=> a.addEventListener('click', close));
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') close(); });
+  })();
+
   // ===== Panels & links-nav =====
   (function(){
     const viewGrid=document.getElementById('viewGrid'); const panelAbout=document.getElementById('panelAbout'); const panelContact=document.getElementById('panelContact');
@@ -752,7 +905,7 @@ document.addEventListener('DOMContentLoaded', function(){
       }
     }
     const leftEl=document.getElementById('left'); function scrollToAnchor(id){ const el=document.getElementById(id); if(!el || !leftEl) return; leftEl.scrollTo({top:el.offsetTop, behavior:'smooth'}); }
-    document.querySelectorAll('.ps-side-nav [data-nav]').forEach(a=> a.addEventListener('click', (e)=>{ e.preventDefault(); showGrid(); scrollToAnchor(a.dataset.nav); }));
+    document.querySelectorAll('.ps-side-nav [data-nav], .ps-mobile-menu [data-nav], .ps-mobile-header [data-nav], .ps-footer-links [data-nav]').forEach(a=> a.addEventListener('click', (e)=>{ e.preventDefault(); showGrid(); scrollToAnchor(a.dataset.nav); }));
     document.querySelectorAll('.ps-side-nav [data-panel]').forEach(a=> a.addEventListener('click', (e)=>{ e.preventDefault(); showPanel(a.dataset.panel); }));
   })();
 });
