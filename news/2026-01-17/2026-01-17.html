@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>1/31(土)-2/1(日) 大阪で開催されるBGBEに出展決定！ | ペンタススタジオ</title>
+  <link rel="icon" type="image/png" href="../../image/general/logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#29323b;
+      --surface:#1f2730;
+      --surface-soft:#212a33;
+      --ink:#eff3f8;
+      --ink-weak:#aeb8c4;
+      --ink-soft:#d7dee7;
+      --line:#394656;
+      --accent:#FFBA3A;
+      --radius:18px;
+      --panel-radius:14px;
+      --shadow:0 12px 28px rgba(0,0,0,.28);
+      --page-pad:min(max(5vw,22px),56px);
+      --hero-media-min:360px;
+    }
+
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP","BIZ UDGothic","Yu Gothic",Meiryo,sans-serif;
+      line-height:1.8;
+      -webkit-font-smoothing:antialiased;
+    }
+    img{display:block;max-width:100%;height:auto;user-select:none;-webkit-user-drag:none}
+    a{color:inherit;text-decoration:none}
+    h1,h2,h3,p,ul{margin:0}
+
+    .page{min-height:100vh;display:grid;grid-template-rows:auto 1fr auto}
+
+    header{
+      padding:30px var(--page-pad) 22px;
+      display:grid;
+      gap:18px;
+      justify-items:center;
+      text-align:center;
+      border-bottom:1px solid var(--line);
+      background:rgba(31,39,48,.92);
+      box-shadow:0 20px 40px rgba(0,0,0,.28);
+    }
+    .brand-logo{width:120px;height:120px;border-radius:50%;overflow:hidden;display:grid;place-items:center;background:transparent}
+    .brand-logo img{width:100%;height:100%;object-fit:contain}
+    .brand-name{font-family:'Rampart One',system-ui,sans-serif;font-size:32px;letter-spacing:.02em}
+    .brand-name img{max-height:78px;object-fit:contain;margin:0 auto}
+
+    main{display:grid;gap:0}
+    .section-band{padding:56px var(--page-pad);display:flex;justify-content:center;background:var(--section-bg,#0000)}
+    .band-inner{width:min(1080px,100%);display:grid;gap:0}
+
+    .entry-hero-band{--section-bg:var(--surface-soft);border-bottom:1px solid var(--line)}
+    .entry-hero{display:grid;grid-template-columns:1.32fr 1fr;gap:36px;align-items:start}
+    .hero-media{border-radius:var(--radius);overflow:hidden;background:rgba(16,21,28,.8);border:1px solid rgba(255,255,255,.08);min-height:var(--hero-media-min);display:grid;place-items:center;box-shadow:0 8px 22px rgba(0,0,0,.22)}
+    .hero-media img{width:100%;height:100%;object-fit:cover}
+    .hero-fallback{width:100%;height:100%;display:grid;place-items:center;padding:32px;color:var(--ink-weak);text-align:center;letter-spacing:.06em;border:2px dashed rgba(255,255,255,.18);border-radius:calc(var(--radius) - 6px)}
+    .hero-info{display:grid;gap:22px;align-content:flex-start}
+    .entry-category{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--accent)}
+    .entry-title{font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Noto Sans JP','BIZ UDGothic','Yu Gothic',Meiryo,sans-serif;font-size:52px;font-weight:700;letter-spacing:.02em;line-height:1.15;margin:0}
+    .entry-meta-inline{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center}
+    .entry-published{font-size:14px;letter-spacing:.16em;color:var(--ink-weak);display:flex;align-items:center;gap:10px}
+    .entry-published::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(255,186,58,.18)}
+    .entry-published time{font-variant-numeric:tabular-nums;color:var(--ink);letter-spacing:.18em}
+    .entry-author{display:flex;align-items:center;gap:14px;padding:8px 12px;border-radius:999px;background:rgba(24,32,42,.78);border:1px solid rgba(255,255,255,.08);box-shadow:0 12px 24px rgba(0,0,0,.24)}
+    .author-avatar{width:48px;height:48px;border-radius:50%;overflow:hidden;background:rgba(255,255,255,.1);display:grid;place-items:center}
+    .author-avatar img{width:100%;height:100%;object-fit:cover}
+    .author-meta{display:grid;gap:4px}
+    .author-role{font-size:12px;letter-spacing:.1em;color:var(--ink-weak)}
+    .author-name{font-size:16px;font-weight:700;letter-spacing:.12em}
+
+    .entry-body-band{--section-bg:var(--surface)}
+    .entry-body{width:min(760px,100%);margin:0 auto;display:grid;gap:28px}
+    .entry-body p{margin:0;font-size:16px;line-height:2;color:#e4eaf1;letter-spacing:.01em}
+    .entry-body p + p{margin-top:-4px}
+    .entry-body h2{font-size:22px;line-height:1.6;letter-spacing:.04em;margin:0;color:var(--ink)}
+    .entry-body strong{color:var(--accent)}
+    /* data-variant="ink" または .is-ink で白い強調に切り替え */
+    .entry-body strong.is-ink,
+    .entry-body strong[data-variant="ink"]{color:var(--ink)}
+    .entry-body figure{margin:0;border-radius:var(--radius);overflow:hidden;background:rgba(20,27,35,.72);border:1px solid rgba(255,255,255,.08)}
+    .entry-body figure img{width:100%;height:auto;display:block}
+    .entry-body blockquote{margin:0;padding:24px 28px;border-left:4px solid var(--accent);background:rgba(16,22,30,.78);border-radius:0 var(--radius) var(--radius) 0;color:#eaf1f7;font-size:16px;line-height:1.9}
+    .entry-body blockquote cite{display:block;margin-top:12px;font-size:13px;letter-spacing:.08em;color:var(--ink-weak)}
+    .entry-body hr{border:none;border-top:1px solid rgba(255,255,255,.08);margin:18px 0 12px}
+    .entry-body code{font-family:"SFMono-Regular","Consolas","BIZ UDGothic",monospace;font-size:.94em;background:rgba(255,255,255,.08);padding:2px 8px;border-radius:6px;color:var(--ink-soft)}
+    .entry-body .media-grid{display:grid;gap:18px;grid-template-columns:repeat(2,minmax(0,1fr))}
+    .entry-body .media-grid img{width:100%;height:auto;display:block;object-fit:cover}
+
+    footer{padding:32px var(--page-pad) 42px;border-top:1px solid var(--line);display:grid;gap:14px;justify-items:center;background:rgba(23,30,39,.94)}
+    .sns{display:flex;gap:12px;justify-content:center}
+    .sns a{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#ffffff12;border:1px solid var(--line);color:var(--ink);transition:transform .18s ease,background-color .18s ease,box-shadow .18s ease,color .18s ease;--sns-play:var(--bg)}
+    .sns a:hover{transform:scale(1.06);background:var(--accent);color:var(--bg);box-shadow:var(--shadow);border-color:transparent;--sns-play:var(--ink)}
+    .sns svg{width:20px;height:20px}
+    .sns path{fill:currentColor}
+    .sns path.play{fill:var(--sns-play);transition:fill .18s ease}
+    .sns svg.mail-icon path{fill:none;stroke:currentColor}
+    .footer-copy{margin:0;color:var(--ink-weak);font-size:12px;letter-spacing:.04em;text-align:center}
+
+  .ps-footer-brand{display:flex;align-items:center;justify-content:center;gap:12px}
+  .ps-footer-logo{width:42px;height:42px;border-radius:50%;object-fit:contain;opacity:.9}
+  .ps-footer-wordmark{height:42px;width:auto;object-fit:contain;opacity:.95}
+  .ps-footer-row{display:flex;align-items:center;gap:22px;flex-wrap:wrap;justify-content:center}
+  .ps-footer-divider{width:1px;height:18px;background:var(--line);opacity:.8}
+  .ps-footer-links{display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:.22em;text-transform:uppercase}
+  .ps-footer-links a{color:var(--ink-weak);transition:color .18s ease}
+  .ps-footer-links a:hover,.ps-footer-links a:focus-visible{color:var(--accent)}
+  .ps-footer-sep{margin:0 16px;color:var(--line)}
+
+    @media (max-width:1023px){
+      :root{--page-pad:min(max(4vw,18px),44px)}
+      .entry-hero{grid-template-columns:1fr;gap:28px}
+      .hero-media{order:-1;min-height:320px}
+      .entry-title{font-size:44px}
+    }
+    @media (max-width:639px){
+      header{padding-top:24px}
+      .brand-name{font-size:28px}
+      .section-band{padding:40px var(--page-pad)}
+      .entry-title{font-size:34px}
+      .entry-body{gap:24px}
+      .entry-body p{font-size:15px}
+      .entry-body h2{font-size:20px}
+      .entry-author{width:100%;justify-content:flex-start}
+    }
+    @media (max-width:639px){
+      .entry-body .media-grid{grid-template-columns:1fr}
+    }
+  
+  @media (max-width:520px){
+    .ps-footer-divider{width:60%;height:1px}
+  }
+
+      @media (max-width:639px){
+    .ps-footer{gap:24px;padding-top:clamp(28px, 8vw, 52px);padding-bottom:clamp(28px, 8vw, 64px)}
+    .ps-footer-brand{margin:0}
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <header aria-label="サイトヘッダー">
+      <a class="brand-logo" href="../../index.html?skipLoading=1#top" aria-label="トップページへ戻る">
+        <img src="../../image/general/logo.png" alt="Pentas Studio" loading="lazy">
+      </a>
+      <div class="brand-name">
+        <img src="../../image/general/let_logo.png" alt="Pentas Studio" loading="lazy">
+      </div>
+    </header>
+
+    <main>
+      <article aria-labelledby="entryTitle">
+        <section class="section-band entry-hero-band">
+          <div class="band-inner">
+            <div class="entry-hero">
+              <figure class="hero-media" aria-label="BGBE2026出展のお知らせのキービジュアル">
+                <img src="thumbnail.png" alt="BGBE2026出展のお知らせサムネイル" loading="lazy">
+              </figure>
+              <div class="hero-info">
+                <p class="entry-category">INFO</p>
+                <h1 id="entryTitle" class="entry-title">1/31(土)-2/1(日) 大阪で開催されるBGBEに出展決定！</h1>
+                <div class="entry-meta-inline">
+                  <p class="entry-published"><time datetime="2026-01-17">2026.01.17</time> 公開</p>
+                  <div class="entry-author">
+                    <div class="author-avatar" aria-hidden="true">
+                      <img src="../../image/menbers/matsuki.jpg" alt="マツキハジメのポートレート写真" loading="lazy">
+                    </div>
+                    <div class="author-meta">
+                      <span class="author-role">ゲームデザイン / エンジニア</span>
+                      <span class="author-name">マツキハジメ</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-band entry-body-band">
+          <div class="band-inner">
+            <div class="entry-body">
+              <h2>1/31(土)-2/1(日) 大阪で開催されるBGBEに出展決定しました！</h2>
+              <p>ペンタススタジオは、<br>2026年1月31日（土）・2月1日（日） に大阪で開催される<br>BGBE（Business Game Business Expo） へ出展することが決定しました。</p>
+              <p>BGBEは、西日本最大級のボドゲイベントで、ただボードゲームを購入するだけでなく、出店者との交流も楽しめるイベントとなっております。</p>
+              <p>ペンタススタジオとしても、我々のゲームをを直接ご紹介できる場として、出展を予定しております。関西での初めてのイベント参加となります。</p>
+
+              <h2>出展情報</h2>
+              <p>イベント名：BGBE（Business Game Business Expo）<br>開催日：2026年1月31日（土）– 2月1日（日）<br>会場：<a href="https://www.intex-osaka.com/jp/" target="_blank" rel="noopener noreferrer">インテックス大阪 3号館</a><br>ブース番号：【D-14】<br>ブース名：ペンタススタジオ（Pentas Studio）</p>
+              <figure>
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600'%3E%3Crect width='1200' height='600' fill='%23212a33'/%3E%3Crect x='80' y='90' width='1040' height='420' rx='24' fill='%23FFBA3A' opacity='.12'/%3E%3Ctext x='50%25' y='50%25' fill='%23FFBA3A' font-family='Zen Kaku Gothic New' font-size='36' text-anchor='middle'%E5%85%A8%E4%BD%93%E3%83%9E%E3%83%83%E3%83%97%E3%82%92%E3%81%93%E3%81%93%E3%81%AB%E6%8C%BF%E5%85%A5%3C/text%3E%3C/svg%3E" alt="BGBE2026の全体マップ差し込み位置" loading="lazy">
+              </figure>
+
+              <h2>頒布ゲーム一覧</h2>
+              <p>○『ゆめゆめ』<br>2人用 / 約120分 / 2,500円（イベント限定価格）</p>
+              <figure>
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1400 700'%3E%3Crect width='1400' height='700' fill='%23212a33'/%3E%3Crect x='80' y='120' width='1240' height='460' rx='22' fill='%23FFBA3A' opacity='.12'/%3E%3Ctext x='50%25' y='50%25' fill='%23FFBA3A' font-family='Zen Kaku Gothic New' font-size='34' text-anchor='middle'%E3%82%86%E3%82%81%E3%82%86%E3%82%81%20KV%EF%BC%88%E6%A8%AA%E9%95%B7%EF%BC%89%3C/text%3E%3C/svg%3E" alt="ゆめゆめの説明用KV差し込み位置" loading="lazy">
+              </figure>
+
+              <p>○『インフォーマーリターンズ』<br>3-8人用 / 10-15分 / 2,500円（イベント限定価格）</p>
+              <figure>
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1400 700'%3E%3Crect width='1400' height='700' fill='%23212a33'/%3E%3Crect x='80' y='120' width='1240' height='460' rx='22' fill='%23FFBA3A' opacity='.12'/%3E%3Ctext x='50%25' y='50%25' fill='%23FFBA3A' font-family='Zen Kaku Gothic New' font-size='34' text-anchor='middle'%E3%82%A4%E3%83%B3%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%BC%E3%83%AA%E3%82%BF%E3%83%BC%E3%83%B3%E3%82%BA%20KV%EF%BC%88%E6%A8%AA%E9%95%B7%EF%BC%89%3C/text%3E%3C/svg%3E" alt="インフォーマーリターンズの説明用KV差し込み位置" loading="lazy">
+              </figure>
+
+              <p>○『エスケープゴート』<br>4人用 / 約80分/ 1,000円（イベント限定価格）</p>
+              <figure>
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1400 700'%3E%3Crect width='1400' height='700' fill='%23212a33'/%3E%3Crect x='80' y='120' width='1240' height='460' rx='22' fill='%23FFBA3A' opacity='.12'/%3E%3Ctext x='50%25' y='50%25' fill='%23FFBA3A' font-family='Zen Kaku Gothic New' font-size='34' text-anchor='middle'%E3%82%A8%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%97%E3%82%B4%E3%83%BC%E3%83%88%20KV%EF%BC%88%E6%A8%AA%E9%95%B7%EF%BC%89%3C/text%3E%3C/svg%3E" alt="エスケープゴートの説明用KV差し込み位置" loading="lazy">
+              </figure>
+
+              <p>○『静葬員』（サンプルのみ）</p>
+              <figure>
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1400 700'%3E%3Crect width='1400' height='700' fill='%23212a33'/%3E%3Crect x='80' y='120' width='1240' height='460' rx='22' fill='%23FFBA3A' opacity='.12'/%3E%3Ctext x='50%25' y='50%25' fill='%23FFBA3A' font-family='Zen Kaku Gothic New' font-size='34' text-anchor='middle'%E9%9D%99%E8%91%AC%E5%93%A1%20KV%EF%BC%88%E6%A8%AA%E9%95%B7%EF%BC%89%3C/text%3E%3C/svg%3E" alt="静葬員の説明用KV差し込み位置" loading="lazy">
+              </figure>
+
+              <p>ゲームの頒布だけでなく<br>制作背景やコンセプト、今後の展開についてご説明できる内容を用意しています。</p>
+              <p>詳細は <a href="https://www.pentas-studio.com/games/games.html" target="_blank" rel="noopener noreferrer">https://www.pentas-studio.com/games/games.html</a></p>
+
+              <h2>過去出展時の様子</h2>
+              <p>これまでの展示イベントでは、多くの来場者の方にブースへお立ち寄りいただきました。</p>
+              <figure>
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1400 700'%3E%3Crect width='1400' height='700' fill='%23212a33'/%3E%3Crect x='80' y='120' width='1240' height='460' rx='22' fill='%23FFBA3A' opacity='.12'/%3E%3Ctext x='50%25' y='50%25' fill='%23FFBA3A' font-family='Zen Kaku Gothic New' font-size='34' text-anchor='middle'%E9%81%8E%E5%8E%BB%E3%81%AE%E3%82%B2%E3%83%A0%E3%83%9E%E3%83%96%E3%83%BC%E3%82%B9%E5%86%99%E7%9C%9F%3C/text%3E%3C/svg%3E" alt="過去のゲムマブース写真差し込み位置" loading="lazy">
+              </figure>
+
+              <h2>ご来場の方へ</h2>
+              <p>イベント当日は、混雑が予想されます。お時間に余裕を持ってお越しください。<br>【ブース番号：D-14】のペンタススタジオブースにて、制作メンバーが直接ご対応をさせていただきます。<br>多くの方と交流できればと思いますので、ご来場の際は、ぜひお気軽にお立ち寄りください。</p>
+
+              <h2>Xの投稿</h2>
+              <p>BGBE2026関する情報は、Xでも発信しています。</p>
+              <div>
+                <blockquote class="twitter-tweet"><p lang="ja" dir="ltr"><a href="https://twitter.com/hashtag/BGBE2026?src=hash&amp;ref_src=twsrc%5Etfw">#BGBE2026</a> ペンタススタジオは「D-14」出展！<br><br>登場人物になりきって、食い違う予知夢を伝えあう見比べられない間違い探し『ゆめゆめ』（ストプレ/TRPGに近いです！)<br><br>その他<br>マダミス『エスケープゴート』<br>バカゲー『インフォーマーリターンズ』<br>を頒布予定です。初めての大阪での出展となります！✨ <a href="https://t.co/sn6Ox4z4i3">pic.twitter.com/sn6Ox4z4i3</a></p>&mdash; ペンタススタジオ@BGBE-D14/4人組ボドゲ&amp;マダミス制作チーム (@bdg_de_asobo) <a href="https://twitter.com/bdg_de_asobo/status/2009943552080675194?ref_src=twsrc%5Etfw">January 10, 2026</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+              </div>
+              <p>最新情報や当日のご案内はこちらをご確認ください</p>
+            </div>
+          </div>
+        </section>
+      </article>
+    </main>
+
+        <footer class="ps-footer" aria-label="フッター">
+      <div class="ps-footer-brand" aria-label="Pentas Studio">
+        <img class="ps-footer-logo" src="../../image/general/logo.png" alt="Pentas Studio">
+        <img class="ps-footer-wordmark" src="../../image/general/let_logo.png" alt="Pentas Studio">
+      </div>
+      <div class="ps-footer-row">
+          <div class="sns" aria-label="SNSリンク">
+            <a href="https://x.com/bdg_de_asobo" aria-label="X" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18.244 3H21.5l-7.52 8.59L22 21h-6.31l-4.94-6.43L4.81 21H1.5l7.81-8.93L2 3h6.31l4.5 5.84L18.244 3Z"/>
+              </svg>
+            </a>
+            <a href="mailto:pentasufide.studio@gmail.com" aria-label="メールで問い合わせ">
+              <svg class="mail-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm8 6L4.5 7.5m15 0L12 11m0 0L4.5 16.5m15 0L12 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="https://pentasufide.booth.pm/" aria-label="BOOTH ショップ" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 6h16l-1.2 8.4a2 2 0 0 1-2 1.6H8.2l-.4 2h10.7v2H6a1 1 0 0 1-1-.8L3 6Z"/>
+                <path d="M9 18H7.2L5.5 8h13l-.9 6.2a2 2 0 0 1-2 1.6H9Z"/>
+              </svg>
+            </a>
+          </div>
+        <span class="ps-footer-divider" aria-hidden="true"></span>
+        <nav class="ps-footer-links" aria-label="フッターナビゲーション">
+          <a href="../../index.html?skipLoading=1#top">Top</a>
+          <span class="ps-footer-sep" aria-hidden="true">|</span>
+          <a href="../../games/games.html">Games</a>
+          <span class="ps-footer-sep" aria-hidden="true">|</span>
+          <a href="../../news/gallery.html">News</a>
+        </nav>
+      </div>
+      <p class="footer-copy">© Pantas Studio All Rights Reserved.</p>
+    </footer>
+  </div>
+</body>
+</html>
