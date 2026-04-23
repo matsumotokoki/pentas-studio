@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="ペンタススタジオのショップページ。作品ごとの商品画像、タイトル、購入リンクを一覧で確認できます。" />
+  <meta property="og:title" content="Shop | ペンタススタジオ" />
+  <meta property="og:description" content="ペンタススタジオのショップページ。作品ごとの商品画像、タイトル、購入リンクを一覧で確認できます。" />
+  <meta property="og:image" content="https://www.pentas-studio.com/image/general/logo.png" />
+  <meta property="og:url" content="https://www.pentas-studio.com/shop/shop.html" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Shop | ペンタススタジオ" />
+  <meta name="twitter:description" content="ペンタススタジオのショップページ。作品ごとの商品画像、タイトル、購入リンクを一覧で確認できます。" />
+  <meta name="twitter:image" content="https://www.pentas-studio.com/image/general/logo.png" />
+  <meta name="twitter:url" content="https://www.pentas-studio.com/shop/shop.html" />
+  <title>Shop | ペンタススタジオ</title>
+  <link rel="canonical" href="https://www.pentas-studio.com/shop/shop.html" />
+  <link rel="icon" type="image/png" href="../image/general/logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#29323b;
+      --surface:#1f2730;
+      --surface-soft:#212a33;
+      --ink:#eff3f8;
+      --ink-weak:#aeb8c4;
+      --line:#394656;
+      --accent:#FFBA3A;
+      --radius:16px;
+      --shadow:0 10px 24px rgba(0,0,0,.35);
+      --page-pad:20px;
+    }
+
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP","BIZ UDGothic","Yu Gothic",Meiryo,sans-serif;
+      line-height:1.7;
+    }
+    img{display:block;max-width:100%;height:auto;user-select:none;-webkit-user-drag:none}
+    a{color:inherit;text-decoration:none}
+    h1,h2,h3,p{margin:0}
+
+    .page{min-height:100vh;display:grid;grid-template-rows:auto 1fr auto}
+
+    header{padding:32px var(--page-pad) 20px;display:grid;gap:18px;justify-items:center;text-align:center;border-bottom:1px solid var(--line);background:rgba(31,39,48,.92)}
+    .brand-logo{width:120px;height:120px;border-radius:50%;overflow:hidden;display:grid;place-items:center;background:transparent}
+    .brand-logo img{width:100%;height:100%;object-fit:contain}
+    .brand-name{font-family:'Rampart One',system-ui,sans-serif;font-size:32px;letter-spacing:.02em}
+    .brand-name img{max-height:78px;object-fit:contain;margin:0 auto}
+
+    main{padding:44px var(--page-pad) 70px}
+    .shop-gallery{display:grid;gap:28px}
+    .gallery-head{display:grid;gap:2px;justify-items:center;text-align:center}
+    .gallery-sub{color:var(--ink-weak);font-size:16px;letter-spacing:.16em;text-transform:uppercase}
+    .gallery-title{font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Noto Sans JP','BIZ UDGothic','Yu Gothic',Meiryo,sans-serif;font-size:32px;letter-spacing:.12em}
+
+    .shop-list{display:grid;gap:24px;grid-template-columns:repeat(3,minmax(0,1fr));max-width:1320px;margin:0 auto;align-items:stretch}
+    .shop-card{
+      display:grid;
+      grid-template-rows:auto auto 1fr;
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:12px;
+      height:100%;
+      --thumb-zoom:1.03;
+      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    .shop-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:rgba(255,186,58,.55)}
+    .shop-card[data-id="yumeyume"]{--thumb-zoom:1.0}
+
+    .shop-thumb-link{display:block;position:relative;border-radius:calc(var(--radius) - 4px)}
+    .shop-thumb{
+      position:relative;
+      overflow:hidden;
+      background:var(--surface-soft);
+      aspect-ratio:10/9;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:inherit;
+    }
+    .shop-thumb img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      border-radius:inherit;
+      transition:transform .24s ease;
+    }
+    .shop-card:hover .shop-thumb img{transform:scale(var(--thumb-zoom))}
+    .shop-card.is-soldout .shop-thumb img{filter:saturate(.8)}
+    .soldout-badge{
+      position:absolute;
+      top:10px;
+      left:10px;
+      z-index:2;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:4px 10px;
+      border-radius:10px;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.1em;
+      color:#f4f7fb;
+      background:rgba(49,58,68,.9);
+      border:1px solid rgba(255,255,255,.26);
+      pointer-events:none;
+      text-transform:uppercase;
+    }
+
+    .shop-title{padding:14px 4px 0;font-size:18px;line-height:1.5;letter-spacing:.03em}
+    .shop-links{display:grid;grid-template-columns:1fr;gap:10px;padding:14px 4px 2px;align-content:start}
+    .shop-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:999px;
+      border:1px solid rgba(255,186,58,.58);
+      color:var(--accent);
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      min-height:38px;
+      padding:0 14px;
+      transition:background-color .16s ease, color .16s ease, border-color .16s ease, transform .16s ease;
+    }
+    .shop-link:hover,.shop-link:focus-visible{background:var(--accent);color:var(--bg);border-color:var(--accent);transform:translateY(-1px)}
+    .shop-link.is-disabled{
+      border-color:#596576;
+      color:#9aa7b8;
+      background:rgba(154,167,184,.08);
+      cursor:not-allowed;
+      pointer-events:none;
+      transform:none;
+    }
+
+    footer{padding:24px var(--page-pad) 34px;border-top:1px solid var(--line);display:grid;gap:12px;justify-items:center;background:rgba(23,30,39,.94)}
+    .sns{display:flex;gap:12px;justify-content:center}
+    .sns a{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#ffffff12;border:1px solid var(--line);color:var(--ink);transition:transform .18s ease, background-color .18s ease, box-shadow .18s ease, color .18s ease;--sns-play:var(--bg)}
+    .sns a:hover{transform:scale(1.06);background:var(--accent);color:var(--bg);box-shadow:var(--shadow);border-color:transparent;--sns-play:var(--ink)}
+    .sns svg{width:20px;height:20px}
+    .sns path{fill:currentColor}
+    .sns path.play{fill:var(--sns-play);transition:fill .18s ease}
+    .sns svg.mail-icon path{fill:none;stroke:currentColor}
+    .footer-copy{margin:0;color:var(--ink-weak);font-size:12px;letter-spacing:.04em;text-align:center}
+
+    .ps-footer-brand{display:flex;align-items:center;justify-content:center;gap:12px}
+    .ps-footer-logo{width:42px;height:42px;border-radius:50%;object-fit:contain;opacity:.9}
+    .ps-footer-wordmark{height:42px;width:auto;object-fit:contain;opacity:.95}
+    .ps-footer-row{display:flex;align-items:center;gap:22px;flex-wrap:wrap;justify-content:center}
+    .ps-footer-divider{width:1px;height:18px;background:var(--line);opacity:.8}
+    .ps-footer-links{display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:.22em;text-transform:uppercase}
+    .ps-footer-links a{color:var(--ink-weak);transition:color .18s ease}
+    .ps-footer-links a:hover,.ps-footer-links a:focus-visible{color:var(--accent)}
+    .ps-footer-sep{margin:0 16px;color:var(--line)}
+
+    @media (max-width:1080px){.shop-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media (max-width:639px){
+      :root{--page-pad:16px}
+      header{padding-top:28px}
+      .brand-name{font-size:28px}
+      .gallery-title{font-size:26px}
+      .shop-list{grid-template-columns:1fr;gap:18px}
+      .shop-title{font-size:19px}
+      .shop-link{min-height:42px}
+    }
+
+    @media (max-width:520px){
+      .ps-footer-divider{width:60%;height:1px}
+    }
+
+    @media (max-width:639px){
+      .ps-footer{gap:24px;padding-top:clamp(28px, 8vw, 52px);padding-bottom:clamp(28px, 8vw, 64px)}
+      .ps-footer-brand{margin:0}
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header aria-label="サイトヘッダー">
+      <a class="brand-logo" href="../index.html?skipLoading=1#top" aria-label="トップページへ戻る">
+        <img src="../image/general/logo.png" alt="Pentas Studio" loading="lazy">
+      </a>
+      <div class="brand-name">
+        <img src="../image/general/let_logo.png" alt="Pentas Studio" loading="lazy">
+      </div>
+    </header>
+
+    <main>
+      <section class="shop-gallery" aria-label="ショップ一覧">
+        <div class="gallery-head">
+          <div class="gallery-sub">Shop</div>
+          <h1 class="gallery-title">ラインナップ</h1>
+        </div>
+
+        <div class="shop-list" id="shopList"></div>
+      </section>
+    </main>
+
+    <footer class="ps-footer" aria-label="フッター">
+      <div class="ps-footer-brand" aria-label="Pentas Studio">
+        <img class="ps-footer-logo" src="../image/general/logo.png" alt="Pentas Studio">
+        <img class="ps-footer-wordmark" src="../image/general/let_logo.png" alt="Pentas Studio">
+      </div>
+      <div class="ps-footer-row">
+        <div class="sns" aria-label="SNSリンク">
+          <a href="https://x.com/bdg_de_asobo" aria-label="X" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18.244 3H21.5l-7.52 8.59L22 21h-6.31l-4.94-6.43L4.81 21H1.5l7.81-8.93L2 3h6.31l4.5 5.84L18.244 3Z"/>
+            </svg>
+          </a>
+          <a href="mailto:pentasufide.studio@gmail.com" aria-label="メールで問い合わせ">
+            <svg class="mail-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm8 6L4.5 7.5m15 0L12 11m0 0L4.5 16.5m15 0L12 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="https://pentasufide.booth.pm/" aria-label="BOOTH ショップ" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 6h16l-1.2 8.4a2 2 0 0 1-2 1.6H8.2l-.4 2h10.7v2H6a1 1 0 0 1-1-.8L3 6Z"/>
+              <path d="M9 18H7.2L5.5 8h13l-.9 6.2a2 2 0 0 1-2 1.6H9Z"/>
+            </svg>
+          </a>
+        </div>
+        <span class="ps-footer-divider" aria-hidden="true"></span>
+        <nav class="ps-footer-links" aria-label="フッターナビゲーション">
+          <a href="../index.html?skipLoading=1#top">Top</a>
+          <span class="ps-footer-sep" aria-hidden="true">|</span>
+          <a href="../games/games.html">Games</a>
+          <span class="ps-footer-sep" aria-hidden="true">|</span>
+          <a href="../news/gallery.html">News</a>
+          <span class="ps-footer-sep" aria-hidden="true">|</span>
+          <a href="shop.html">Shop</a>
+        </nav>
+      </div>
+      <p class="footer-copy">© Pantas Studio All Rights Reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    // 商品追加時はこの配列に1オブジェクト追加し、links に購入先を縦に追記してください。
+    const COMING_SOON_LINKS = [
+      {label:'ボドゲーマ', disabled:true},
+      {label:'BOOTH', disabled:true}
+    ];
+
+    const PRODUCTS = [
+      {
+        id:'yumeyume',
+        title:'ゆめゆめ',
+        image:'../image/games/yumeyume/mock.png',
+        detail:'../games/yumeyume/yumeyume.html',
+        links:[
+          {label:'ボドゲーマ', href:'https://bodoge.hoobby.net/market/items/7902', external:true},
+          {label:'BOOTH', disabled:true}
+        ]
+      },
+      {
+        id:'escape-goat',
+        title:'エスケープゴート',
+        image:'../image/games/escape-goat/escape.png',
+        detail:'../games/escape-goat/escape-goat.html',
+        links:[
+          {label:'ボドゲーマ', disabled:true},
+          {label:'BOOTH', disabled:true},
+          {label:'UZU', href:'https://www.uzu-app.com/ja/scenario/11926', external:true}
+        ]
+      },
+      {
+        id:'seisoin',
+        title:'静葬員',
+        image:'../image/games/seisoin/seisoin.png',
+        detail:'../games/seisoin/seisoin.html',
+        links:[
+          {label:'ボドゲーマ', href:'https://bodoge.hoobby.net/games/seisoin', external:true},
+          {label:'BOOTH', disabled:true}
+        ]
+      },
+      {
+        id:'meishi',
+        title:'名刺の管理ができません！',
+        image:'../image/games/meishi/meishi.png',
+        detail:'../games/meishi/meishi.html',
+        links:[
+          {label:'ボドゲーマ', disabled:true},
+          {label:'BOOTH', href:'https://pentasufide.booth.pm/items/5697977', external:true}
+        ]
+      },
+      {
+        id:'informer-r',
+        title:'インフォーマーリターンズ',
+        image:'../image/games/informer/informerR.png',
+        detail:'../games/informer/informer-r.html',
+        links:[
+          {label:'ボドゲーマ', disabled:true},
+          {label:'BOOTH', href:'https://pentasufide.booth.pm/items/1402317', external:true}
+        ]
+      },
+      {
+        id:'comical',
+        title:'コミカルミッション',
+        image:'../image/games/comical/comical.png',
+        detail:'../games/comical_mission/comical_mission.html',
+        links:[
+          {label:'ボドゲーマ', href:'https://bodoge.hoobby.net/games/comical-mission', external:true},
+          {label:'BOOTH', href:'https://pentasufide.booth.pm/items/4313433', external:true}
+        ]
+      },
+      {
+        id:'kachikan',
+        title:'カチカン会談',
+        image:'../image/games/kachikan/kachikan.png',
+        detail:'../games/kachikan-kaidan/kachikan-kaidan.html',
+        soldOut:true,
+        links:COMING_SOON_LINKS
+      },
+      {
+        id:'absepture',
+        title:'アブセプチャー',
+        image:'../image/games/abcepture/abcepture.png',
+        detail:'../games/absepture/absepture.html',
+        links:[
+          {label:'ボドゲーマ', disabled:true},
+          {label:'BOOTH', href:'https://booth.pm/ja/items/1934044', external:true}
+        ]
+      }
+    ];
+
+    (function renderProducts(){
+      const list=document.getElementById('shopList');
+      if(!list) return;
+
+      PRODUCTS.forEach((product)=>{
+        const card=document.createElement('article');
+        card.className='shop-card';
+        if(product.id) card.dataset.id=product.id;
+        if(product.soldOut) card.classList.add('is-soldout');
+
+        const thumbLink=document.createElement('a');
+        thumbLink.className='shop-thumb-link';
+        thumbLink.href=product.detail;
+        thumbLink.setAttribute('aria-label', product.title + ' の詳細ページへ');
+        if(product.soldOut){
+          const badge=document.createElement('span');
+          badge.className='soldout-badge';
+          badge.textContent='Sold Out';
+          thumbLink.appendChild(badge);
+        }
+
+        const thumb=document.createElement('figure');
+        thumb.className='shop-thumb';
+
+        const img=new Image();
+        img.src=product.image;
+        img.alt=product.title;
+        img.loading='lazy';
+        thumb.appendChild(img);
+        thumbLink.appendChild(thumb);
+
+        const title=document.createElement('h2');
+        title.className='shop-title';
+        title.textContent=product.title;
+
+        const links=document.createElement('div');
+        links.className='shop-links';
+
+        (product.links || []).forEach((linkItem)=>{
+          if(linkItem.disabled){
+            const disabled=document.createElement('span');
+            disabled.className='shop-link is-disabled';
+            disabled.textContent=linkItem.label;
+            disabled.setAttribute('aria-disabled','true');
+            links.appendChild(disabled);
+            return;
+          }
+          const a=document.createElement('a');
+          a.className='shop-link';
+          a.href=linkItem.href;
+          a.textContent=linkItem.label;
+          if(linkItem.external){
+            a.target='_blank';
+            a.rel='noopener noreferrer';
+          }
+          links.appendChild(a);
+        });
+
+        card.appendChild(thumbLink);
+        card.appendChild(title);
+        card.appendChild(links);
+        list.appendChild(card);
+      });
+    })();
+  </script>
+</body>
+</html>
