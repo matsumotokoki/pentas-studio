@@ -68,8 +68,15 @@
     .overview-block strong{color:var(--accent)}
     .overview-block .struck{text-decoration:line-through;color:var(--ink-weak)}
     .component-list{margin:0;padding-left:20px;display:grid;gap:6px;font-size:15px;line-height:1.8;color:#d7dee8}
+    .overview-block p.component-description{font-size:14px;line-height:1.7;color:var(--ink-weak)}
     .component-note{font-size:13px;line-height:1.8;color:var(--ink-weak)}
     .coming-soon{font-size:18px;letter-spacing:.08em;color:#d7dee8}
+
+    .rule-list{display:grid;gap:18px}
+    .rule-item{display:grid;gap:8px;padding:16px;border-radius:14px;background:rgba(16,22,30,.58);border:1px solid rgba(255,255,255,.08)}
+    .rule-item h3{font-size:16px;letter-spacing:.08em}
+    .rule-item p{font-size:14px;line-height:1.9;color:#d7dee8}
+    .rule-item .rule-meta{font-size:13px;line-height:1.6;color:var(--ink-weak)}
 
     .purchase-block{display:grid;gap:16px;padding:0}
     .purchase-block::before,
@@ -175,7 +182,7 @@
                   </h1>
                   <p class="game-category">自己中協力ゲーム</p>
                 </div>
-                <p class="hero-lead">今回こそは、助け合おう。<br>仲間との「信頼関係」が試される、生き残りをかけた食糧(どんぐり)争奪戦。</p>
+                <p class="hero-lead">全員味方で、全員敵。<br>仲良いフリした自己中協力ゲーム</p>
                 <dl class="game-meta">
                   <div>
                     <dt>プレイ人数</dt>
@@ -209,25 +216,53 @@
                 <section class="overview-block" aria-labelledby="overviewHeading">
                   <h2 id="overviewHeading">ゲーム概要</h2>
                   <h3><strong>今回こそは、助け合おう。</strong></h3>
-                  <p><span class="struck">「結局、君たちもこうなっちゃうんだね。」</span></p>
-                  <p>人間のいない世界。そこでは生き残った超獣たちが平和に暮らしていた、……はずだった。<br>気づけば残された食糧は、あとわずか。<br>全員で協力して生き残るか、他者を見捨てて自分だけが生き残るか。<br>超獣たちは交代でリーダーを務め、すべての判断をリーダーに委ねることにした。<br>争いを避けるためにー。</p>
-                  <p>この世界ではリーダーの言うことは絶対。<br>超獣たちは、リーダーを信じるのか、媚を売るのか、それとも嘘をつき裏切るのか。</p>
-                  <p>仲間との「信頼関係」が試される、生き残りをかけた食糧(どんぐり)争奪戦。</p>
+                  <p>人間のいない世界。<br>そこでは生き残った超獣たちが平和に暮らしていた<br>—はずだった。</p>
+                  <p>気づけば残された食糧は、あとわずか。</p>
+                  <p>全員で協力して生き残るか、<br>他者を見捨てて自分だけが生き残るか。</p>
+                  <p>超獣たちは交代でリーダーを務め、<br>すべての判断をリーダーに委ねることにした。</p>
+                  <p>争いを避けるためにー。</p>
+                  <p>だがこの世界ではリーダーの言うことは絶対。<br>超獣たちは、リーダーを信じるのか、媚を売るのか、<br>それとも嘘をつき裏切るのか。</p>
+                  <p><strong>仲間との「信頼関係」が試される、<br>生き残りをかけた食糧(どんぐり)争奪戦。</strong></p>
                 </section>
                 <section class="overview-block" aria-labelledby="ruleHeading">
                   <h2 id="ruleHeading">ルール説明</h2>
-                  <p class="coming-soon">comming soon...</p>
-                </section>
-                <section class="overview-block" aria-labelledby="componentHeading">
-                  <h2 id="componentHeading">コンポーネント</h2>
-                  <ul class="component-list">
-                    <li>どんぐりカード</li>
-                    <li>アクションカード</li>
-                    <li>キャラクターカード</li>
-                    <li>特殊ダイス</li>
-                    <li>説明書</li>
-                  </ul>
-                  <p class="component-note">※ 内容物は後日変更になる場合があります。</p>
+                  <p>『超獣飢餓』は、限られた食糧の中で、<br>表向きは全員で生き残りを目指す自己中協力ゲームです。</p>
+                  <p>しかしあなたは自分の行動を選べません。<br>すべてはリーダー次第。</p>
+                  <p>助けられるかもしれないし、<br>見捨てられるかもしれない。<br>あるいは、狙って排除されるかもしれません。</p>
+                  <p>プレイヤーは地球に生き残った超獣として、<br>どんぐりを集めて生き延びます。<br>山札が尽きるまで生存できれば勝利です。</p>
+                  <p><strong>＜生存条件＞</strong><br>・毎ターン「食糧」どんぐりを消費できること<br>・ゲーム終了時に「毒」どんぐりを持っていないこと</p>
+                  <p>全員の手札にあるどんぐりの中身は見えません。<br>食糧を分けあうのか、毒を押し付け合うのか、<br>人間の本性が垣間見えます。</p>
+                  <p><strong>＜ゲームの流れ＞</strong></p>
+                  <div class="rule-list">
+                    <div class="rule-item">
+                      <h3>1　状況を訴える</h3>
+                      <p>プレイヤーはリーダーに自分の状況を伝えます。</p>
+                      <p>「どんぐりの余裕があるので支援をするよ」<br>「このままでは命が危ない、どうか助けてくれ」</p>
+                      <p>ただし、この言葉が本当とは限りません。</p>
+                    </div>
+                    <div class="rule-item">
+                      <h3>2　リーダーが全員の行動を決める</h3>
+                      <p>リーダーは、全員の発言をもとに、各プレイヤーの行動を決定します。<br>しかし手札は見えません。</p>
+                      <p>どんぐりなのか、毒なのか。<br>善意なのか、嘘なのか。</p>
+                      <p>リーダーは、会話や行動から推測するしかありません。</p>
+                    </div>
+                    <div class="rule-item">
+                      <h3>3　アクションを実行する</h3>
+                      <p>リーダーを含め、超獣たちは割り振られたアクションを各自が実行します。</p>
+                      <p>収穫、支援、頂戴<br>—配られた行動によって状況は大きく変わります。</p>
+                    </div>
+                    <div class="rule-item">
+                      <h3>4　飢餓判定</h3>
+                      <p>ターン終了時に食糧を出せないプレイヤーは飢餓状態になります。</p>
+                      <p>そして誰かが飢餓状態になった時、<br>ゲームの流れが大きく変わります。</p>
+                    </div>
+                  </div>
+                  <p>私一人だけでも生き残ろう。</p>
+                  <p>毒を押し付け、食糧を奪い合い、<br>はたまたリーダーが笑顔で見捨てる……。</p>
+                  <p>「全員で生き残る」なんて誰も信じていない。</p>
+                  <p>彼らは本当に協力しようとしているのか？<br>それとも自分だけが生き残ろうと思っているのか？</p>
+                  <p>このゲームをすると、プレイをしている友達の<br>「人間の本性」が明らかになってしまうかもしれません。</p>
+                  <p>仲間との信頼関係に頭を抱え、<br>時には信じ、時には嘘をつく、<br>そんな会話と葛藤を楽しむボードゲームです。</p>
                 </section>
               </div>
 
@@ -258,6 +293,25 @@
                       </button>
                     </div>
                   </div>
+                </section>
+                <section class="overview-block" aria-labelledby="componentHeading">
+                  <h2 id="componentHeading">コンポーネント</h2>
+                  <div class="rule-list">
+                    <div class="rule-item">
+                      <ul class="component-list">
+                        <li>パッケージ（B6サイズ相当）</li>
+                        <li>どんぐり形カード</li>
+                        <li>キャラクターカード</li>
+                        <li>アクションカード</li>
+                        <li>どんぐりダイス</li>
+                        <li>説明書</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <p class="component-description">コンポーネントもこだわり、<br>どんぐり形にカットされた厚手のカードが入っているほか、</p>
+                  <p class="component-description">まるで本物のどんぐりを転がしているような、どんぐり形のダイス。</p>
+                  <p class="component-description">さらに大きく見やすいB7サイズのアクションカードです。</p>
+                  <p class="component-description">パッケージは漫画の単行本を意識したサイズ感とビジュアルで、棚に入れても映えるようになっています。</p>
                 </section>
               </div>
             </div>
