@@ -141,7 +141,6 @@
     name.textContent = button.dataset.name;
     role.textContent = button.dataset.role;
     description.innerHTML = `
-      <strong>${button.dataset.descriptionStrong}</strong>
       <p>${button.dataset.descriptionBody1}</p>
       <p>${button.dataset.descriptionBody2}</p>
     `;
