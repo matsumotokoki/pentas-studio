@@ -64,7 +64,6 @@
           <div class="story-media" aria-label="世界観ビジュアル準備中">
             <div class="story-media__frame">
               <div class="story-media__placeholder">coming soon</div>
-              <span class="story-media__play" aria-hidden="true"></span>
             </div>
           </div>
           <div class="story-summary">
@@ -157,10 +156,10 @@
       <div class="section__inner">
         <h2 id="systemTitle" class="sr-only">ゲームシステム</h2>
         <div class="system-overview">
-          <p class="system-message reveal reveal--up">超獣心得</p>
-          <div class="system-visual reveal reveal--up" aria-label="ゲームシステム説明画像準備中">
+          <p class="system-message reveal reveal--up">超獣飢餓とは</p>
+          <div class="system-visual reveal reveal--up" aria-label="超獣飢餓のルール説明画像">
             <div class="system-visual__frame">
-              <div class="system-visual__placeholder">coming soon</div>
+              <img class="system-visual__image" src="../../image/games/chojyu/kiga/rule.jpg" alt="超獣飢餓のルール説明">
             </div>
           </div>
         </div>
@@ -171,12 +170,38 @@
   <footer class="site-footer">
     <div class="footer__inner">
       <img class="footer__logo" src="../../image/games/chojyu/kiga/logo.png" alt="超獣飢餓">
-      <div class="footer-links">
-        <a href="../../index.html?skipLoading=1#top">Pentas Studio</a>
-        <a href="../games.html">Games</a>
-        <a href="../../shop/shop.html">Shop</a>
+      <a class="footer-brand" href="../../index.html?skipLoading=1#top" aria-label="Pentas Studio">
+        <img class="footer-brand__logo" src="../../image/general/logo.png" alt="Pentas Studio">
+        <img class="footer-brand__wordmark" src="../../image/general/let_logo.png" alt="Pentas Studio">
+      </a>
+      <div class="footer-row">
+        <div class="sns" aria-label="SNSリンク">
+          <a href="https://x.com/bdg_de_asobo" aria-label="X" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18.244 3H21.5l-7.52 8.59L22 21h-6.31l-4.94-6.43L4.81 21H1.5l7.81-8.93L2 3h6.31l4.5 5.84L18.244 3Z"/>
+            </svg>
+          </a>
+          <a href="mailto:pentasufide.studio@gmail.com" aria-label="メールで問い合わせ">
+            <svg class="mail-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm8 6L4.5 7.5m15 0L12 11m0 0L4.5 16.5m15 0L12 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="https://pentasufide.booth.pm/" aria-label="BOOTH ショップ" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 6h16l-1.2 8.4a2 2 0 0 1-2 1.6H8.2l-.4 2h10.7v2H6a1 1 0 0 1-1-.8L3 6Z"/>
+              <path d="M9 18H7.2L5.5 8h13l-.9 6.2a2 2 0 0 1-2 1.6H9Z"/>
+            </svg>
+          </a>
+        </div>
+        <span class="footer-divider" aria-hidden="true"></span>
+        <nav class="footer-links" aria-label="フッターナビゲーション">
+          <a href="../../index.html?skipLoading=1#top">TOP</a>
+          <span class="footer-links__sep" aria-hidden="true">|</span>
+          <a href="../games.html">GAMES</a>
+          <span class="footer-links__sep" aria-hidden="true">|</span>
+          <a href="../../news/gallery.html">NEWS</a>
+          <span class="footer-links__sep" aria-hidden="true">|</span>
+          <a href="../../shop/shop.html">SHOP</a>
+        </nav>
       </div>
-      <p>自己中協力ゲーム / 3-6人 / 10-20分 / 10歳+</p>
       <p>&copy; Pentas Studio</p>
     </div>
   </footer>

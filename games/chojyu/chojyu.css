@@ -886,6 +886,14 @@ body.is-intro-done .fixed-cta {
   text-transform: uppercase;
 }
 
+.system-visual__image {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(42px);
@@ -902,7 +910,8 @@ body.is-intro-done .fixed-cta {
 }
 
 .site-footer {
-  padding: 88px 24px 112px;
+  --footer-top-space: 59px;
+  padding: 59px 24px 112px;
   background: rgba(6, 4, 3, .86);
   border-top: 1px solid var(--line);
 }
@@ -919,19 +928,115 @@ body.is-intro-done .fixed-cta {
   line-height: 1.9;
 }
 
+.footer-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: calc(var(--footer-top-space) - 24px);
+}
+
+.footer-brand__logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: contain;
+  opacity: .9;
+}
+
+.footer-brand__wordmark {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+  opacity: .95;
+}
+
 .footer__logo { width: min(320px, 76vw); opacity: .9; }
+
+.footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.footer-divider {
+  width: 1px;
+  height: 18px;
+  background: var(--line);
+  opacity: .8;
+}
+
+.sns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+.sns a {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff12;
+  border: 1px solid var(--line);
+  transition: transform .18s ease, background-color .18s ease, box-shadow .18s ease, color .18s ease;
+  color: var(--ink);
+  --sns-play: var(--bg);
+}
+
+.sns a:hover,
+.sns a:focus-visible {
+  transform: scale(1.06);
+  background: var(--accent);
+  color: var(--bg);
+  box-shadow: var(--shadow);
+  border-color: transparent;
+  --sns-play: var(--ink);
+}
+
+.sns a svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+.sns a svg path {
+  fill: currentColor;
+}
+
+.sns a svg.mail-icon path {
+  fill: none;
+  stroke: currentColor;
+}
 
 .footer-links {
   display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
+  font-size: 13px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  flex-wrap: wrap;
 }
 
 .footer-links a {
   color: var(--ink-soft);
-  font-size: 18px;
   font-weight: 700;
+}
+
+.footer-links a:hover,
+.footer-links a:focus-visible {
+  color: var(--accent);
+}
+
+.footer-links__sep {
+  margin: 0 16px;
+  color: var(--line);
 }
 
 @keyframes catchReveal {
@@ -1219,6 +1324,10 @@ body.is-intro-done .fixed-cta {
   }
   .character-thumb__name {
     font-size: 13px;
+  }
+  .footer-divider {
+    width: 60%;
+    height: 1px;
   }
   .fixed-cta {
     left: auto;
