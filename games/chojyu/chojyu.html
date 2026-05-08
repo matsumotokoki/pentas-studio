@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>超獣飢餓 特設ページ | ペンタススタジオ</title>
+  <meta name="description" content="自己中協力ゲーム『超獣飢餓』の特設ページ。世界観、キャラクター、ゲームシステムを紹介します。">
+  <link rel="icon" type="image/png" href="../../image/general/logo.png">
+  <link rel="stylesheet" href="./chojyu.css">
+</head>
+<body class="is-intro-active">
+  <div class="opening" id="opening" aria-label="超獣飢餓 オープニング">
+    <img class="opening__catch" src="../../image/games/chojyu/kiga/catch_copy.svg" alt="今回こそは、助け合おう。">
+  </div>
+
+  <header class="site-header" aria-label="ページ内ナビゲーション">
+    <div class="site-header__desktop">
+      <nav class="global-nav">
+        <a href="#top">top</a>
+        <a href="#story">物語</a>
+        <a href="#characters">キャラクター</a>
+        <a href="#system">ゲームシステム</a>
+        <span>coming soon</span>
+      </nav>
+    </div>
+    <div class="site-header__mobile">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="globalNavPanel" aria-label="メニューを開く">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="global-nav-panel" id="globalNavPanel" aria-label="モバイルメニュー">
+        <a href="#top">top</a>
+        <a href="#story">物語</a>
+        <a href="#characters">キャラクター</a>
+        <a href="#system">ゲームシステム</a>
+        <span>coming soon</span>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="heroTitle">
+      <h1 id="heroTitle" class="sr-only">超獣飢餓</h1>
+      <div class="hero__media" aria-hidden="true">
+        <picture>
+          <source media="(max-width: 560px)" srcset="../../image/games/chojyu/kiga/KV_mobile.png">
+          <img src="../../image/games/chojyu/kiga/KV.jpg" alt="">
+        </picture>
+        <img class="hero__logo-mobile" src="../../image/games/chojyu/kiga/logo.png" alt="超獣飢餓">
+      </div>
+    </section>
+
+    <section class="section section--story" id="story" aria-labelledby="storyTitle">
+      <div class="section__inner story-section">
+        <div class="story-stage reveal reveal--left">
+          <span class="story-stage__eyebrow">story</span>
+          <h2 class="story-stage__title" id="storyTitle">
+            <span>物</span>
+            <span>語</span>
+          </h2>
+        </div>
+        <div class="story-body reveal reveal--right">
+          <div class="story-media" aria-label="世界観ビジュアル準備中">
+            <div class="story-media__frame">
+              <div class="story-media__placeholder">coming soon</div>
+            </div>
+          </div>
+          <div class="story-summary">
+            <p>人間のいない世界。そこでは生き残った超獣たちが平和に暮らしていた、はずだった。気づけば残されたどんぐりはわずか。</p>
+            <p>全員で協力して生き残るか、他者を見捨てて自分だけが生き残るか。争いを避けるため、超獣たちは交代でリーダーを務め、すべての判断をその一匹に委ねることにした。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--characters" id="characters" aria-labelledby="charactersTitle">
+      <div class="section__inner">
+        <div class="section-head reveal reveal--up">
+          <div class="section-title">
+            <span class="section-title__en">characters</span>
+            <h2 id="charactersTitle">キャラクター</h2>
+          </div>
+        </div>
+        <div class="character-thumbs reveal reveal--up" role="list" aria-label="キャラクター一覧">
+          <button class="character-thumb is-active" type="button" role="listitem" data-name="ロンド" data-role="ホンドタヌキの超獣" data-normal="../../image/games/chojyu/character/normal/ロンド.png" data-hunger="../../image/games/chojyu/character/hunger/飢餓ロンド.png" data-description-body1="仲間思いで、仲間のために誰よりも早く動く。" data-description-body2="ただし臆病者の一面もあり、苦手なものも多い。">
+            <span class="character-thumb__visual">
+              <img class="character-thumb__image" src="../../image/games/chojyu/character/icon/ロンド_icon.png" alt="" style="--thumb-pos: 50% 10%;">
+            </span>
+            <span class="character-thumb__name">ロンド</span>
+          </button>
+          <button class="character-thumb" type="button" role="listitem" data-name="ニコ" data-role="イエネコの超獣" data-normal="../../image/games/chojyu/character/normal/ニコ.png" data-hunger="../../image/games/chojyu/character/hunger/飢餓ニコ.png" data-description-body1="甘えん坊で誰とでもすぐに打ち解けられる。" data-description-body2="ツンデレで本心を言わないことも多い。">
+            <span class="character-thumb__visual">
+              <img class="character-thumb__image" src="../../image/games/chojyu/character/icon/ニコ_icon,.png" alt="" style="--thumb-pos: 50% 8%;">
+            </span>
+            <span class="character-thumb__name">ニコ</span>
+          </button>
+          <button class="character-thumb" type="button" role="listitem" data-name="クリス" data-role="タイワンリスの超獣" data-normal="../../image/games/chojyu/character/normal/クリス.png" data-hunger="../../image/games/chojyu/character/hunger/飢餓クリス.png" data-description-body1="幼い見た目ながらに好戦的で、よく威嚇をする。" data-description-body2="だが身体が小さく甘えてるように見られがち。">
+            <span class="character-thumb__visual">
+              <img class="character-thumb__image" src="../../image/games/chojyu/character/icon/クリス_icon.png" alt="" style="--thumb-pos: 50% 7%;">
+            </span>
+            <span class="character-thumb__name">クリス</span>
+          </button>
+          <button class="character-thumb" type="button" role="listitem" data-name="ペルラ" data-role="ネザーランドドワーフの超獣" data-normal="../../image/games/chojyu/character/normal/ぺルラ.png" data-hunger="../../image/games/chojyu/character/hunger/飢餓ぺルラ.png" data-description-body1="繊細で本性をほとんど表さないため、みんなからも謎の存在になっている。" data-description-body2="占星術に詳しい。">
+            <span class="character-thumb__visual">
+              <img class="character-thumb__image" src="../../image/games/chojyu/character/icon/ぺルラ_icon.png" alt="" style="--thumb-pos: 50% 7%;">
+            </span>
+            <span class="character-thumb__name">ペルラ</span>
+          </button>
+          <button class="character-thumb" type="button" role="listitem" data-name="ネルソン" data-role="クロサイの超獣" data-normal="../../image/games/chojyu/character/normal/ネルソン.png" data-hunger="../../image/games/chojyu/character/hunger/飢餓ネルソン.png" data-description-body1="感情よりも論理を優先し、冷静で知的な行動をとる。" data-description-body2="だが、たまにお茶目な一面を見せてしまうおっちょこちょい。">
+            <span class="character-thumb__visual">
+              <img class="character-thumb__image" src="../../image/games/chojyu/character/icon/ネルソン_icon.png" alt="" style="--thumb-pos: 50% 9%;">
+            </span>
+            <span class="character-thumb__name">ネルソン</span>
+          </button>
+          <button class="character-thumb" type="button" role="listitem" data-name="カチューシャ" data-role="ホッキョクグマの超獣" data-normal="../../image/games/chojyu/character/normal/カチューシャ.png" data-hunger="../../image/games/chojyu/character/hunger/飢餓カチューシャ.png" data-description-body1="パワフルでよく笑う、みんなのお母さん的存在。" data-description-body2="遊ぶことが好きで、ボードゲームが趣味。">
+            <span class="character-thumb__visual">
+              <img class="character-thumb__image" src="../../image/games/chojyu/character/icon/カチューシャ_icon.png" alt="" style="--thumb-pos: 50% 7%;">
+            </span>
+            <span class="character-thumb__name">カチューシャ</span>
+          </button>
+          <button class="character-thumb" type="button" role="listitem" data-name="ファッジ" data-role="トムソンガゼルの超獣" data-normal="../../image/games/chojyu/character/normal/ファッジ.png" data-hunger="../../image/games/chojyu/character/hunger/飢餓ファッジ.png" data-description-body1="ストリート育ちの自由人。" data-description-body2="フットワークが軽くどこでも行くが、口も軽くどれが本心なのかわからないことが多い。">
+            <span class="character-thumb__visual">
+              <img class="character-thumb__image" src="../../image/games/chojyu/character/icon/ファッジ_icon.png" alt="" style="--thumb-pos: 50% 6%;">
+            </span>
+            <span class="character-thumb__name">ファッジ</span>
+          </button>
+        </div>
+        <div class="character-showcase">
+          <div class="character-stage reveal reveal--left" id="characterStage">
+            <div class="character-state character-stage__state" aria-label="状態切り替え">
+              <button class="is-active" type="button" data-state="normal">通常状態</button>
+              <button type="button" data-state="hunger">飢餓状態</button>
+            </div>
+            <div class="character-stage__art">
+              <img class="character-normal" id="characterNormal" src="../../image/games/chojyu/character/normal/ロンド.png" alt="ロンド 通常状態">
+              <img class="character-hunger" id="characterHunger" src="../../image/games/chojyu/character/hunger/飢餓ロンド.png" alt="ロンド 飢餓状態">
+            </div>
+            <div class="character-stage__floor" aria-hidden="true"></div>
+          </div>
+          <div class="character-panel reveal reveal--right">
+            <div class="character-panel__meta">
+              <h3 class="character-panel__name" id="characterName">ロンド</h3>
+              <span class="character-panel__role" id="characterRole">ホンドタヌキの超獣</span>
+            </div>
+            <div class="character-description" id="characterDescription">
+              <p>仲間思いで、仲間のために誰よりも早く動く。</p>
+              <p>ただし臆病者の一面もあり、苦手なものも多い。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--system" id="system" aria-labelledby="systemTitle">
+      <div class="section__inner">
+        <h2 id="systemTitle" class="sr-only">ゲームシステム</h2>
+        <div class="system-overview">
+          <p class="system-message reveal reveal--up">超獣飢餓とは</p>
+          <div class="system-visual reveal reveal--up" aria-label="超獣飢餓のルール説明画像">
+            <div class="system-visual__frame">
+              <img class="system-visual__image" src="../../image/games/chojyu/kiga/rule.jpg" alt="超獣飢餓のルール説明">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer__inner">
+      <img class="footer__logo" src="../../image/games/chojyu/kiga/logo.png" alt="超獣飢餓">
+      <a class="footer-brand" href="../../index.html?skipLoading=1#top" aria-label="Pentas Studio">
+        <img class="footer-brand__logo" src="../../image/general/logo.png" alt="Pentas Studio">
+        <img class="footer-brand__wordmark" src="../../image/general/let_logo.png" alt="Pentas Studio">
+      </a>
+      <div class="footer-row">
+        <div class="sns" aria-label="SNSリンク">
+          <a href="https://x.com/bdg_de_asobo" aria-label="X" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18.244 3H21.5l-7.52 8.59L22 21h-6.31l-4.94-6.43L4.81 21H1.5l7.81-8.93L2 3h6.31l4.5 5.84L18.244 3Z"/>
+            </svg>
+          </a>
+          <a href="mailto:pentasufide.studio@gmail.com" aria-label="メールで問い合わせ">
+            <svg class="mail-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm8 6L4.5 7.5m15 0L12 11m0 0L4.5 16.5m15 0L12 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="https://pentasufide.booth.pm/" aria-label="BOOTH ショップ" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 6h16l-1.2 8.4a2 2 0 0 1-2 1.6H8.2l-.4 2h10.7v2H6a1 1 0 0 1-1-.8L3 6Z"/>
+              <path d="M9 18H7.2L5.5 8h13l-.9 6.2a2 2 0 0 1-2 1.6H9Z"/>
+            </svg>
+          </a>
+        </div>
+        <span class="footer-divider" aria-hidden="true"></span>
+        <nav class="footer-links" aria-label="フッターナビゲーション">
+          <a href="../../index.html?skipLoading=1#top">TOP</a>
+          <span class="footer-links__sep" aria-hidden="true">|</span>
+          <a href="../games.html">GAMES</a>
+          <span class="footer-links__sep" aria-hidden="true">|</span>
+          <a href="../../news/gallery.html">NEWS</a>
+          <span class="footer-links__sep" aria-hidden="true">|</span>
+          <a href="../../shop/shop.html">SHOP</a>
+        </nav>
+      </div>
+      <p>&copy; Pentas Studio</p>
+    </div>
+  </footer>
+
+  <div class="fixed-cta" data-cta>
+    <button class="fixed-cta__toggle" type="button" aria-expanded="false" aria-controls="reservePanel" aria-label="予約ボタンを表示">
+      <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+        <path d="M18 16h28l6 9v23H12V25l6-9Zm4 8v-4h20v4h4.8l-3.4-5H20.6l-3.4 5H22Zm-4 6v12h28V30H18Zm6 3h16v6H24v-6Z"/>
+      </svg>
+    </button>
+    <a class="reserve-button fixed-cta__panel" id="reservePanel" href="https://forms.gle/cP7pCZijqRUZktuL8" target="_blank" rel="noopener noreferrer">
+      <picture>
+        <source media="(max-width: 880px)" srcset="../../image/games/chojyu/special/reserve-circle-cta.svg">
+        <img src="../../image/games/chojyu/special/reserve-cta.svg" alt="ご予約はこちら">
+      </picture>
+      <span class="fixed-cta__compact-label">予約はこちら</span>
+    </a>
+  </div>
+
+  <script src="./chojyu.js"></script>
+</body>
+</html>
