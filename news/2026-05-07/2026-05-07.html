@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ゲームマーケット2026春に【両日Q10】にて出展決定 | ペンタススタジオ</title>
+  <link rel="icon" type="image/png" href="../../image/general/logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#29323b;
+      --surface:#1f2730;
+      --surface-soft:#212a33;
+      --ink:#eff3f8;
+      --ink-weak:#aeb8c4;
+      --ink-soft:#d7dee7;
+      --line:#394656;
+      --accent:#FFBA3A;
+      --radius:18px;
+      --panel-radius:14px;
+      --shadow:0 12px 28px rgba(0,0,0,.28);
+      --page-pad:min(max(5vw,22px),56px);
+      --hero-media-min:360px;
+    }
+
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP","BIZ UDGothic","Yu Gothic",Meiryo,sans-serif;
+      line-height:1.8;
+      -webkit-font-smoothing:antialiased;
+    }
+    img{display:block;max-width:100%;height:auto;user-select:none;-webkit-user-drag:none}
+    a{color:inherit;text-decoration:none}
+    h1,h2,h3,p,ul{margin:0}
+
+    .page{min-height:100vh;display:grid;grid-template-rows:auto 1fr auto}
+
+    header{
+      padding:30px var(--page-pad) 22px;
+      display:grid;
+      gap:18px;
+      justify-items:center;
+      text-align:center;
+      border-bottom:1px solid var(--line);
+      background:rgba(31,39,48,.92);
+      box-shadow:0 20px 40px rgba(0,0,0,.28);
+    }
+    .brand-logo{width:120px;height:120px;border-radius:50%;overflow:hidden;display:grid;place-items:center;background:transparent}
+    .brand-logo img{width:100%;height:100%;object-fit:contain}
+    .brand-name{font-family:'Rampart One',system-ui,sans-serif;font-size:32px;letter-spacing:.02em}
+    .brand-name img{max-height:78px;object-fit:contain;margin:0 auto}
+
+    main{display:grid;gap:0}
+    .section-band{padding:56px var(--page-pad);display:flex;justify-content:center;background:var(--section-bg,#0000)}
+    .band-inner{width:min(1080px,100%);display:grid;gap:0}
+
+    .entry-hero-band{--section-bg:var(--surface-soft);border-bottom:1px solid var(--line)}
+    .entry-hero{display:grid;grid-template-columns:1.32fr 1fr;gap:36px;align-items:start}
+    .hero-media{border-radius:var(--radius);overflow:hidden;background:rgba(16,21,28,.8);border:1px solid rgba(255,255,255,.08);min-height:var(--hero-media-min);display:grid;place-items:center;box-shadow:0 8px 22px rgba(0,0,0,.22)}
+    .hero-media img{width:100%;height:100%;object-fit:cover}
+    .hero-fallback{width:100%;height:100%;display:grid;place-items:center;padding:32px;color:var(--ink-weak);text-align:center;letter-spacing:.06em;border:2px dashed rgba(255,255,255,.18);border-radius:calc(var(--radius) - 6px)}
+    .hero-info{display:grid;gap:22px;align-content:flex-start}
+    .entry-category{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--accent)}
+    .entry-title{font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Noto Sans JP','BIZ UDGothic','Yu Gothic',Meiryo,sans-serif;font-size:52px;font-weight:700;letter-spacing:.02em;line-height:1.15;margin:0;width:calc(100% + 120px);max-width:none}
+    .entry-meta-inline{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center}
+    .entry-published{font-size:14px;letter-spacing:.16em;color:var(--ink-weak);display:flex;align-items:center;gap:10px}
+    .entry-published::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(255,186,58,.18)}
+    .entry-published time{font-variant-numeric:tabular-nums;color:var(--ink);letter-spacing:.18em}
+    .entry-author{display:flex;align-items:center;gap:14px;padding:8px 12px;border-radius:999px;background:rgba(24,32,42,.78);border:1px solid rgba(255,255,255,.08);box-shadow:0 12px 24px rgba(0,0,0,.24)}
+    .author-avatar{width:48px;height:48px;border-radius:50%;overflow:hidden;background:rgba(255,255,255,.1);display:grid;place-items:center}
+    .author-avatar img{width:100%;height:100%;object-fit:cover}
+    .author-meta{display:grid;gap:4px}
+    .author-role{font-size:12px;letter-spacing:.1em;color:var(--ink-weak)}
+    .author-name{font-size:16px;font-weight:700;letter-spacing:.12em}
+
+    .entry-body-band{--section-bg:var(--surface)}
+    .entry-body{width:min(760px,100%);margin:0 auto;display:grid;gap:28px}
+    .entry-body p{margin:0;font-size:16px;line-height:2;color:#e4eaf1;letter-spacing:.01em}
+    .entry-body p + p{margin-top:-4px}
+    .entry-body h2{font-size:22px;line-height:1.6;letter-spacing:.04em;margin:0;color:var(--ink)}
+    .entry-body strong{color:var(--accent)}
+    .entry-body strong.is-ink,
+    .entry-body strong[data-variant="ink"]{color:var(--ink)}
+    .entry-body figure{margin:0;border-radius:var(--radius);overflow:hidden;background:rgba(20,27,35,.72);border:1px solid rgba(255,255,255,.08)}
+    .entry-body figure img{width:100%;height:auto;display:block}
+    .entry-body hr{border:none;border-top:1px solid rgba(255,255,255,.08);margin:18px 0 12px}
+    .entry-body code{font-family:"SFMono-Regular","Consolas","BIZ UDGothic",monospace;font-size:.94em;background:rgba(255,255,255,.08);padding:2px 8px;border-radius:6px;color:var(--ink-soft)}
+
+    footer{padding:32px var(--page-pad) 42px;border-top:1px solid var(--line);display:grid;gap:14px;justify-items:center;background:rgba(23,30,39,.94)}
+    .sns{display:flex;gap:12px;justify-content:center}
+    .sns a{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#ffffff12;border:1px solid var(--line);color:var(--ink);transition:transform .18s ease,background-color .18s ease,box-shadow .18s ease,color .18s ease;--sns-play:var(--bg)}
+    .sns a:hover{transform:scale(1.06);background:var(--accent);color:var(--bg);box-shadow:var(--shadow);border-color:transparent;--sns-play:var(--ink)}
+    .sns svg{width:20px;height:20px}
+    .sns path{fill:currentColor}
+    .sns path.play{fill:var(--sns-play);transition:fill .18s ease}
+    .sns svg.mail-icon path{fill:none;stroke:currentColor}
+    .footer-copy{margin:0;color:var(--ink-weak);font-size:12px;letter-spacing:.04em;text-align:center}
+
+    .ps-footer-brand{display:flex;align-items:center;justify-content:center;gap:12px}
+    .ps-footer-logo{width:42px;height:42px;border-radius:50%;object-fit:contain;opacity:.9}
+    .ps-footer-wordmark{height:42px;width:auto;object-fit:contain;opacity:.95}
+    .ps-footer-row{display:flex;align-items:center;gap:22px;flex-wrap:wrap;justify-content:center}
+    .ps-footer-divider{width:1px;height:18px;background:var(--line);opacity:.8}
+    .ps-footer-links{display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:.22em;text-transform:uppercase}
+    .ps-footer-links a{color:var(--ink-weak);transition:color .18s ease}
+    .ps-footer-links a:hover,.ps-footer-links a:focus-visible{color:var(--accent)}
+    .ps-footer-sep{margin:0 16px;color:var(--line)}
+
+    @media (max-width:1023px){
+      :root{--page-pad:min(max(4vw,18px),44px)}
+      .entry-hero{grid-template-columns:1fr;gap:28px}
+      .hero-media{order:-1;min-height:320px}
+      .entry-title{font-size:44px;width:100%}
+    }
+    @media (max-width:639px){
+      header{padding-top:24px}
+      .brand-name{font-size:28px}
+      .section-band{padding:40px var(--page-pad)}
+      .entry-title{font-size:34px}
+      .entry-body{gap:24px}
+      .entry-body p{font-size:15px}
+      .entry-body h2{font-size:20px}
+      .entry-author{width:100%;justify-content:flex-start}
+    }
+
+    @media (max-width:520px){
+      .ps-footer-divider{width:60%;height:1px}
+    }
+
+    @media (max-width:639px){
+      .ps-footer{gap:24px;padding-top:clamp(28px, 8vw, 52px);padding-bottom:clamp(28px, 8vw, 64px)}
+      .ps-footer-brand{margin:0}
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header aria-label="サイトヘッダー">
+      <a class="brand-logo" href="../../index.html?skipLoading=1#top" aria-label="トップページへ戻る">
+        <img src="../../image/general/logo.png" alt="Pentas Studio" loading="lazy">
+      </a>
+      <div class="brand-name">
+        <img src="../../image/general/let_logo.png" alt="Pentas Studio" loading="lazy">
+      </div>
+    </header>
+
+    <main>
+      <article aria-labelledby="entryTitle">
+        <section class="section-band entry-hero-band">
+          <div class="band-inner">
+            <div class="entry-hero">
+              <figure class="hero-media" aria-label="ゲームマーケット2026春出展のお知らせのキービジュアル">
+                <img src="chojyu_KV.jpg" alt="超獣飢餓のキービジュアル" loading="lazy">
+              </figure>
+              <div class="hero-info">
+                <p class="entry-category">INFO</p>
+                <h1 id="entryTitle" class="entry-title">ゲームマーケット2026春に【両日Q10】にて出展決定</h1>
+                <div class="entry-meta-inline">
+                  <p class="entry-published"><time datetime="2026-05-07">2026.05.07</time> 公開</p>
+                  <div class="entry-author">
+                    <div class="author-avatar" aria-hidden="true">
+                      <img src="../../image/menbers/doi.jpg" alt="どいのポートレート写真" loading="lazy">
+                    </div>
+                    <div class="author-meta">
+                      <span class="author-role">代表 / プロデューサー</span>
+                      <span class="author-name">どい</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-band entry-body-band">
+          <div class="band-inner">
+            <div class="entry-body">
+              <h2>◆ペンタススタジオはゲームマーケット2026春に出展いたします。</h2>
+              <p>ペンタススタジオは、2026年5月23日(土)〜24日(日)に幕張メッセにて開催されるゲームマーケット2026春に出展いたします。今回の新作は<strong>「超獣飢餓(ちょうじゅうきが)」</strong>です。仲良いフリした自己中協力ゲームで、プレイヤーたちの信頼関係が試されるゲームとなっています。</p>
+              <p>出展ブースは<strong>「展示ホール1」の両日【Q-10】</strong>です。当日は制作メンバーもブースにてお待ちしております。ぜひお気軽にお立ち寄りください。</p>
+
+              <h2>◆出展情報</h2>
+              <p>イベント名：ゲームマーケット2026春<br>開催日：2026年5月23日（土）– 5月24日（日）<br>会場：幕張メッセ展示ホール1〜4<br>ブース番号：【Q-10】<br>ブース名：ペンタススタジオ（Pentas Studio）</p>
+              <figure>
+                <img src="map.jpg" alt="ゲームマーケット2026春の会場マップ" loading="lazy">
+              </figure>
+
+              <h2>◆頒布作品</h2>
+              <hr>
+              <p>○『超獣飢餓』<br>ゲームマーケット2026春の新作<br>3〜6人用 / 10〜20分 / 2,800円（イベント限定価格）</p>
+              <figure>
+                <img src="chojyu_KV.jpg" alt="超獣飢餓のキービジュアル" loading="lazy">
+              </figure>
+              <p>詳細は<a href="../../games/chojyu/kiga.html" target="_blank" rel="noopener noreferrer"><strong>こちら</strong></a></p>
+
+              <hr>
+              <p>○『ゆめゆめ』<br>2人用 / 約120分 / 2,500円（イベント限定価格）</p>
+              <figure>
+                <img src="../../image/games/yumeyume/kv_without.png" alt="ゆめゆめのKV" loading="lazy">
+              </figure>
+
+              <hr>
+              <p>○『静葬員』（第二版）<br>2-4人用 / 30-45分 / 3,500円（イベント限定価格）</p>
+              <figure>
+                <img src="../../image/games/seisoin/visual.jpg" alt="静葬員のKV" loading="lazy">
+              </figure>
+
+              <hr>
+              <p>○『インフォーマーリターンズ』<br>3-8人用 / 10-15分 / 2,500円（イベント限定価格）</p>
+              <figure>
+                <img src="../../image/games/informer/banner.jpg" alt="インフォーマーリターンズのKV" loading="lazy">
+              </figure>
+
+              <h2>◆ご来場の方へ</h2>
+              <p>イベント当日は、混雑が予想されます。お時間に余裕を持ってお越しください。<br>【ブース番号：Q-10】のペンタススタジオブースにて、制作メンバーが直接ご対応をさせていただきます。<br>多くの方と交流できればと思いますので、ご来場の際は、ぜひお気軽にお立ち寄りください。</p>
+
+              <h2>◆最新情報</h2>
+              <p>ゲームマーケットに関する情報は、Xにて随時発信しています。<br>最新情報や当日のご案内は<a href="https://x.com/bdg_de_asobo" target="_blank" rel="noopener noreferrer"><strong>こちら</strong></a>をご確認ください。</p>
+            </div>
+          </div>
+        </section>
+      </article>
+    </main>
+
+    <footer class="ps-footer" aria-label="フッター">
+      <div class="ps-footer-brand" aria-label="Pentas Studio">
+        <img class="ps-footer-logo" src="../../image/general/logo.png" alt="Pentas Studio">
+        <img class="ps-footer-wordmark" src="../../image/general/let_logo.png" alt="Pentas Studio">
+      </div>
+      <div class="ps-footer-row">
+        <div class="sns" aria-label="SNSリンク">
+          <a href="https://x.com/bdg_de_asobo" aria-label="X" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18.244 3H21.5l-7.52 8.59L22 21h-6.31l-4.94-6.43L4.81 21H1.5l7.81-8.93L2 3h6.31l4.5 5.84L18.244 3Z"/>
+            </svg>
+          </a>
+          <a href="mailto:pentasufide.studio@gmail.com" aria-label="メールで問い合わせ">
+            <svg class="mail-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm8 6L4.5 7.5m15 0L12 11m0 0L4.5 16.5m15 0L12 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="https://pentasufide.booth.pm/" aria-label="BOOTH ショップ" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 6h16l-1.2 8.4a2 2 0 0 1-2 1.6H8.2l-.4 2h10.7v2H6a1 1 0 0 1-1-.8L3 6Z"/>
+              <path d="M9 18H7.2L5.5 8h13l-.9 6.2a2 2 0 0 1-2 1.6H9Z"/>
+            </svg>
+          </a>
+        </div>
+        <span class="ps-footer-divider" aria-hidden="true"></span>
+        <nav class="ps-footer-links" aria-label="フッターナビゲーション">
+          <a href="../../index.html?skipLoading=1#top">Top</a>
+          <span class="ps-footer-sep" aria-hidden="true">|</span>
+          <a href="../../games/games.html">Games</a>
+          <span class="ps-footer-sep" aria-hidden="true">|</span>
+          <a href="../gallery.html">News</a>
+          <span class="ps-footer-sep" aria-hidden="true">|</span>
+          <a href="../../shop/shop.html">Shop</a>
+        </nav>
+      </div>
+      <p class="footer-copy">© Pantas Studio All Rights Reserved.</p>
+    </footer>
+  </div>
+</body>
+</html>
