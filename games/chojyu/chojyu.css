@@ -378,6 +378,8 @@ body.is-intro-done .fixed-cta {
 }
 
 .section--story {
+  padding-top: 82px;
+  padding-bottom: 82px;
   background:
     radial-gradient(circle at 26% 38%, rgba(255, 255, 255, .04), transparent 18rem),
     linear-gradient(rgba(131, 26, 21, .82), rgba(131, 26, 21, .88));
@@ -448,7 +450,7 @@ body.is-intro-done .fixed-cta {
 
 .story-stage {
   position: relative;
-  min-height: 560px;
+  min-height: 460px;
   display: grid;
   align-content: start;
   gap: 28px;
@@ -495,6 +497,7 @@ body.is-intro-done .fixed-cta {
 .story-body {
   display: grid;
   gap: 24px;
+  align-self: center;
 }
 
 .story-media {
@@ -1020,7 +1023,8 @@ body.is-intro-done .fixed-cta {
   font-size: 13px;
   letter-spacing: .22em;
   text-transform: uppercase;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  white-space: nowrap;
 }
 
 .footer-links a {
@@ -1341,6 +1345,13 @@ body.is-intro-done .fixed-cta {
   .footer-divider {
     width: min(320px, 76%);
     height: 1px;
+  }
+  .footer-links {
+    font-size: 12px;
+    letter-spacing: .16em;
+  }
+  .footer-links__sep {
+    margin: 0 10px;
   }
   .fixed-cta {
     left: auto;
