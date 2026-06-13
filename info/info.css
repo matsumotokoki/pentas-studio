@@ -1,0 +1,130 @@
+:root{
+  --bg:#29323b;
+  --surface:#1f2730;
+  --ink:#eff3f8;
+  --ink-weak:#aeb8c4;
+  --line:#394656;
+  --accent:#FFBA3A;
+  --shadow:0 12px 28px rgba(0,0,0,.28);
+  --page-pad:min(max(5vw,22px),56px);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP","BIZ UDGothic","Yu Gothic",Meiryo,sans-serif;
+  line-height:1.8;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%;height:auto;user-select:none;-webkit-user-drag:none}
+a{color:inherit;text-decoration:none}
+h1,p{margin:0}
+
+.page{min-height:100vh;display:grid;grid-template-rows:auto 1fr auto}
+
+header{
+  padding:30px var(--page-pad) 22px;
+  display:grid;
+  gap:18px;
+  justify-items:center;
+  text-align:center;
+  border-bottom:1px solid var(--line);
+  background:rgba(31,39,48,.92);
+  box-shadow:0 20px 40px rgba(0,0,0,.28);
+}
+.brand-logo{width:120px;height:120px;border-radius:50%;overflow:hidden;display:grid;place-items:center;background:transparent}
+.brand-logo img{width:100%;height:100%;object-fit:contain}
+.brand-name{font-family:'Rampart One',system-ui,sans-serif;font-size:32px;letter-spacing:.02em}
+.brand-name img{max-height:78px;object-fit:contain;margin:0 auto}
+
+main{
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding:56px var(--page-pad);
+  background:var(--surface);
+}
+.info-article{
+  width:min(1080px,100%);
+  min-width:0;
+  margin:0 auto;
+  display:grid;
+  gap:28px;
+  color:#e4eaf1;
+  font-size:16px;
+  letter-spacing:.02em;
+}
+.info-date,
+.info-signature{
+  width:min(820px,100%);
+  justify-self:center;
+  text-align:right;
+  color:var(--ink);
+}
+.info-article h1{
+  max-width:100%;
+  text-align:center;
+  color:var(--ink);
+  font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Noto Sans JP','BIZ UDGothic','Yu Gothic',Meiryo,sans-serif;
+  font-size:clamp(24px, 4vw, 34px);
+  font-weight:700;
+  line-height:1.5;
+  letter-spacing:.04em;
+  white-space:normal;
+  overflow-wrap:break-word;
+  text-wrap:balance;
+  margin-bottom:12px;
+}
+.info-body{
+  width:min(820px,100%);
+  justify-self:center;
+  display:grid;
+  gap:8px;
+  line-height:2;
+}
+.info-spaced{
+  margin-top:28px;
+}
+
+footer{padding:32px var(--page-pad) 42px;border-top:1px solid var(--line);display:grid;gap:14px;justify-items:center;background:rgba(23,30,39,.94)}
+.sns{display:flex;gap:12px;justify-content:center}
+.sns a{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#ffffff12;border:1px solid var(--line);color:var(--ink);transition:transform .18s ease,background-color .18s ease,box-shadow .18s ease,color .18s ease;--sns-play:var(--bg)}
+.sns a:hover{transform:scale(1.06);background:var(--accent);color:var(--bg);box-shadow:var(--shadow);border-color:transparent;--sns-play:var(--ink)}
+.sns svg{width:20px;height:20px}
+.sns path{fill:currentColor}
+.sns path.play{fill:var(--sns-play);transition:fill .18s ease}
+.sns svg.mail-icon path{fill:none;stroke:currentColor}
+.footer-copy{margin:0;color:var(--ink-weak);font-size:12px;letter-spacing:.04em;text-align:center}
+
+.ps-footer-brand{display:flex;align-items:center;justify-content:center;gap:12px}
+.ps-footer-logo{width:42px;height:42px;border-radius:50%;object-fit:contain;opacity:.9}
+.ps-footer-wordmark{height:42px;width:auto;object-fit:contain;opacity:.95}
+.ps-footer-row{display:flex;align-items:center;gap:22px;flex-wrap:wrap;justify-content:center}
+.ps-footer-divider{width:1px;height:18px;background:var(--line);opacity:.8}
+.ps-footer-links{display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:.22em;text-transform:uppercase}
+.ps-footer-links a{color:var(--ink-weak);transition:color .18s ease}
+.ps-footer-links a:hover,.ps-footer-links a:focus-visible{color:var(--accent)}
+.ps-footer-sep{margin:0 16px;color:var(--line)}
+
+@media (max-width:639px){
+  :root{--page-pad:min(max(4vw,18px),44px)}
+  header{padding-top:24px}
+  .brand-name{font-size:28px}
+  main{padding:40px var(--page-pad)}
+}
+
+@media (min-width:1180px){
+  .info-article h1{white-space:nowrap}
+}
+
+@media (max-width:520px){
+  .ps-footer-divider{width:60%;height:1px}
+}
+
+@media (max-width:639px){
+  .ps-footer{gap:24px;padding-top:clamp(28px, 8vw, 52px);padding-bottom:clamp(28px, 8vw, 64px)}
+  .ps-footer-brand{margin:0}
+}
