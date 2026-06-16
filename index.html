@@ -91,6 +91,22 @@
   .ps-works-rotator .frame.grabbing{cursor:grabbing}
   .ps-works-rotator .title{padding:12px 2px 0;font-size:20px;color:var(--ink-weak)}
 
+  /* ===== Feature banner ===== */
+  .ps-feature-banner{
+    padding-top:18px;
+  }
+  .ps-feature-link{
+    display:block;
+    transition:transform .18s ease;
+  }
+  .ps-feature-link:hover{
+    transform:translateY(-1px);
+  }
+  .ps-feature-link img{
+    width:100%;
+    border-radius:14px;
+  }
+
   /* ===== News ===== */
   .ps-news h2{font-size:24px;letter-spacing:.06em;margin:0 0 14px}
   .ps-news-list{display:grid}
@@ -371,6 +387,12 @@
           <button class="ctrl next" aria-label="次へ" type="button">›</button>
         </div>
         <div class="title" id="worksTitle" aria-atomic="true">&nbsp;</div>
+      </section>
+
+      <section class="ps-section ps-feature-banner" aria-label="超獣飢餓 特設ページバナー">
+        <a class="ps-feature-link" href="games/chojyu/chojyu.html">
+          <img src="image/games/chojyu/special/special-page-banner.svg" alt="超獣飢餓 特設ページはこちら">
+        </a>
       </section>
 
       <section id="info" class="ps-section ps-info" aria-label="インフォメーション">
