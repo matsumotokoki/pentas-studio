@@ -749,6 +749,7 @@ document.addEventListener('DOMContentLoaded', function(){
     const newsList=document.getElementById('newsList');
     if(!newsList) return;
     const NEWS = [
+      {date:'06/19', title:'8/15(土)の夏コミに参加いたします!!', href:'news/2026-06-19/2026-06-19.html'},
       {date:'06/16', title:'ゲームマーケット2026春に出展しました', href:'news/2026-06-16/2026-06-16.html'},
       {date:'05/07', title:'ゲームマーケット2026春に【両日Q10】にて出展決定', href:'news/2026-05-07/2026-05-07.html'},
       {date:'01/17', title:'1/31(土)-2/1(日) 大阪で開催されるBGBEに出展決定！', href:'news/2026-01-17/2026-01-17.html'},
@@ -756,7 +757,7 @@ document.addEventListener('DOMContentLoaded', function(){
       {date:'11/01', title:'公式サイトリニューアルについて', href:'news/2025-11-01/2025-11-01.html'}
     ];
 
-    NEWS.forEach(({date, title, href})=>{
+    NEWS.slice(0, 3).forEach(({date, title, href})=>{
       const a=document.createElement('a');
       a.href=href || '#';
       a.className='ps-news-item';
