@@ -64,6 +64,10 @@ main{
   text-align:right;
   color:var(--ink);
 }
+.info-updated{
+  color:var(--ink-weak);
+  font-size:.88em;
+}
 .info-article h1{
   max-width:100%;
   text-align:center;
