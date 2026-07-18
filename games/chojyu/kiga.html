@@ -82,12 +82,14 @@
     .purchase-block{display:grid;gap:16px;padding:0}
     .purchase-block::before,
     .purchase-block::after{content:"";display:block;height:1px;background:rgba(255,255,255,.32)}
-    .award-note{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:var(--panel-radius);background:linear-gradient(180deg, rgba(242,209,140,.14), rgba(242,209,140,.06));border:1px solid rgba(242,209,140,.24)}
-    .award-note__icon{width:36px;height:36px;flex:0 0 auto;color:#f2d18c}
+    .award-note{position:relative;display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:12px;background:linear-gradient(180deg,#fff1bc 0%,#d6a948 54%,#8b6019 100%);border:1px solid #f6dc96;box-shadow:inset 0 1px 0 rgba(255,255,255,.62),inset 0 -10px 18px rgba(74,43,8,.22),0 1px 0 rgba(255,255,255,.08)}
+    .award-note::before{content:"";position:absolute;inset:3px;border:1px solid rgba(77,48,13,.28);border-radius:9px;pointer-events:none}
+    .award-note__icon{position:relative;width:54px;height:54px;flex:0 0 auto;display:grid;place-items:center;border-radius:50%;background:radial-gradient(circle at 36% 28%,#fff7cb 0%,#e3bb58 45%,#805617 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.66),inset 0 -5px 10px rgba(61,37,7,.2),0 1px 2px rgba(49,30,8,.28)}
     .award-note__icon svg{width:100%;height:100%;display:block}
-    .award-note__icon path{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-    .award-note__text{display:grid}
-    .award-note__title{font-size:17px;font-weight:700;line-height:1.4;color:#f7ead3}
+    .award-note__icon path,.award-note__icon circle{fill:none;stroke:#3d2a0e;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round}
+    .award-note__text{position:relative;z-index:1;display:grid;gap:2px}
+    .award-note__label{font-size:10px;font-weight:700;line-height:1.2;letter-spacing:.18em;color:#5a3a0e;text-transform:uppercase}
+    .award-note__title{font-size:19px;font-weight:700;line-height:1.35;color:#2d210c;text-shadow:0 1px 0 rgba(255,239,186,.5)}
     .purchase-cta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:center;justify-items:center;width:100%}
     .purchase-cta>*{width:100%;text-align:center}
     .cta-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 22px;border-radius:var(--panel-radius);background:var(--accent);color:var(--bg);font-weight:700;font-size:15px;letter-spacing:.06em;border:none;box-shadow:0 6px 16px rgba(0,0,0,.28);transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease;width:100%}
@@ -96,9 +98,13 @@
     .cta-button--disabled:hover{transform:none;box-shadow:none;background:rgba(255,255,255,.08);color:var(--ink)}
     .purchase-price{font-size:22px;font-weight:700;letter-spacing:.06em;display:flex;align-items:center;justify-content:center;line-height:1.4;width:100%}
     .purchase-note{font-size:13px;color:var(--ink-weak)}
-    .special-banner-link{display:block;margin-top:4px;transition:transform .18s ease}
-    .special-banner-link:hover{transform:translateY(-1px)}
-    .special-banner-link img{width:100%;border-radius:12px}
+    .info-link{display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px;padding:10px 4px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);color:var(--ink);transition:color .18s ease}
+    .info-link__title{font-size:15px;font-weight:700;letter-spacing:.04em;line-height:1.5}
+    .info-link__arrow{color:var(--ink-weak);transition:transform .18s ease,color .18s ease}
+    .info-link:hover .info-link__title,
+    .info-link:focus-visible .info-link__title{color:var(--accent)}
+    .info-link:hover .info-link__arrow,
+    .info-link:focus-visible .info-link__arrow{color:var(--accent);transform:translateX(3px)}
 
     .overview-media{display:grid;gap:24px}
     .media-block{display:grid;gap:16px;background:rgba(31,39,48,.72);border-radius:var(--radius);padding:24px;border:1px solid var(--line)}
@@ -212,18 +218,23 @@
                 <div class="award-note" aria-label="受賞情報">
                   <span class="award-note__icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24">
-                      <path d="M4 17.5h16"/>
-                      <path d="M5 17.5 6.6 8.5l4 3.5L12 6l1.4 6 4-3.5 1.6 9"/>
-                      <path d="M8.2 20h7.6"/>
+                      <circle cx="12" cy="12" r="6.2"/>
+                      <path d="m12 8.2 1 2.1 2.3.3-1.7 1.6.4 2.3-2-1.1-2 1.1.4-2.3-1.7-1.6 2.3-.3 1-2.1Z"/>
+                      <path d="M6.8 8.8c-1.6 1.7-2.2 4.2-1.4 6.4"/>
+                      <path d="M17.2 8.8c1.6 1.7 2.2 4.2 1.4 6.4"/>
+                      <path d="M5.6 12.1 3.9 11"/>
+                      <path d="M6 14.4l-2 .1"/>
+                      <path d="M18.4 12.1 20.1 11"/>
+                      <path d="M18 14.4l2 .1"/>
+                      <path d="M9.2 18.3h5.6"/>
+                      <path d="m10.2 20 1.8-1.7 1.8 1.7"/>
                     </svg>
                   </span>
                   <span class="award-note__text">
+                    <span class="award-note__label">Award</span>
                     <span class="award-note__title">フォアシュピセレクション2026春　受賞</span>
                   </span>
                 </div>
-                <a class="special-banner-link" href="./chojyu.html" aria-label="超獣飢餓の特設ページはこちら">
-                  <img src="../../image/games/chojyu/special/special-page-banner.svg" alt="超獣飢餓 特設ページはこちら" loading="lazy">
-                </a>
                 <section class="purchase-block" aria-label="予約情報">
                   <div class="purchase-cta">
                     <span class="purchase-price">準備中</span>
@@ -231,6 +242,10 @@
                   </div>
                   <p class="purchase-note">※ 販売開始までお待ちください。</p>
                 </section>
+                <a class="info-link" href="../../info/2026-06-12.html" aria-label="カードの交換対応について">
+                  <span class="info-link__title">カードの交換対応について</span>
+                  <span class="info-link__arrow" aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
           </div>
@@ -300,22 +315,25 @@
                     <div class="media-carousel-viewport">
                       <div class="media-carousel-track" data-carousel-track>
                         <figure class="media-carousel-item">
-                          <img src="../../image/games/chojyu/kiga/play_image.jpg" alt="超獣飢餓のパッケージ表面" loading="lazy">
+                          <img src="../../image/games/chojyu/kiga/carousel/1.png" alt="超獣飢餓 ギャラリー画像1" loading="lazy">
                         </figure>
                         <figure class="media-carousel-item">
-                          <img src="../../image/games/chojyu/kiga/rule.jpg" alt="超獣飢餓のルール説明画像" loading="lazy">
+                          <img src="../../image/games/chojyu/kiga/carousel/2.png" alt="超獣飢餓 ギャラリー画像2" loading="lazy">
                         </figure>
                         <figure class="media-carousel-item">
-                          <img src="../../image/games/chojyu/kiga/KV_without.jpg" alt="超獣飢餓のキービジュアル" loading="lazy">
+                          <img src="../../image/games/chojyu/kiga/carousel/3.png" alt="超獣飢餓 ギャラリー画像3" loading="lazy">
                         </figure>
                         <figure class="media-carousel-item">
-                          <img src="../../image/games/chojyu/kiga/mock_front.png" alt="超獣飢餓のパッケージ表面" loading="lazy">
+                          <img src="../../image/games/chojyu/kiga/carousel/4.png" alt="超獣飢餓 ギャラリー画像4" loading="lazy">
                         </figure>
                         <figure class="media-carousel-item">
-                          <img src="../../image/games/chojyu/kiga/mock_back.png" alt="超獣飢餓のパッケージ裏面" loading="lazy">
+                          <img src="../../image/games/chojyu/kiga/carousel/5.png" alt="超獣飢餓 ギャラリー画像5" loading="lazy">
                         </figure>
                         <figure class="media-carousel-item">
-                          <img src="../../image/games/chojyu/kiga/chojyu-kiga.png" alt="超獣飢餓の紹介画像" loading="lazy">
+                          <img src="../../image/games/chojyu/kiga/carousel/6.png" alt="超獣飢餓 ギャラリー画像6" loading="lazy">
+                        </figure>
+                        <figure class="media-carousel-item">
+                          <img src="../../image/games/chojyu/kiga/carousel/7.png" alt="超獣飢餓 ギャラリー画像7" loading="lazy">
                         </figure>
                       </div>
                     </div>
@@ -323,7 +341,7 @@
                       <button type="button" class="carousel-button" data-carousel-button="prev" aria-label="前の画像" disabled>
                         <span aria-hidden="true">‹</span>
                       </button>
-                      <p class="carousel-status" data-carousel-status aria-live="polite">1 / 6</p>
+                      <p class="carousel-status" data-carousel-status aria-live="polite">1 / 7</p>
                       <button type="button" class="carousel-button" data-carousel-button="next" aria-label="次の画像">
                         <span aria-hidden="true">›</span>
                       </button>

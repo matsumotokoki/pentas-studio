@@ -92,19 +92,71 @@
   .ps-works-rotator .title{padding:12px 2px 0;font-size:20px;color:var(--ink-weak)}
 
   /* ===== Feature banner ===== */
-  .ps-feature-banner{
-    padding-top:18px;
-  }
   .ps-feature-link{
-    display:block;
-    transition:transform .18s ease;
+    display:grid;
+    grid-template-rows:auto auto;
+    overflow:hidden;
+    border-radius:var(--radius);
+    background:var(--surface);
+    border:1px solid var(--line);
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
   }
   .ps-feature-link:hover{
-    transform:translateY(-1px);
+    transform:scale(1.015);
+    box-shadow:var(--shadow);
+    border-color:rgba(255,186,58,.6);
+  }
+  .ps-feature-link:focus-visible{
+    outline:3px solid var(--accent);
+    outline-offset:4px;
   }
   .ps-feature-link img{
+    display:block;
     width:100%;
-    border-radius:14px;
+    aspect-ratio:3/1;
+    object-fit:cover;
+    object-position:center;
+  }
+  .ps-feature-heading{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:12px 14px;
+    color:var(--ink);
+    background:var(--surface);
+    border-top:1px solid var(--line);
+  }
+  .ps-feature-title{
+    display:flex;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:.7em;
+    font-size:18px;
+    font-weight:700;
+    letter-spacing:.02em;
+    line-height:1.2;
+  }
+  .ps-feature-title span:last-child{
+    font-size:14px;
+    letter-spacing:.04em;
+    color:var(--ink-weak);
+  }
+  .ps-feature-arrow{
+    flex:0 0 auto;
+    width:18px;
+    height:18px;
+    display:grid;
+    place-items:center;
+    color:var(--ink-weak);
+    font-size:18px;
+    line-height:1;
+    transition:transform .18s ease, color .18s ease;
+  }
+  .ps-feature-link:hover .ps-feature-arrow,
+  .ps-feature-link:focus-visible .ps-feature-arrow{
+    transform:translateX(3px);
+    color:var(--accent);
   }
 
   /* ===== News ===== */
@@ -390,8 +442,15 @@
       </section>
 
       <section class="ps-section ps-feature-banner" aria-label="超獣飢餓 特設ページバナー">
-        <a class="ps-feature-link" href="games/chojyu/chojyu.html">
-          <img src="image/games/chojyu/special/special-page-banner.svg" alt="超獣飢餓 特設ページはこちら">
+        <a class="ps-feature-link" href="games/chojyu/chojyu.html" aria-label="超獣飢餓 特設ページはこちら">
+          <img src="image/games/chojyu/kiga/banner.jpg" alt="超獣飢餓">
+          <div class="ps-feature-heading" aria-hidden="true">
+            <div class="ps-feature-title">
+              <span>超獣飢餓</span>
+              <span>特設ページはこちら</span>
+            </div>
+            <div class="ps-feature-arrow">›</div>
+          </div>
         </a>
       </section>
 
