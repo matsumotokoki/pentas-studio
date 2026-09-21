@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="『ボクらのすごログ』カード一覧。" />
+  <meta property="og:title" content="ボクらのすごログ カード一覧 | ペンタススタジオ" />
+  <meta property="og:description" content="『ボクらのすごログ』カード一覧。" />
+  <meta property="og:image" content="https://www.pentas-studio.com/image/games/sugolog/すごログ_ロゴ_02影無し.png" />
+  <meta property="og:url" content="https://www.pentas-studio.com/games/sugolog/card.html" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>ボクらのすごログ カード一覧 | ペンタススタジオ</title>
+  <link rel="canonical" href="https://www.pentas-studio.com/games/sugolog/card.html" />
+  <link rel="icon" type="image/png" href="../../image/general/logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#29323b;
+      --surface:#1f2730;
+      --ink:#eff3f8;
+      --ink-weak:#aeb8c4;
+      --line:#394656;
+      --accent:#FFBA3A;
+      --content-bg:#1d252f;
+      --radius:14px;
+      --shadow:0 14px 28px rgba(0,0,0,.36);
+      --page-pad:24px;
+    }
+
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP","BIZ UDGothic","Yu Gothic",Meiryo,sans-serif;
+    }
+    img{display:block;max-width:100%;height:auto;user-select:none;-webkit-user-drag:none}
+    a{color:inherit;text-decoration:none}
+    h1,h2,p{margin:0}
+
+    .page{min-height:100vh;display:grid;grid-template-rows:auto 1fr auto}
+
+    header{padding:26px var(--page-pad) 18px;display:grid;gap:18px;justify-items:center;text-align:center;border-bottom:1px solid var(--line)}
+    .brand-logo{width:120px;height:120px;border-radius:50%;overflow:hidden;display:grid;place-items:center;background:transparent}
+    .brand-logo img{width:100%;height:100%;object-fit:contain}
+    .brand-name{font-family:'Rampart One',system-ui,sans-serif;font-size:32px;letter-spacing:.02em}
+    .brand-name img{max-height:78px;object-fit:contain;margin:0 auto}
+
+    main{background:var(--content-bg)}
+    .section-band{padding:56px var(--page-pad);display:flex;justify-content:center}
+    .band-inner{width:min(1100px,100%);display:grid;gap:24px}
+    .page-title{display:grid;gap:10px;text-align:center}
+    .page-title h1{font-size:clamp(28px,5vw,44px);letter-spacing:.08em}
+    .page-title p{color:var(--ink-weak);font-size:14px;letter-spacing:.12em}
+
+    .table-section{display:grid;gap:12px}
+    .table-title{font-size:22px;letter-spacing:.08em;color:var(--accent)}
+    .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:rgba(31,39,48,.72)}
+    table{width:100%;min-width:720px;border-collapse:collapse}
+    th,td{padding:15px 18px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.65}
+    th{position:sticky;top:0;background:#26313d;color:var(--accent);font-size:14px;letter-spacing:.12em;text-align:left;white-space:nowrap}
+    tbody tr:last-child td{border-bottom:0}
+    tbody tr:nth-child(even) td{background:rgba(255,255,255,.025)}
+    tbody tr:hover td{background:rgba(255,186,58,.08)}
+    td.score{width:88px;text-align:center;font-weight:700;color:var(--accent);font-size:18px}
+
+    footer{padding:28px var(--page-pad) 38px;border-top:1px solid var(--line);display:grid;gap:12px;justify-items:center}
+    .sns{display:flex;gap:12px;justify-content:center}
+    .sns a{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#ffffff12;border:1px solid var(--line);color:var(--ink);transition:transform .18s ease, background-color .18s ease, box-shadow .18s ease, color .18s ease;--sns-play:var(--bg)}
+    .sns a:hover{transform:scale(1.06);background:var(--accent);color:var(--bg);box-shadow:var(--shadow);border-color:transparent;--sns-play:var(--ink)}
+    .sns svg{width:20px;height:20px}
+    .sns path{fill:currentColor}
+    .sns svg.mail-icon path{fill:none;stroke:currentColor}
+    .footer-copy{margin:0;color:var(--ink-weak);font-size:12px;letter-spacing:.04em;text-align:center}
+    .ps-footer-brand{display:flex;align-items:center;justify-content:center;gap:12px}
+    .ps-footer-logo{width:42px;height:42px;border-radius:50%;object-fit:contain;opacity:.9}
+    .ps-footer-wordmark{height:42px;width:auto;object-fit:contain;opacity:.95}
+    .ps-footer-row{display:flex;align-items:center;gap:22px;flex-wrap:wrap;justify-content:center}
+    .ps-footer-divider{width:1px;height:18px;background:var(--line);opacity:.8}
+    .ps-footer-links{display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:.22em;text-transform:uppercase}
+    .ps-footer-links a{color:var(--ink-weak);transition:color .18s ease}
+    .ps-footer-links a:hover,.ps-footer-links a:focus-visible{color:var(--accent)}
+    .ps-footer-sep{margin:0 16px;color:var(--line)}
+
+    @media (max-width:639px){
+      :root{--page-pad:16px}
+      header{padding-top:24px}
+      .brand-name{font-size:28px}
+      .section-band{padding:36px var(--page-pad)}
+      th,td{padding:13px 14px}
+      .ps-footer{gap:24px;padding-top:clamp(28px, 8vw, 52px);padding-bottom:clamp(28px, 8vw, 64px)}
+      .ps-footer-brand{margin:0}
+    }
+
+    @media (max-width:520px){
+      .ps-footer-divider{width:60%;height:1px}
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <a class="brand-logo" href="../../index.html?skipLoading=1#top" aria-label="トップページへ戻る">
+        <img src="../../image/general/logo.png" alt="Pentas Studio" loading="lazy">
+      </a>
+      <div class="brand-name">
+        <img src="../../image/general/let_logo.png" alt="Pentas Studio" loading="lazy">
+      </div>
+    </header>
+
+    <main>
+      <section class="section-band" aria-labelledby="cardListTitle">
+        <div class="band-inner">
+          <div class="page-title">
+            <h1 id="cardListTitle">カード一覧</h1>
+            <p>ボクらのすごログ</p>
+          </div>
+          <section class="table-section" aria-labelledby="dailyCardsTitle">
+            <h2 id="dailyCardsTitle" class="table-title">＜日常編＞</h2>
+            <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">新しい予定</th>
+                  <th scope="col">バトル内容</th>
+                  <th scope="col">点数</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>ネットショッピングをしよう</td><td>センスのいい買い物をした人の勝ち！</td><td class="score">2</td></tr>
+                <tr><td>散歩をしよう</td><td>たくさん歩いた人の勝ち！</td><td class="score">1</td></tr>
+                <tr><td>新聞を読もう</td><td>新発見した人の勝ち！</td><td class="score">2</td></tr>
+                <tr><td>植物へ水やりをしよう</td><td>たくさん水やりをした人の勝ち！</td><td class="score">1</td></tr>
+                <tr><td>フルーツを食べよう</td><td>フルーツをたくさん食べた人の勝ち！</td><td class="score">2</td></tr>
+                <tr><td>野菜をたくさん食べよう</td><td>野菜をたくさん食べた人の勝ち！</td><td class="score">2</td></tr>
+                <tr><td>テンションが上がることをしよう</td><td>いちばんテンションが上がった人の勝ち！</td><td class="score">3</td></tr>
+                <tr><td>カバンを整理しよう</td><td>いちばん整理された人の勝ち！</td><td class="score">2</td></tr>
+                <tr><td>3桁以上のゾロ目を見つけよう</td><td>数字が大きい人の勝ち！</td><td class="score">3</td></tr>
+                <tr><td>くじびきをしよう</td><td>結果がいい人の勝ち！</td><td class="score">2</td></tr>
+                <tr><td>自撮りをしよう</td><td>撮った人数が多い人の勝ち！</td><td class="score">1</td></tr>
+                <tr><td>家の掃除をしよう</td><td>いちばん掃除した人の勝ち！</td><td class="score">2</td></tr>
+                <tr><td>家電のお手入れをしよう</td><td>いちばん大変だった人の勝ち！</td><td class="score">3</td></tr>
+                <tr><td>生活をアップデートしよう</td><td>いちばん変化した人の勝ち！</td><td class="score">3</td></tr>
+                <tr><td>クイズを作ろう</td><td>良問を作った人の勝ち！</td><td class="score">2</td></tr>
+                <tr><td>環境に良いことをしよう</td><td>いちばん環境に良いことをした人の勝ち！</td><td class="score">2</td></tr>
+                <tr><td>料理を作ろう</td><td>美味しそうな料理を作った人の勝ち！</td><td class="score">3</td></tr>
+                <tr><td>赤いものを食べよう</td><td>いちばん赤いものを食べた人の勝ち！</td><td class="score">2</td></tr>
+                <tr><td>ものづくりをしよう</td><td>いちばん手の込んだものを作った人の勝ち！</td><td class="score">3</td></tr>
+                <tr><td>お菓子を食べよう</td><td>珍しいお菓子を食べた人の勝ち！</td><td class="score">1</td></tr>
+                <tr><td>雑誌を読もう</td><td>たくさん読んだ人の勝ち！</td><td class="score">1</td></tr>
+                <tr><td>デッサンをしよう</td><td>味のある作品を描いた人の勝ち！</td><td class="score">3</td></tr>
+                <tr><td>ゲームで遊ぼう</td><td>いちばんハイスコアを獲得した人の勝ち！</td><td class="score">1</td></tr>
+                <tr><td>旅行の計画を立てよう</td><td>いちばん楽しそうな計画を立てた人の勝ち！</td><td class="score">3</td></tr>
+                <tr><td>鶴を折ろう</td><td>いちばん綺麗に折れた人の勝ち！</td><td class="score">2</td></tr>
+                <tr><td>レビューを書こう</td><td>たくさんレビューを書いた人の勝ち！</td><td class="score">2</td></tr>
+                <tr><td>自分にご褒美をあげよう</td><td>いちばんいいご褒美をあげた人の勝ち！</td><td class="score">3</td></tr>
+                <tr><td>お店の予約をしよう</td><td>珍しいところを予約した人の勝ち！</td><td class="score">2</td></tr>
+                <tr><td>懐かしいことをしよう</td><td>いちばん懐かしいことをした人の勝ち！</td><td class="score">2</td></tr>
+                <tr><td>SNSを投稿しよう</td><td>リアクションが多い人の勝ち！</td><td class="score">2</td></tr>
+                <tr><td>リフレッシュをしよう</td><td>いちばんリフレッシュした人の勝ち！</td><td class="score">1</td></tr>
+                <tr><td>身体のメンテナンスをしよう</td><td>たくさんメンテナンスした人の勝ち！</td><td class="score">3</td></tr>
+              </tbody>
+            </table>
+            </div>
+          </section>
+          <section class="table-section" aria-labelledby="outingCardsTitle">
+            <h2 id="outingCardsTitle" class="table-title">＜お出かけ編＞</h2>
+            <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">新しい予定</th>
+                  <th scope="col">バトル内容</th>
+                  <th scope="col">点数</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>公園で遊ぼう</td><td>いちばん楽しんだ人の勝ち！</td><td class="score">1</td></tr>
+                <tr><td>10,000歩以上を歩こう</td><td>たくさん歩いた人の勝ち！</td><td class="score">4</td></tr>
+                <tr><td>図書館で本を借りよう</td><td>借りた本が多い人の勝ち！</td><td class="score">4</td></tr>
+                <tr><td>動物の写真を撮ろう</td><td>珍しい動物の写真を撮った人の勝ち！</td><td class="score">2</td></tr>
+                <tr><td>バスに乗ろう</td><td>たくさんバスに乗った人の勝ち！</td><td class="score">2</td></tr>
+                <tr><td>遠出をしよう</td><td>いちばん遠出した人の勝ち！</td><td class="score">5</td></tr>
+                <tr><td>高いところに行こう</td><td>いちばん高いところに行った人の勝ち！</td><td class="score">4</td></tr>
+                <tr><td>2,000円以上の買い物をしよう</td><td>いちばんお金を使った人の勝ち！</td><td class="score">3</td></tr>
+                <tr><td>レストランに行こう</td><td>いちばん美味しそうなものを食べた人の勝ち！</td><td class="score">2</td></tr>
+                <tr><td>カプセルトイを回そう</td><td>レアなものを取った人の勝ち！</td><td class="score">3</td></tr>
+                <tr><td>顔はめパネルで写真を撮ろう</td><td>レアなパネルで撮った人の勝ち！</td><td class="score">5</td></tr>
+                <tr><td>ゴミを拾おう</td><td>たくさんゴミを拾った人の勝ち！</td><td class="score">1</td></tr>
+                <tr><td>自動販売機を使おう</td><td>珍しい商品を買った人の勝ち！</td><td class="score">1</td></tr>
+                <tr><td>洋服を買おう</td><td>センスいい服を買った人の勝ち！</td><td class="score">3</td></tr>
+                <tr><td>クリーニングに出そう</td><td>たくさんクリーニングした人の勝ち！</td><td class="score">4</td></tr>
+                <tr><td>募金をしよう</td><td>たくさん募金をした人の勝ち！</td><td class="score">2</td></tr>
+                <tr><td>カフェに行こう</td><td>たくさん行った人の勝ち！</td><td class="score">2</td></tr>
+                <tr><td>看板を撮ろう</td><td>おもしろい看板を撮った人の勝ち！</td><td class="score">1</td></tr>
+                <tr><td>刺激を受けよう</td><td>いちばん刺激を受けた人の勝ち！</td><td class="score">5</td></tr>
+                <tr><td>現金を使おう</td><td>たくさん使った人の勝ち！</td><td class="score">2</td></tr>
+                <tr><td>推し活をしよう</td><td>たくさん推し活した人の勝ち！</td><td class="score">3</td></tr>
+                <tr><td>アートに触れよう</td><td>より新しい価値観を得られた人の勝ち！</td><td class="score">3</td></tr>
+                <tr><td>クレーンゲームをしよう</td><td>最も大きい景品をとれた人の勝ち！</td><td class="score">5</td></tr>
+                <tr><td>知らない駅で降りよう</td><td>降りた駅が多い人の勝ち！</td><td class="score">4</td></tr>
+                <tr><td>右隣の人にプレゼントをあげよう</td><td>いちばん喜ばれた人の勝ち！</td><td class="score">4</td></tr>
+                <tr><td>お参りしよう</td><td>訪れた数が多い人の勝ち！</td><td class="score">2</td></tr>
+                <tr><td>自然を感じよう</td><td>いちばん自然を感じた人の勝ち！</td><td class="score">3</td></tr>
+                <tr><td>公衆電話を見つけよう</td><td>見つけた数が多い人の勝ち！</td><td class="score">3</td></tr>
+                <tr><td>切符で電車に乗ろう</td><td>たくさん切符を使った人の勝ち！</td><td class="score">2</td></tr>
+                <tr><td>水辺に行こう</td><td>きれいな水辺を見つけた人の勝ち！</td><td class="score">3</td></tr>
+                <tr><td>歩道橋を渡ろう</td><td>たくさん渡った人の勝ち！</td><td class="score">2</td></tr>
+                <tr><td>初めてのお店に行こう</td><td>たくさん行った人の勝ち</td><td class="score">4</td></tr>
+              </tbody>
+            </table>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer class="ps-footer" aria-label="フッター">
+      <div class="ps-footer-brand" aria-label="Pentas Studio">
+        <img class="ps-footer-logo" src="../../image/general/logo.png" alt="Pentas Studio">
+        <img class="ps-footer-wordmark" src="../../image/general/let_logo.png" alt="Pentas Studio">
+      </div>
+      <div class="ps-footer-row">
+        <div class="sns" aria-label="SNSリンク">
+          <a href="https://x.com/bdg_de_asobo" aria-label="X" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18.244 3H21.5l-7.52 8.59L22 21h-6.31l-4.94-6.43L4.81 21H1.5l7.81-8.93L2 3h6.31l4.5 5.84L18.244 3Z"/>
+            </svg>
+          </a>
+          <a href="mailto:pentasufide.studio@gmail.com" aria-label="メールで問い合わせ">
+            <svg class="mail-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm8 6L4.5 7.5m15 0L12 11m0 0L4.5 16.5m15 0L12 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="https://pentasufide.booth.pm/" aria-label="BOOTH ショップ" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 6h16l-1.2 8.4a2 2 0 0 1-2 1.6H8.2l-.4 2h10.7v2H6a1 1 0 0 1-1-.8L3 6Z"/>
+              <path d="M9 18H7.2L5.5 8h13l-.9 6.2a2 2 0 0 1-2 1.6H9Z"/>
+            </svg>
+          </a>
+        </div>
+        <span class="ps-footer-divider" aria-hidden="true"></span>
+        <nav class="ps-footer-links" aria-label="フッターナビゲーション">
+          <a href="../../index.html?skipLoading=1#top">Top</a>
+          <span class="ps-footer-sep" aria-hidden="true">|</span>
+          <a href="../games.html">Games</a>
+          <span class="ps-footer-sep" aria-hidden="true">|</span>
+          <a href="../../news/gallery.html">News</a>
+          <span class="ps-footer-sep" aria-hidden="true">|</span>
+          <a href="../../shop/shop.html">Shop</a>
+        </nav>
+      </div>
+      <p class="footer-copy">© Pantas Studio All Rights Reserved.</p>
+    </footer>
+  </div>
+</body>
+</html>
