@@ -88,9 +88,11 @@
     .overview-block strong[data-variant="ink"]{color:var(--ink)}
     .component-list{margin:0;padding-left:20px;display:grid;gap:6px;font-size:15px;line-height:1.8;color:#d7dee8}
     .component-note{font-size:13px;line-height:1.8;color:var(--ink-weak)}
-    .component-link{display:inline-flex;align-items:center;gap:8px;justify-self:start;padding:2px 0 4px;border-bottom:1px solid var(--line);color:var(--ink-weak);font-size:14px;line-height:1.6;transition:color .18s ease,border-color .18s ease}
-    .component-link:hover,.component-link:focus-visible{color:var(--accent);border-color:var(--accent)}
-    .component-link-arrow{font-size:18px;line-height:1}
+    .component-link{display:inline-flex;align-items:center;justify-content:center;gap:14px;justify-self:end;min-height:40px;padding:8px 16px 8px 18px;border:1px solid rgba(255,255,255,.28);border-radius:999px;background:rgba(255,255,255,.12);color:var(--ink);font-size:13px;font-weight:600;line-height:1.5;box-shadow:0 3px 10px rgba(0,0,0,.16);transition:transform .18s ease,background-color .18s ease,color .18s ease,border-color .18s ease,box-shadow .18s ease}
+    .component-link:hover,.component-link:focus-visible{transform:translateY(-1px);background:var(--accent);color:var(--bg);border-color:transparent;box-shadow:0 6px 16px rgba(0,0,0,.24)}
+    .component-link:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+    .component-link-arrow{font-size:18px;line-height:1;transition:transform .18s ease}
+    .component-link:hover .component-link-arrow,.component-link:focus-visible .component-link-arrow{transform:translateX(2px)}
 
     .rule-block{grid-column:1/-1;gap:24px}
     .rule-tabs{display:grid;gap:0}
@@ -106,10 +108,11 @@
     .rule-tab-media{width:min(630px,100%);margin:0;background:#fff;border:1px solid var(--line);border-top:0;border-radius:0 0 8px 8px;overflow:hidden;aspect-ratio:1820/1307}
     .rule-tab-media img{width:100%;height:100%;object-fit:contain}
     .overview-block .rule-tab-copy{width:min(760px,100%);padding:8px 20px 12px;display:grid;gap:14px;color:var(--ink);text-align:center}
-    .rule-tab-copy h3{margin:0;font-size:24px;line-height:1.5;letter-spacing:0;font-weight:700}
-    .overview-block .rule-tab-copy p{margin:0;font-size:18px;line-height:1.8;font-weight:400;color:var(--ink)}
+    .rule-tab-copy h3{position:relative;justify-self:center;margin:0;padding-bottom:10px;font-size:24px;line-height:1.5;letter-spacing:0;font-weight:700}
+    .rule-tab-copy h3::after{content:"";position:absolute;left:50%;bottom:0;width:96px;height:3px;border-radius:999px;background:var(--accent);transform:translateX(-50%)}
+    .overview-block .rule-tab-copy p{margin:0;font-size:18px;line-height:1.8;font-weight:400;color:var(--ink);text-align:left}
     .rule-afterword{width:min(900px,100%);margin:20px auto 0;padding-top:32px;border-top:1px solid var(--line);display:grid;gap:18px}
-    .rule-afterword h3{margin:8px 0 0;font-size:22px;line-height:1.6;letter-spacing:0;color:var(--accent)}
+    .rule-afterword h3{margin:24px 0 0;font-size:20px;line-height:1.6;letter-spacing:0;font-weight:700;color:var(--ink)}
     .overview-block .rule-afterword p{margin:0;font-size:15px;line-height:1.9;font-weight:400;color:#d7dee8}
 
     .purchase-block{display:grid;gap:16px;padding:0}
@@ -195,7 +198,7 @@
       .rule-tab-copy h3{font-size:21px}
       .overview-block .rule-tab-copy p{font-size:16px}
       .rule-afterword{padding-top:26px;gap:16px}
-      .rule-afterword h3{font-size:20px}
+      .rule-afterword h3{font-size:18px}
       .overview-block .rule-afterword p{font-size:15px}
     }
   
@@ -233,7 +236,7 @@
                   <h1 id="gameTitle" class="game-title">
                     <img src="../../image/games/sugolog/すごログ_ロゴ_02影無し.png" alt="ボクらのすごログ" loading="lazy">
                   </h1>
-                  <p class="game-category">自己中協力ゲーム</p>
+                  <p class="game-category">日常連動型すごろくゲーム</p>
                 </div>
                 <p class="hero-lead">答え合わせは1か月後。ボクらの「これから」が舞台になる日常連動型すごろくゲーム</p>
                 <dl class="game-meta">
@@ -268,10 +271,11 @@
               <div class="overview-text">
                 <section class="overview-block" aria-labelledby="overviewHeading">
                   <h2 id="overviewHeading">ゲーム概要</h2>
-                  <p>実際のカレンダーを使ってすごろくをしよう！</p>
-                  <p>「バスに乗る」「フルーツを食べる」「アートに触れる」<br>カレンダーの止まった日に「新しい予定」を書き込み、その日が来たら実際に行い、記録をしよう。</p>
-                  <p>約束の日に再び集まるとき、ボクらはどんなことをし、どんな新しいことを発見しているのでしょうか。</p>
-                  <p><strong>すごログ</strong><br>これは、ボクらの過ごした記録を見せあって競う、<strong>日常連動型のすごろくゲーム</strong>です。</p>
+                  <p>「バスに乗る」<br>「フルーツを食べる」<br>「アートに触れる」</p>
+                  <p>カレンダーの止まった日に<strong>『新しい予定』</strong>を書き込み、その日が来たら実際に行い記録しよう。</p>
+                  <p>約束の日に再び集まる時、ボクらはどんなことをし、<br>どんな新しいことを発見しているのでしょうか。</p>
+                  <p><strong>『ボクらのすごログ』</strong>はゲームで決めた予定を実際の日常で行い、<br>その<strong>過ごした記録を見せ合って競う</strong></p>
+                  <p><strong>「日常連動型すごろくゲーム」です。</strong></p>
                 </section>
                 <section class="overview-block" aria-labelledby="componentHeading">
                   <h2 id="componentHeading">内容物</h2>
@@ -373,7 +377,7 @@
                 </div>
                 <div class="rule-afterword">
                   <p>誰が一番予定を実行できたのか。そして、どんな日常を過ごしてきたのか。</p>
-                  <p>みんなの日常を舞台にして遊んで発表し合うのが『ボクらのすごログ』の楽しさです。</p>
+                  <p>みんなの日常を舞台にして遊んで発表し合うのが『ボクらのすごログ』の楽しさです。<br></p>
                   <h3>【その日のうちに遊べる「短縮版ルール」も】</h3>
                   <p>「次に会う日まで待てない！」という人のために、通常ルールに加えてその場で完結する短縮版ルールも収録しています。</p>
                   <p>予定を立てる部分はそのままに、その日の決められた時間の中で予定を行う短縮ルールです。その後、その日の決められた時間内に予定を実行して、再び集合します。</p>
